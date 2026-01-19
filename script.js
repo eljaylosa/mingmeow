@@ -315,6 +315,29 @@ const btn = document.getElementById("reveal-btn");
         dropdown.classList.remove("active");
       }
     });
+
+    /* ================= BACKGROUND SLIDESHOW ================= */
+const bgImages = document.querySelectorAll(".bg-image");
+let currentBg = 0;
+
+setInterval(() => {
+  bgImages[currentBg].classList.remove("active");
+  currentBg = (currentBg + 1) % bgImages.length;
+  bgImages[currentBg].classList.add("active");
+}, 6000);
+
+/* ================= FLOATING HEARTS ================= */
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.textContent = ["💖", "💗", "💕", "💞"][Math.floor(Math.random() * 4)];
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = Math.random() * 3 + 4 + "s";
+
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 7000);
+}, 800);
+
     
     
     
