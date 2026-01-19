@@ -302,6 +302,7 @@ button::after {
   }
 }
 
+/* ===================== LARGE DESKTOP ===================== */
 @media (max-width: 1255px) {
   .card {
     width: 300px;
@@ -320,6 +321,7 @@ button::after {
   }
 }
 
+/* ===================== TABLET ===================== */
 @media (max-width: 925px) {
   .card {
     width: 280px;
@@ -338,38 +340,7 @@ button::after {
   }
 }
 
-@media (max-width: 445px) {
-  .card {
-    width: 120px;
-    height: 140px;
-  }
-
-  .card .front h1 {
-    margin-top: 50px;
-    font-size: 18px;
-  }
-
-  .card .front,
-  .card .back,
-  .card .first-page {
-    border-width: 6px;
-  }
-}
-
-@media (max-width: 443px) {
-  .search {
-    margin-top: 20px;
-    width: 80%;
-  }
-  .songs-container .search #searchInput {
-    width: 100%;
-  }
-  button {
-    font-size: 12px;
-    margin-bottom: 10px;
-  }
-}
-
+/* ===================== MOBILE ===================== */
 @media (max-width: 600px) {
   body {
     padding: 10px;
@@ -408,22 +379,68 @@ button::after {
   .songs-container {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    grid-template-columns: repeat(2, 1fr);
     gap: 16px;
     justify-items: center;
   }
 
   .song-card {
-    display: flex;
-    flex-direction: column;
     width: 120px;
     height: 350px;
   }
+
   .search #searchInput {
-    padding: 10px 12px;
     width: 165px;
+  }
 }
+
+/* ===================== SMALL MOBILE ===================== */
+@media (max-width: 445px) {
+  .card {
+    width: 120px;
+    height: 140px;
+  }
 }
+
+@media (max-width: 448px) {
+  .search {
+    width: 80%;
+    margin-top: 10px;
+  }
+  .search #searchInput {
+    width: 100%;
+  }
+  .dropbtn {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+  }
+  .close-btn {
+    margin-top: -100%;
+  }
+}
+
+/* ===================== EXTRA SMALL ===================== */
+@media (max-width: 360px) {
+  .nav-container #showSong {
+    font-size: 0.9rem;
+    padding: 6px 10px;
+  }
+
+  .search {
+    margin-top: 20px;
+    width: 70%;
+  }
+
+  .songs-container .search #searchInput {
+    width: 100%;
+  }
+
+  .close-btn {
+    top: 10px;
+  }
+}
+
 .nav-container {
   justify-content: center;
   z-index: 100;
