@@ -397,8 +397,11 @@ button::after {
 /* ===================== SMALL MOBILE ===================== */
 @media (max-width: 445px) {
   .card {
-    width: 180px;
-    height: 200px;
+    width: 140px;
+    height: 160px;
+  }
+  .first-page {
+    padding: 20px;
   }
 
 }
@@ -406,7 +409,7 @@ button::after {
 @media (max-width: 448px) {
   .search {
     width: 80%;
-    margin-top: 10px;
+    margin-top: 9px;
   }
   .search #searchInput {
     width: 100%;
