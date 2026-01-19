@@ -301,7 +301,7 @@ button::after {
     opacity: 0;
   }
 }
-@media (max-width: 600px) {
+@media (max-width: 445px) {
   body {
     padding: 10px;
   }
@@ -334,6 +334,10 @@ button::after {
 
   .rain {
     font-size: 13px;
+  }
+  .song-card {
+    width: 140px;
+    height: auto;
   }
 }
 .nav-container {
