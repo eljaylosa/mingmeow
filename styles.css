@@ -356,6 +356,20 @@ button::after {
   }
 }
 
+@media (max-width: 443px) {
+  .search {
+    margin-top: 20px;
+    width: 80%;
+  }
+  .songs-container .search #searchInput {
+    width: 100%;
+  }
+  button {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+}
+
 @media (max-width: 600px) {
   body {
     padding: 10px;
@@ -713,9 +727,5 @@ su
 .dropdownmenu.active .dropdown-content {
   display: block;
 }
-
-
-
-
 
 
