@@ -429,6 +429,20 @@ nav a:hover {
   margin: 0 0 10px;
   font-size: 14px;
   color: #ccc;
+  transition: .2s;
+}
+.songs-container .song-card a {
+  text-decoration: none;
+  color: inherit;
+}
+.songs-container .song-card a:hover {
+  text-decoration: underline;
+  color: #ff5c8a;
+}
+
+.songs-container .song-card a p:hover {
+  color: #ffffff;
+  font-weight: 500;
 }
 
 .songs-container .song-card:hover {
@@ -442,9 +456,9 @@ nav a:hover {
 }
 
 .close-btn {
-  position: absolute;
+  position: sticky;
   top: 10px;
-  right: 10px;
+  left: 100%;
   background: #ff2c2c;
   border: none;
   color: #fff;
@@ -454,6 +468,7 @@ nav a:hover {
   padding: 5px 10px;
   cursor: pointer;
   z-index: 200;
+  height: fit-content;
 }
 
 .close-btn:hover {
@@ -553,6 +568,79 @@ su
 .play-btn {
   display: none;
 }
+
+.search {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  vertical-align: middle;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+#searchInput {
+  padding: 10px 14px;
+  border-radius: 20px;
+  border: 2px solid #ff9aa2;
+  outline: none;
+  font-size: 14px;
+  width: 220px;
+}
+
+#searchInput:focus {
+  border-color: #ff5c8a;
+}
+
+/* Dropdown */
+.dropdownmenu {
+  position: relative;
+}
+
+.dropbtn {
+  margin-bottom: 20px;
+  background: #ff5c8a;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.dropbtn:hover {
+  background: #ff2f6d;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 45px;
+  right: 0;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  overflow: hidden;
+  z-index: 10;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 10px 14px;
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+}
+
+.dropdown-content a:hover {
+  background: #ffe0e9;
+}
+
+/* Show dropdown */
+.dropdownmenu.active .dropdown-content {
+  display: block;
+}
+
+
 
 
 

@@ -265,6 +265,57 @@ const btn = document.getElementById("reveal-btn");
         player.classList.remove("active"); // hide player when song ends
       });
     });
+
+    const searchInput = document.getElementById("searchInput");
+    const dropdown = document.querySelector(".dropdownmenu");
+    const filterLinks = document.querySelectorAll(".dropdown-content a");
+    
+    let currentFilter = "all";
+    
+    /* Toggle dropdown */
+    document.querySelector(".dropbtn").addEventListener("click", () => {
+      dropdown.classList.toggle("active");
+    });
+    
+    /* Filter click */
+    filterLinks.forEach(link => {
+      link.addEventListener("click", e => {
+        e.preventDefault();
+        currentFilter = link.dataset.filter;
+        dropdown.classList.remove("active");
+        filterSongs();
+      });
+    });
+    
+    /* Search input */
+    searchInput.addEventListener("input", filterSongs);
+    
+    function filterSongs() {
+      const searchValue = searchInput.value.toLowerCase();
+    
+      songCards.forEach(card => {
+        const title = card.dataset.title?.toLowerCase() || "";
+        const artist = card.dataset.artist?.toLowerCase() || "";
+        const type = card.dataset.type?.toLowerCase() || "";
+    
+        const matchesSearch =
+          title.includes(searchValue) || artist.includes(searchValue);
+    
+        const matchesFilter =
+          currentFilter === "all" || type === currentFilter;
+    
+        card.style.display =
+          matchesSearch && matchesFilter ? "block" : "none";
+      });
+    }
+    
+    /* Close dropdown when clicking outside */
+    document.addEventListener("click", e => {
+      if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove("active");
+      }
+    });
+    
     
     
 
