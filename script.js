@@ -4,14 +4,10 @@ const btn = document.getElementById("reveal-btn");
       playSound("soundfx/click.mp3");
       playSound("soundfx/fairydust.mp3");
     
-      for (let i = 0; i < 10; i++) {
+      for (let i = 0; i < 1; i++) {
         createRain();
-        createRain2();
-        createRain3();
-        createRain4();
         name();
         cat();
-        cat2();
       }
     });
     
@@ -19,56 +15,41 @@ const btn = document.getElementById("reveal-btn");
       const sound = new Audio(src);
       sound.play();
     }
+
+    const messages = [
+      "You are so cute 😍",
+      "Will you be my cute little Cat? 🐱",
+      "I adore you! 🥰",
+      "I miss you! 😘",
+      "Your smile makes my day ☀️",
+      "Valorant na kaya? 🎮",
+      "Eto namimiss na naman ikaw! 💕",
+      "Ah hihi hi hi hi! 😄",
+      "Hala ang cute naman ng nag-kiclick! 🥺",
+      "Dahan dahan lang pag click, mahuhulog ako sayu! 😳",
+      "Cute naman ng mga click mo! 🥰",
+      "Miss q na yung click nang click! 😘",
+      "Sige click lang! Cute ka naman e 😍",
+      "HAHAHAH! Ang cute mo mag click! 😄",
+    ]
     
     function createRain() {
       const drop = document.createElement("div");
       drop.classList.add("rain");
-      drop.textContent = "You are so cute 😍";
+
+      drop.style.fontSize = Math.random() * 20 + 15 + "px";
+      drop.style.fontWeight = Math.random() > 0.5 ? "bold" : "normal";
+      drop.style.color = `hsl(${Math.random() * 360}, 70%, 60%)`;
     
+      drop.textContent = messages[Math.floor(Math.random() * messages.length)];
       drop.style.left = Math.random() * window.innerWidth + "px";
-      drop.style.animationDuration = Math.random() * 4 + 4 + "s";
+      drop.style.animationDuration = Math.random() * 5 + 5 + "s";
     
       document.body.appendChild(drop);
     
-      setTimeout(() => drop.remove(), 6000);
+      setTimeout(() => drop.remove(), 10000);
     }
      
-    function createRain2() {
-      const drop = document.createElement("div");
-      drop.classList.add("rain");
-      drop.textContent = "I miss you so much 🥰";
-    
-      drop.style.left = Math.random() * window.innerWidth + "px";
-      drop.style.animationDuration = Math.random() * 3 + 3 + "s";
-    
-      document.body.appendChild(drop);
-    
-      setTimeout(() => drop.remove(), 5000);
-    }
-    function createRain3() {
-      const drop = document.createElement("div");
-      drop.classList.add("rain");
-      drop.textContent = "Will you be my cute little cat? 💖";
-    
-      drop.style.left = Math.random() * window.innerWidth + "px";
-      drop.style.animationDuration = Math.random() * 2 + 2 + "s";
-    
-      document.body.appendChild(drop);
-    
-      setTimeout(() => drop.remove(), 4000);
-    }
-    function createRain4() {
-      const drop = document.createElement("div");
-      drop.classList.add("rain");
-      drop.textContent = "I really like cats (u) 💖";
-    
-      drop.style.left = Math.random() * window.innerWidth + "px";
-      drop.style.animationDuration = Math.random() * 2 + 2 + "s";
-    
-      document.body.appendChild(drop);
-    
-      setTimeout(() => drop.remove(), 4000);
-    }
     function name() {
       const drop = document.createElement("div");
       drop.classList.add("rain");
@@ -81,62 +62,43 @@ const btn = document.getElementById("reveal-btn");
     
       setTimeout(() => drop.remove(), 4000);
     }
+
+    const catImages = [
+      "img/cat1.jpg",
+      "img/cat2.jpg",
+      "img/cat3.jpg",
+      "img/cat4.jpg"
+    ];
     
     function cat() {
       const drop = document.createElement("div");
       drop.classList.add("rain");
     
-      // Create the cat image
+      // create image element
       const img = document.createElement("img");
-      img.src = "img/cat1.jpg"; // <-- replace with your cat image path
-      img.style.width = "250px"; // size of the cat
-      img.style.height = "250px";
+    
+      // random cat image
+      img.src = catImages[Math.floor(Math.random() * catImages.length)];
+      img.style.width = "150px";
+      img.style.height = "150x";
       img.style.objectFit = "cover";
+      img.style.borderRadius = Math.random() > 0.5 ? "50%" : "10%"; 
     
       drop.appendChild(img);
     
-      // Position randomly horizontally
+      // position
       drop.style.position = "fixed";
-      drop.style.top = "-50px";
-      drop.style.left = Math.random() * window.innerWidth + "px";
+      drop.style.top = "-260px";
+      drop.style.left = Math.random() * (window.innerWidth - 250) + "px";
     
-      // Animation duration
+      // animation
       drop.style.animation = `fall ${Math.random() * 1 + 1}s linear forwards`;
     
       document.body.appendChild(drop);
     
-      // Remove after animation
-      setTimeout(() => drop.remove(), 8000);
+      // cleanup
+      setTimeout(() => drop.remove(), 5000);
     }
-
-    function cat2() {
-      const drop = document.createElement("div");
-      drop.classList.add("rain");
-    
-      // Create the cat image
-      const img = document.createElement("img");
-      img.src = "img/cat2.jpg"; // <-- replace with your cat image path
-      img.style.width = "250px"; // size of the cat
-      img.style.height = "250px";
-      img.style.objectFit = "cover";
-    
-      drop.appendChild(img);
-    
-      // Position randomly horizontally
-      drop.style.position = "fixed";
-      drop.style.top = "-50px";
-      drop.style.left = Math.random() * window.innerWidth + "px";
-    
-      // Animation duration
-      drop.style.animation = `fall ${Math.random() * 1 + 1}s linear forwards`;
-    
-      document.body.appendChild(drop);
-    
-      // Remove after animation
-      setTimeout(() => drop.remove(), 8000);
-    }
-
-
 
     // SONG FUNCTION 
     const showSong = document.getElementById("showSong");

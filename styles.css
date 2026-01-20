@@ -319,6 +319,9 @@ body {
   .card .first-page {
     border-width: 6px;
   }
+  .card .first-page #hint {
+    font-size: 12px;
+  }
 }
 
 /* ===================== TABLET ===================== */
@@ -326,6 +329,9 @@ body {
   .card {
     width: 280px;
     height: 300px;
+  }
+  .card .first-page #hint {
+    font-size: 10px;
   }
 
   .card .front h1 {
@@ -338,12 +344,20 @@ body {
   .card .first-page {
     border-width: 6px;
   }
+
+  .card .first-page #hello {
+ margin: 0;
+  }
 }
 
 /* ===================== MOBILE ===================== */
 @media (max-width: 600px) {
   * {
     font-family: 'Pacifico';
+  }
+  
+  .card .first-page #hint {
+    font-size: 8px;
   }
 
   body {
@@ -395,6 +409,13 @@ body {
 
   .search #searchInput {
     width: 165px;
+  }
+  .card .first-page #hello {
+    margin: 0;
+  }
+
+  .card .first-page #hint {
+    font-size: 7px;
   }
 }
 
@@ -964,6 +985,14 @@ su
 
 .list {
   margin-top: 50px;
+}
+
+.first-page #hint {
+  font-size: 20px;
+}
+
+.card .first-page #hello {
+ 
 }
 
 
