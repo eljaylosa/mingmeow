@@ -8,6 +8,7 @@ const btn = document.getElementById("reveal-btn");
         createRain();
         createRain2();
         createRain3();
+        createRain4();
         name();
         cat();
         cat2();
@@ -35,7 +36,7 @@ const btn = document.getElementById("reveal-btn");
     function createRain2() {
       const drop = document.createElement("div");
       drop.classList.add("rain");
-      drop.textContent = "I like you a lot! 🥰";
+      drop.textContent = "I miss you so much 🥰";
     
       drop.style.left = Math.random() * window.innerWidth + "px";
       drop.style.animationDuration = Math.random() * 3 + 3 + "s";
@@ -48,6 +49,18 @@ const btn = document.getElementById("reveal-btn");
       const drop = document.createElement("div");
       drop.classList.add("rain");
       drop.textContent = "Will you be my cute little cat? 💖";
+    
+      drop.style.left = Math.random() * window.innerWidth + "px";
+      drop.style.animationDuration = Math.random() * 2 + 2 + "s";
+    
+      document.body.appendChild(drop);
+    
+      setTimeout(() => drop.remove(), 4000);
+    }
+    function createRain4() {
+      const drop = document.createElement("div");
+      drop.classList.add("rain");
+      drop.textContent = "I really like cats (u) 💖";
     
       drop.style.left = Math.random() * window.innerWidth + "px";
       drop.style.animationDuration = Math.random() * 2 + 2 + "s";
