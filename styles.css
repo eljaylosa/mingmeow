@@ -225,7 +225,7 @@ body {
   cursor: pointer;
 }
 
-button {
+.reveal {
   font-family: 'Pacifico', cursive;  /* playful, cute font */
   font-size: 20px;
   margin-top: 20px;
@@ -242,20 +242,20 @@ button {
 }
 
 /* Hover: glow and float slightly */
-button:hover {
+.reveal:hover {
   transform: translateY(-3px) scale(1.05);
   box-shadow: 0 8px 20px rgba(255, 92, 150, 0.7);
   background: linear-gradient(45deg, #ff92b0, #ff3b1f);
 }
 
 /* Click: shrink slightly */
-button:active {
+.reveal:active {
   transform: scale(0.95);
   box-shadow: 0 4px 10px rgba(255, 92, 150, 0.5);
 }
 
 /* Floating hearts animation */
-button::after {
+.reveal::after {
   content: "💖";
   position: absolute;
   top: -10px;
@@ -403,6 +403,14 @@ button::after {
   .first-page {
     padding: 20px;
   }
+  .nav-container .notice {
+    justify-content: start;
+    display: flex;
+    
+  }
+  .notice .details {
+    text-align: center;
+  }
 
 }
 
@@ -456,7 +464,6 @@ nav {
   left: 20px;
   width: calc(100% - 100px);
   text-align: center;
-  
 }
 nav a {
   color: #fff;
@@ -825,6 +832,55 @@ su
     opacity: 0;
   }
 }
+
+.close-btn2 {
+  display: flex;
+  justify-content: end;
+  background-color: #c0014d;
+  padding: 5px;
+}
+
+.close-btn2 .x-btn {
+  border: 1px solid #1d1c1c;
+  font-size: 24px;
+  font-weight: bold;
+  background-color: #cc2400;
+  cursor: pointer;
+}
+
+.details-reveal {
+  text-align: center;
+  border: 2px solid #010000;
+  background-color: #c0014d;
+  position: fixed;         
+  width: 50%;
+  height: max-content;
+  background: rgba(160, 0, 80, 0.95);
+  z-index: 9999;           
+  display: none;   
+}
+.details-reveal p {
+  color: #fff;
+  font-size: 16px;
+  padding: 10px;
+  margin: 0;
+}
+
+.notice {
+  display: flex;
+  justify-content: start;
+  width: 100%;
+}
+.notice .details {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+
 
 
 

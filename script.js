@@ -338,6 +338,24 @@ setInterval(() => {
   setTimeout(() => heart.remove(), 7000);
 }, 800);
 
+const RevealDetails = document.getElementById("detailsReveal");
+const RevealBtn = document.getElementById("revealbtn");
+const closeBtn = document.getElementById("btnClose");
+
+RevealDetails.style.display = "none"; // hide initially
+
+RevealBtn.addEventListener("click", () => {
+  if (RevealDetails.style.display === "none") {
+    RevealDetails.style.display = "block";
+  } else {
+    RevealDetails.style.display = "none";
+  }
+});
+
+closeBtn.addEventListener("click", () => {
+  RevealDetails.style.display = "none";
+});
+
     
     
     
