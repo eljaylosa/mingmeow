@@ -47,7 +47,7 @@ const btn = document.getElementById("reveal-btn");
     function createRain3() {
       const drop = document.createElement("div");
       drop.classList.add("rain");
-      drop.textContent = "Will you be my valentine? 💖";
+      drop.textContent = "Will you be my cute little cat? 💖";
     
       drop.style.left = Math.random() * window.innerWidth + "px";
       drop.style.animationDuration = Math.random() * 2 + 2 + "s";
@@ -59,7 +59,7 @@ const btn = document.getElementById("reveal-btn");
     function name() {
       const drop = document.createElement("div");
       drop.classList.add("rain");
-      drop.textContent = "Aljane 💖";
+      drop.textContent = "AJ💖";
     
       drop.style.left = Math.random() * window.innerWidth + "px";
       drop.style.animationDuration = Math.random() * 1 + 1 + "s";
