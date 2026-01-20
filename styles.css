@@ -298,7 +298,7 @@ body {
 @keyframes fall {
   to {
     transform: translateY(110vh);
-    opacity: 0;
+    opacity: 1;
   }
 }
 
@@ -991,9 +991,6 @@ su
   font-size: 20px;
 }
 
-.card .first-page #hello {
- 
-}
 
 
 

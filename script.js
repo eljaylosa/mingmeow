@@ -31,6 +31,8 @@ const btn = document.getElementById("reveal-btn");
       "Miss q na yung click nang click! 😘",
       "Sige click lang! Cute ka naman e 😍",
       "HAHAHAH! Ang cute mo mag click! 😄",
+      "Click mo pa ako! 🥺",
+      "Select a song for best experience! 🎵"
     ]
     
     function createRain() {
@@ -40,6 +42,7 @@ const btn = document.getElementById("reveal-btn");
       drop.style.fontSize = Math.random() * 20 + 15 + "px";
       drop.style.fontWeight = Math.random() > 0.5 ? "bold" : "normal";
       drop.style.color = `hsl(${Math.random() * 360}, 70%, 60%)`;
+      drop.style.fontFamily= Math.random() > 0.5 ? "Comic Sans MS, cursive, sans-serif" : "Arial, sans-serif, Helvetica";
     
       drop.textContent = messages[Math.floor(Math.random() * messages.length)];
       drop.style.left = Math.random() * window.innerWidth + "px";
