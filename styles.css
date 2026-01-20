@@ -342,7 +342,10 @@ body {
 
 /* ===================== MOBILE ===================== */
 @media (max-width: 600px) {
-  
+  * {
+    font-family: 'Pacifico';
+  }
+
   body {
     padding: 10px;
   }
@@ -396,6 +399,9 @@ body {
 }
 
 @media (max-width: 470px) {
+  * {
+    font-family: 'Pacifico';
+  }
   nav ul li a {
     font-size: 17px;
   }
@@ -403,6 +409,9 @@ body {
 
 /* ===================== SMALL MOBILE ===================== */
 @media (max-width: 445px) {
+  * {
+    font-family: 'Pacifico';
+  }
   .card {
     width: 140px;
     height: 160px;
@@ -431,6 +440,9 @@ body {
 }
 
 @media (max-width: 448px) {
+  * {
+    font-family: 'Pacifico';
+  }
   nav ul li a {
     font-size: 17px;
   }
@@ -453,6 +465,9 @@ body {
 
 /* ===================== EXTRA SMALL ===================== */
 @media (max-width: 360px) {
+  * {
+    font-family: 'Pacifico';
+  }
   nav ul li a {
     font-size: 17px;
   }
