@@ -367,7 +367,7 @@ body {
     text-align: center;
   }
 
-  button {
+  .reveal {
     font-size: 13px;
     padding: 8px 14px;
   }
@@ -401,7 +401,7 @@ body {
     height: 160px;
   }
   .first-page {
-    padding: 20px;
+    padding: 10px;
   }
   .nav-container .notice {
     justify-content: start;
@@ -410,6 +410,9 @@ body {
   }
   .notice .details {
     text-align: center;
+  }
+  .details-reveal {
+    width: 80%;
   }
 
 }
@@ -878,6 +881,10 @@ su
   font-size: 16px;
   cursor: pointer;
   text-decoration: underline;
+}
+
+.list {
+  margin-top: 50px;
 }
 
 
