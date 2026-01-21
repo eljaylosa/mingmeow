@@ -115,10 +115,12 @@ const btn = document.getElementById("reveal-btn");
     const currentArtist = document.getElementById("currentArtist");
     const record = document.querySelector(".record");
 
+
     // Toggle songs container
     showSong.addEventListener("click", () => {
       if (songContainer.style.display === "none") {
         songContainer.style.display = "flex";
+
       } else {
         songContainer.style.display = "none";
       }

@@ -628,7 +628,7 @@ nav a:hover {
 }
 
 .songs-container {
-  display: none; /* hidden initially */
+  display: none; 
   position: fixed;
   top: 80px;
   left: 50%;
@@ -638,12 +638,15 @@ nav a:hover {
   border-radius: 10px;
   z-index: 100;
   width: 80%;
-  max-height: 70vh;  /* limit height */
-  overflow-y: auto;  /* vertical scroll */
+  max-height: 70vh;  
+  overflow-y: auto;  
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
 }
+
+
+
 
 .songs-container::-webkit-scrollbar {
   width: 8px;
@@ -1110,6 +1113,9 @@ nav a:hover {
   justify-items: center;
 }
 
+
+
+
 /* ===== LIST VIEW (SPOTIFY STYLE) ===== */
 .song-boxes.list {
   width: 90%;
@@ -1139,7 +1145,16 @@ nav a:hover {
   margin-top: 10px;
 }
 
+.song-boxes.list .message {
+  margin: 30px;
+  text-align: center;
+  font-weight: 800;
+}
 
+.song-boxes.list .message p {
+  font-size: 2em;
+  color: #ff00bb;
+}
 /* Hover like Spotify */
 .song-boxes.list .song-card:hover {
   background: #1a1a1a;
@@ -1173,6 +1188,17 @@ nav a:hover {
   display: none !important;
 }
 
+.song-boxes .message {
+ grid-column: 1 / -1;
+ margin: 20px;
+}
+
+.song-boxes .message p {
+ font-size: 1.5em;
+ color: #ff00bb;
+ text-align: center;
+ font-weight: 600;
+}
 
 
 
