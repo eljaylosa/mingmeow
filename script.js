@@ -270,20 +270,23 @@ const btn = document.getElementById("reveal-btn");
     
     function filterSongs() {
       const searchValue = searchInput.value.toLowerCase();
-    
+
       songCards.forEach(card => {
         const title = card.dataset.title?.toLowerCase() || "";
         const artist = card.dataset.artist?.toLowerCase() || "";
         const type = card.dataset.type?.toLowerCase() || "";
-    
+
         const matchesSearch =
           title.includes(searchValue) || artist.includes(searchValue);
-    
+
         const matchesFilter =
           currentFilter === "all" || type === currentFilter;
-    
-        card.style.display =
-          matchesSearch && matchesFilter ? "block" : "none";
+
+        if (matchesSearch && matchesFilter) {
+          card.classList.remove("hidden");
+        } else {
+          card.classList.add("hidden");
+        }
       });
     }
     
@@ -333,6 +336,23 @@ RevealBtn.addEventListener("click", () => {
 closeBtn.addEventListener("click", () => {
   RevealDetails.style.display = "none";
 });
+
+const gridBtn = document.getElementById("gridView");
+const listBtn = document.getElementById("listView");
+const songBoxes = document.getElementById("songBoxes");
+
+gridBtn.addEventListener("click", () => {
+  songBoxes.classList.remove("list");
+  gridBtn.classList.add("active");
+  listBtn.classList.remove("active");
+});
+
+listBtn.addEventListener("click", () => {
+  songBoxes.classList.add("list");
+  listBtn.classList.add("active");
+  gridBtn.classList.remove("active");
+});
+
 
     
     

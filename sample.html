@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  .view-change button {
+  padding: 8px 14px;
+  cursor: pointer;
+}
+
+.view-change .active {
+  background: #333;
+  color: #fff;
+}
+
+/* container ng items */
+.items {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+/* list view */
+.items.list {
+  display: block;
+}
+
+.items.list .item {
+  margin-bottom: 10px;
+}
+
+</style>
+<body>
+  <div class="view-change">
+    <button id="gridView" class="active">Grid View</button>
+    <button id="listView">List View</button>
+  </div>
+
+
+
+  <div class="items" id="items">
+    <div class="item">Item 1</div>
+    <div class="item">Item 2</div>
+    <div class="item">Item 3</div>
+  </div>
+
+  <script>
+    const gridBtn = document.getElementById("gridView");
+    const listBtn = document.getElementById("listView");
+    const items = document.getElementById("items");
+
+    gridBtn.onclick = () => {
+      items.classList.remove("list");
+      gridBtn.classList.add("active");
+      listBtn.classList.remove("active");
+    };
+
+    listBtn.onclick = () => {
+      items.classList.add("list");
+      listBtn.classList.add("active");
+      gridBtn.classList.remove("active");
+    };
+
+  </script>
+</body>
+</html>
