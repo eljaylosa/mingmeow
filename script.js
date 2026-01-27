@@ -45,7 +45,8 @@ const btn = document.getElementById("reveal-btn");
       drop.style.fontFamily= Math.random() > 0.5 ? "Comic Sans MS, cursive, sans-serif" : "Arial, sans-serif, Helvetica";
     
       drop.textContent = messages[Math.floor(Math.random() * messages.length)];
-      drop.style.left = Math.random() * window.innerWidth + "px";
+      // drop.style.left = Math.random() * window.innerWidth + "px";
+      drop.style.left = Math.random() * (window.innerWidth - 250) + "px";
       drop.style.animationDuration = Math.random() * 5 + 5 + "s";
     
       document.body.appendChild(drop);
@@ -180,7 +181,7 @@ const btn = document.getElementById("reveal-btn");
       });
     });
 
-    songCards.forEach(card => {
+      songCards.forEach(card => {
       const audio = card.querySelector(".audio-player");
       audio.src = card.dataset.src;
     
