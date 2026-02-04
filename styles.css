@@ -1130,19 +1130,24 @@ nav a:hover {
 }
 
 .song-boxes.list .song-card {
-  text-align: center;
   justify-content: center;
-  display: grid;
+  display: grid;  
   grid-template-columns: 50px 1fr auto;
   align-items: center;
   padding: 10px 14px;
-  background: transparent;
+  background: transparent;  
   border-radius: 0;
   box-shadow: none;
   margin: 0 auto;
   width: 80%;
   border-bottom: 1px solid #2a2a2a;
 }
+.song-boxes.list .song-card.new-song {
+  
+}
+
+
+
 .song-boxes.list .song-card .custom-player {
   grid-column: 1 / -1;
   width: 100%;

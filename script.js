@@ -51,6 +51,7 @@ const btn = document.getElementById("reveal-btn");
       "Click mo pa ako! 🥺",
       "Select a song for best experience! 🎵",
       "Happy Valentines Cutie"
+      // will add more for valentines
     ]
     
     function createRain() {
