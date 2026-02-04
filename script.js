@@ -1,3 +1,20 @@
+
+
+function loadAlert() {
+  let alertBox = document.getElementById("alertBox");
+  alertBox.style.display = "block";
+
+  let closeBtn = document.getElementById("closeBtn");
+  closeBtn.addEventListener("click", function() {
+    alertBox.style.display = "none";
+  });
+}
+
+
+// alert(
+//   `3 Songs Added, Chect it on your library! `
+// );
+
 const btn = document.getElementById("reveal-btn");
     
     btn.addEventListener("click", () => {
@@ -25,14 +42,15 @@ const btn = document.getElementById("reveal-btn");
       "Valorant na kaya? 🎮",
       "Eto namimiss na naman ikaw! 💕",
       "Ah hihi hi hi hi! 😄",
-      "Hala ang cute naman ng nag-kiclick! 🥺",
+      "Hala! ang cute naman ng nag-kiclick! 🥺",
       "Dahan dahan lang pag click, mahuhulog ako sayu! 😳",
       "Cute naman ng mga click mo! 🥰",
       "Miss q na yung click nang click! 😘",
       "Sige click lang! Cute ka naman e 😍",
       "HAHAHAH! Ang cute mo mag click! 😄",
       "Click mo pa ako! 🥺",
-      "Select a song for best experience! 🎵"
+      "Select a song for best experience! 🎵",
+      "Happy Valentines Cutie"
     ]
     
     function createRain() {

@@ -445,6 +445,7 @@ body {
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
     justify-items: center;
+    
   }
 
   .song-card {
@@ -673,6 +674,10 @@ nav a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.songs-container .song-card .new p{
+  margin: 0;
+  padding: 4px;
 }
 
 
@@ -1125,6 +1130,7 @@ nav a:hover {
 }
 
 .song-boxes.list .song-card {
+  text-align: center;
   justify-content: center;
   display: grid;
   grid-template-columns: 50px 1fr auto;
@@ -1199,6 +1205,76 @@ nav a:hover {
  text-align: center;
  font-weight: 600;
 }
+
+
+/* custom alert styles */
+
+.body-work{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.custom-alert-box {
+  position: absolute;
+  z-index: 9999;
+  top: -10%;
+
+  display: none;
+  background-color: #ffe6f0;
+  border: 2px solid #ff99cc;
+  border-radius: 15px;
+  padding: 20px;
+  width: 300px;
+  text-align: center;
+  position: relative;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  box-shadow: 0 4px 10px rgba(255, 153, 204, 0.5);
+  animation: pop 0.3s ease-out;
+}
+
+.alert-emoji {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.custom-alert-box h3 {
+  margin: 0;
+  color: #ff3399;
+}
+
+.custom-alert-box p {
+  color: #ff66b3;
+  margin: 10px 0;
+}
+
+.alert-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #ff3399;
+}
+
+@keyframes pop {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 

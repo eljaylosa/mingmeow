@@ -7,7 +7,15 @@
 <link rel="icon" type="image/x-icon/jpg" href="img/cat2.jpg" sizes="16x16">
 <title>meow meow</title>
 </head>
-<body>
+<body onload="loadAlert()" class="body-work">
+
+  <div class="custom-alert-box" id="alertBox">
+    <span class="alert-emoji">💖</span>
+    <h3>Hey there!</h3>
+    <p>3 Songs Added, <br> Check your song library now! 🌸✨</p>
+    <button class="alert-btn" id="closeBtn">✖</button>
+  </div>
+  
 
   <div class="background-images">
     <img src="img/cat1.jpg" alt="Background Image 1" class="bg-image">
@@ -68,9 +76,69 @@
     </div>
   </div>
 
-  <div class="song-boxes" id="songBoxes">
-    <div class="song-card" data-type="recent" data-artist="Wave To Earth" data-title="seasons" data-src="music/music/wave to earth - seasons.mp3">
-      <img src="music/music-poster/peach eyes.jfif" alt="Song 9">
+  <div class="song-boxes" id="songBoxes" >
+
+    <!-- add songs here -->
+    
+    <div class="song-card " data-type="recent" data-artist="Bruno Mars & Lady Gaga" data-title="Die With A Smile" data-src="music/music/die with a smile.mp3">
+      <div class="new">
+        <p>New!</p>
+      </div>
+      <img src="music/music-poster/die with a smile.png" alt="Song 12">
+      <h3>Die With A Smile</h3>
+      <a href="https://www.youtube.com/channel/UCoUM-UJ7rirJYP8CQ0EIaHA" target="_blank"><p>Bruno Mars & Lady Gaga</p></a>
+  
+        <!-- Custom Player -->
+      <div class="custom-player">
+        <input type="range" class="slider" value="0" min="0" max="100">
+        <div class="controls">
+          <button class="play-btn">▶</button>
+          <span class="time">0:00 / 0:00</span>
+        </div>
+        <audio class="audio-player" controls></audio>
+      </div>
+    </div>
+
+    <div class="song-card" data-type="recent" data-artist="Arctic Monkeys" data-title="I Wanna Be Yours" data-src="music/music/i wanna be yours.mp3">
+      <div class="new">
+        <p>New!</p>
+      </div>
+      <img src="music/music-poster/i wanna be yours.png" alt="Song 12">
+      <h3>I Wanna Be Yours</h3>
+      <a href="https://www.youtube.com/channel/UC-KTRBl9_6AX10-Y7IKwKdw" target="_blank"><p>Arctic Monkeys</p></a>
+  
+        <!-- Custom Player -->
+      <div class="custom-player">
+        <input type="range" class="slider" value="0" min="0" max="100">
+        <div class="controls">
+          <button class="play-btn">▶</button>
+          <span class="time">0:00 / 0:00</span>
+        </div>
+        <audio class="audio-player" controls></audio>
+      </div>
+    </div>
+
+    <div class="song-card" data-type="recent" data-artist="The 1975" data-title="About You" data-src="music/music/about you.mp3">
+      <div class="new">
+        <p>New!</p>
+      </div>
+      <img src="music/music-poster/about you poster.png" alt="Song 11">
+      <h3>About You</h3>
+      <a href="https://www.youtube.com/channel/UC_LfW1R3B0of9qOw1uI-QNQ" target="_blank"><p>The 1975</p></a>
+  
+        <!-- Custom Player -->
+      <div class="custom-player">
+        <input type="range" class="slider" value="0" min="0" max="100">
+        <div class="controls">
+          <button class="play-btn">▶</button>
+          <span class="time">0:00 / 0:00</span>
+        </div>
+        <audio class="audio-player" controls></audio>
+      </div>
+    </div>
+
+    <div class="song-card" data-type="old" data-artist="Wave To Earth" data-title="seasons" data-src="music/music/wave to earth - seasons.mp3">
+      <img src="music/music-poster/peach eyes.jfif" alt="Song 10">
       <h3>seasons</h3>
       <a href="https://www.youtube.com/@wavetoearth" target="_blank"><p>Wave To Earth</p></a>
   
@@ -85,7 +153,7 @@
       </div>
     </div>
   
-    <div class="song-card" data-type="recent" data-artist="Wave To Earth" data-title="ride" data-src="music/music/wave to earth - ride.mp3">
+    <div class="song-card" data-type="old" data-artist="Wave To Earth" data-title="ride" data-src="music/music/wave to earth - ride.mp3">
       <img src="music/music-poster/peach eyes.jfif" alt="Song 9">
       <h3>ride</h3>
       <a href="https://www.youtube.com/@wavetoearth" target="_blank"><p>Wave To Earth</p></a>
@@ -101,7 +169,7 @@
       </div>
     </div>
   
-    <div class="song-card " data-type="recent" data-artist="Wave To Earth" data-title="love" data-src="music/music/wave to earth - love. (Official Lyric Video).mp3">
+    <div class="song-card " data-type="old" data-artist="Wave To Earth" data-title="love" data-src="music/music/wave to earth - love. (Official Lyric Video).mp3">
       <img src="music/music-poster/peach eyes.jfif" alt="Song 8">
       <h3>love</h3>
       <a href="https://www.youtube.com/@wavetoearth" target="_blank"><p>Wave To Earth</p></a>
@@ -117,7 +185,7 @@
       </div>
     </div>
   
-    <div class="song-card " data-type="recent" data-artist="Wave To Earth" data-title="bad" data-src="music/music/wave to earth - bad (Official Lyric Video).mp3">
+    <div class="song-card " data-type="old" data-artist="Wave To Earth" data-title="bad" data-src="music/music/wave to earth - bad (Official Lyric Video).mp3">
       <img src="music/music-poster/peach eyes.jfif" alt="Song 7">
       <h3>bad</h3>
       <a href="https://www.youtube.com/@wavetoearth" target="_blank"><p>Wave To Earth</p></a>
@@ -133,7 +201,7 @@
       </div>
     </div>
   
-    <div class="song-card " data-type="recent" data-artist="Wave To Earth" data-title="sunny days" data-src="music/music/sunny days.mp3">
+    <div class="song-card " data-type="old" data-artist="Wave To Earth" data-title="sunny days" data-src="music/music/sunny days.mp3">
       <img src="music/music-poster/peach eyes.jfif" alt="Song 6">
       <h3>sunny days</h3>
       <a href="https://www.youtube.com/@wavetoearth" target="_blank"><p>Wave To Earth</p></a>
@@ -149,7 +217,7 @@
       </div>
     </div>
   
-    <div class="song-card " data-type="recent" data-artist="Wave To Earth" data-title="peach eyes" data-src="music/music/peach eyes.mp3">
+    <div class="song-card " data-type="old" data-artist="Wave To Earth" data-title="peach eyes" data-src="music/music/peach eyes.mp3">
       <img src="music/music-poster/peach eyes.jfif" alt="Song 5">
       <h3>peach eyes</h3>
       <a href="https://www.youtube.com/@wavetoearth" target="_blank"><p>Wave To Earth</p></a>
@@ -165,7 +233,7 @@
       </div>
     </div>
   
-    <div class="song-card " data-type="recent" data-artist="Wave To Earth" data-title="daisy" data-src="music/music/daisy.mp3">
+    <div class="song-card " data-type="old" data-artist="Wave To Earth" data-title="daisy" data-src="music/music/daisy.mp3">
       <img src="music/music-poster/daisy.jpg" alt="Song 4">
       <h3>daisy</h3>
       <a href="https://www.youtube.com/@wavetoearth" target="_blank"><p>Wave To Earth</p></a>
@@ -181,7 +249,7 @@
       </div>
     </div>
   
-    <div class="song-card" data-type="recent" data-artist="Wave To Earth" data-title="pink" data-src="music/music/pink.mp3">
+    <div class="song-card" data-type="old" data-artist="Wave To Earth" data-title="pink" data-src="music/music/pink.mp3">
       <img src="music/music-poster/pink.jpg" alt="Song 3">
       <h3>pink</h3>
       <a href="https://www.youtube.com/@wavetoearth" target="_blank"><p>Wave To Earth</p></a>
