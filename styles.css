@@ -509,7 +509,6 @@ body {
   .nav-container .notice {
     justify-content: start;
     display: flex;
-
   }
   .notice .details {
     text-align: center;
@@ -598,10 +597,10 @@ nav {
   position: fixed;
   top: 20px;
   left: 20px;
-  width: calc(100% - 100px);
+  width: calc(100% - 90px);
   text-align: center;
 }
-nav a {
+nav #showSong {
   color: #fff;
   text-decoration: none;
   font-size: 25px;
@@ -621,7 +620,7 @@ nav p {
 nav ul {
   list-style: none;
 }
-nav a:hover {
+nav #showSong:hover {
   background: #ff2c2c;
   color: #fff;
   box-shadow: #5f0303 0px 0px 10px;
@@ -1013,6 +1012,14 @@ nav a:hover {
 .texts {
   padding: 15px;
 }
+.texts p #creator {
+  color: white;
+  text-decoration: underline;
+  transition: 0.1s;
+}
+.texts p #creator:hover {
+  color: black;
+}
 
 .details-reveal {
   align-items: center;
@@ -1035,9 +1042,62 @@ nav a:hover {
 
 .notice {
   display: flex;
-  justify-content: start;
+  justify-content: space-between;
   width: 100%;
 }
+
+/* flowers style */
+.flowers {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 5px 10px;
+  font-size: 16px;
+  font-weight: 600;
+
+  color: #fff;
+  background: linear-gradient(135deg, #ff7eb3, #ff758c);
+  border: none;
+  border-radius: 999px;
+
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(255, 117, 140, 0.4);
+
+  transition: 
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+
+
+}
+
+
+
+/* Hover effect */
+.flowers:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 12px 30px rgba(255, 117, 140, 0.6);
+}
+
+/* Click effect */
+.flowers:active {
+  transform: scale(0.97);
+}
+
+@media (max-width: 445px) {
+  .notice .flowers {
+    margin-left: 10px;
+  }
+  .flowers {
+    font-size: 14px;
+    padding: 10px 16px;
+  }
+  .nav-container #showSong {
+    font-size: 0.9rem;
+    padding: 10px ;
+  }
+}
+
 .notice .details {
   font-family: 'Pacifico', cursive;
   font-weight: 800;
@@ -1269,6 +1329,9 @@ nav a:hover {
   0% { transform: scale(0.5); opacity: 0; }
   100% { transform: scale(1); opacity: 1; }
 }
+
+
+
 
 
 

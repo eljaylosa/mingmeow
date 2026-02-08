@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flowers For You ❤️</title>
+<link rel="stylesheet" href="flowers.css">
+<link rel="icon" type="image/x-icon/jpg" href="../img/cat2.jpg" sizes="16x16">
+</head>
+
+<body>
+
+<div class="container">
+  <div class="flower">
+    <!-- 16 petals -->
+    <div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div>
+    <div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div>
+    <div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div>
+    <div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div>
+    <div class="center"></div>
+  </div>
+
+  <div class="stem"></div>
+  <div class="leaf left"></div>
+  <div class="leaf right"></div>
+
+
+  <h1>Happy Valentine’s Day ❤️</h1>
+  <div class="message" id="message"></div>
+
+  <a href="../index.html" id="back-button"><button>Back to songs</button></a>
+</div>
+
+
+
+
+<script>
+/* Typing effect */
+const back = document.getElementById("back-button");
+const text = "You make my heart bloom every day 🌹";
+const msg = document.getElementById("message");
+let i = 0;
+
+function typeText() {
+  if (i < text.length) {
+    msg.textContent += text.charAt(i);
+    i++;
+    setTimeout(typeText, 80);
+  }
+}
+setTimeout(typeText, 3200);
+
+setInterval(() => {
+  back
+});
+
+/* Floating hearts */
+setInterval(() => {
+ 
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.textContent = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 5000);
+}, 350);
+
+
+  
+</script>
+
+</body>
+</html>
