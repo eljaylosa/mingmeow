@@ -72,18 +72,30 @@ const btn = document.getElementById("reveal-btn");
     
       setTimeout(() => drop.remove(), 10000);
     }
-     
+    
+    let letters = ['A', 'L', 'J', 'N', 'E'];
+
     function name() {
       const drop = document.createElement("div");
       drop.classList.add("rain");
-      drop.textContent = "AJ💖";
-    
+      drop.textContent = Math.random() > 0.5 ? letters[Math.floor(Math.random() * letters.length)] : " ";
+      // ramdomize letters 
+
+      drop.style.fontSize = Math.random() * 50 + 30 + "px";
       drop.style.left = Math.random() * window.innerWidth + "px";
       drop.style.animationDuration = Math.random() * 1 + 1 + "s";
+      drop.style.fontWeight = Math.random() > 0.5 ? "bold" : "normal";
+      drop.style.textShadow = `0 0 5px hsl(${Math.random() * 360}, 70%, 60%)`;
+      drop.style.zIndex = 99999;
+
+      // the letters should be like cats images, it will stop at the bottom creating a stack of letters
+      drop.style.position = "fixed";
+      drop.style.top = "-260px";
+
     
       document.body.appendChild(drop);
     
-      setTimeout(() => drop.remove(), 4000);
+      setTimeout(() => drop.remove(), 10000);
     }
 
     const catImages = [
@@ -120,7 +132,7 @@ const btn = document.getElementById("reveal-btn");
       document.body.appendChild(drop);
     
       // cleanup
-      setTimeout(() => drop.remove(), 5000);
+      setTimeout(() => drop.remove(), 1000);
     }
 
     // SONG FUNCTION 
