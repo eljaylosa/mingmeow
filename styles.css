@@ -826,10 +826,27 @@ nav #showSong:hover {
 .custom-player .play-btn:hover {
   background: #cc0000;
 }
+.repeat-btn {
+  border: none;
+  padding: 5px;
+  font-size: 30px;
+  cursor: pointer;
+  z-index: 99999;
+  transition: .1s;
+  border-radius: 10px;
+}
+.repeat-btn:hover {
+  transform: scale(1.1);
+}
+.repeat-btn:active {
+ background-color: #b91533;
+}
+
 
 .custom-player .time {
   font-size: 12px;
 }
+
 
 .play-btn {
   display: none;

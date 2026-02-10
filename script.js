@@ -163,7 +163,7 @@ const btn = document.getElementById("reveal-btn");
     
       card.addEventListener("click", (e) => {
         if (e.target.tagName === "AUDIO" || e.target.id === "closeSongs") return;
-    
+
         // Pause other audios
         songCards.forEach(c => {
           if (c !== card) {
@@ -175,6 +175,8 @@ const btn = document.getElementById("reveal-btn");
         // Play/pause toggle
         if (audio.paused) {
           audio.play();
+          document.getElementById("repeatBtn").style.display = "block"; // show repeat button when playing
+          currentAudio = audio;
         } else {
           audio.pause();
         }
@@ -194,6 +196,18 @@ const btn = document.getElementById("reveal-btn");
       });
     
       audio.addEventListener("ended", () => {
+
+        if(repeatOne && currentAudio === audio) {
+          audio.currentTime = 0;
+          audio.play();
+
+          record.classList.add("playing");
+          currentTitle.textContent = title;
+          currentArtist.textContent = artist;
+
+          return;
+        }
+
         record.classList.remove("playing");
         currentTitle.textContent = "No song playing";
         currentArtist.textContent = "...";
@@ -214,7 +228,7 @@ const btn = document.getElementById("reveal-btn");
     
       card.addEventListener("click", (e) => {
         if (e.target.tagName === "AUDIO" || e.target.classList.contains("slider") || e.target.id === "closeSongs") return;
-    
+
         // Pause other audios and hide their custom players
         songCards.forEach(c => {
           const otherAudio = c.querySelector(".audio-player");
@@ -235,8 +249,14 @@ const btn = document.getElementById("reveal-btn");
     
       // Play/pause button
       playBtn.addEventListener("click", () => {
-        if (audio.paused) audio.play();
-        else audio.pause();
+        if (audio.paused) {
+          audio.play();
+          document.getElementById("repeatBtn").style.display = "block";
+          currentAudio = audio; // show repeat button when playing
+        } 
+        else { 
+          audio.pause();
+        }
       });
     
       // Sync slider with audio
@@ -259,6 +279,18 @@ const btn = document.getElementById("reveal-btn");
       audio.addEventListener("play", () => record.classList.add("playing"));
       audio.addEventListener("pause", () => record.classList.remove("playing"));
       audio.addEventListener("ended", () => {
+
+        if(repeatOne && currentAudio === audio) {
+          audio.currentTime = 0;
+          audio.play();
+
+          record.classList.add("playing");
+          currentTitle.textContent = title;
+          currentArtist.textContent = artist;
+
+          return;
+        }
+
         record.classList.remove("playing");
         currentTitle.textContent = "No song playing";
         currentArtist.textContent = "...";
@@ -320,14 +352,14 @@ const btn = document.getElementById("reveal-btn");
     });
 
     /* ================= BACKGROUND SLIDESHOW ================= */
-const bgImages = document.querySelectorAll(".bg-image");
-let currentBg = 0;
+  const bgImages = document.querySelectorAll(".bg-image");
+  let currentBg = 0;
 
-setInterval(() => {
-  bgImages[currentBg].classList.remove("active");
-  currentBg = (currentBg + 1) % bgImages.length;
-  bgImages[currentBg].classList.add("active");
-}, 6000);
+  setInterval(() => {
+    bgImages[currentBg].classList.remove("active");
+    currentBg = (currentBg + 1) % bgImages.length;
+    bgImages[currentBg].classList.add("active");
+  }, 6000);
 
 /* ================= FLOATING HEARTS ================= */
 setInterval(() => {
@@ -374,6 +406,38 @@ listBtn.addEventListener("click", () => {
   listBtn.classList.add("active");
   gridBtn.classList.remove("active");
 });
+
+
+
+
+
+
+document.getElementById("repeatBtn").style.display = "none"; // hide repeat button initially
+// Repeat button logic
+let shuffleMode = false;
+let currentIndex = 0;
+let currentAudio = null;
+let repeatOne = false; // 🔁 repeat (1) state
+
+const playlist = Array.from(document.querySelectorAll(".song-card"));
+let shuffledPlaylist = [];
+
+function repeatSong() {
+  repeatOne = !repeatOne;
+
+  const btn = document.getElementById("repeatBtn");
+
+  if (repeatOne) {
+    btn.style.backgroundColor = "#ff69b4"; // active
+    btn.textContent = "🔂"; // repeat ONE icon
+  } else {
+    btn.style.backgroundColor = "";
+    btn.textContent = "🔁"; // normal repeat icon
+  }
+}
+
+// then loop all functionality (repeat all X, repeat one /, shuffle X) and add some animations for the buttons when clicked.
+// next is shuffle button logic (will implement later)
 
 
     
