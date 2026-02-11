@@ -7,8 +7,17 @@
   <title>button, don't run away! (run please)</title>
 </head>
 <style>
+
+:root {
+  --pink1: #ff5f9e;
+  --pink2: #ff9a9e;
+  --red: #ff2f68;
+  --green1: #2ecc71;
+  --green2: #1e8449;
+}
+
   button {
-    background-color: red;
+    background-color: rgb(255, 0, 140);
     border: none;
     cursor: pointer;
     z-index: 1;
@@ -16,7 +25,8 @@
     padding: 20px 30px;
     font-size: 20px;
     border-radius: 10px;
-    color: white;
+    color: rgb(245, 245, 245);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
   }
   button:hover {
    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
@@ -28,16 +38,53 @@
     background-color: pink;
     font-family: poppins, sans-serif;
     padding: 10px;
-    height: 90vh;
+    height: 96vh;
+    background: linear-gradient(
+      rgba(230, 160, 193, 0.2),
+      rgba(223, 93, 208, 0.5)
+    ),
+    url("img/cat2.jpg");
+    background-size: cover;       /* 👈 makes it full screen */
+    background-position: center;  /* 👈 centers image */
+    background-repeat: no-repeat;
   }
-  section {
-    background-color: white;
+ 
+  .main {
+    background-color: transparent;
+    backdrop-filter: blur(5px);
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
+    padding: 50px;
     border-radius: 10px;
     text-align: center;
+    box-shadow: 0 15px 40px rgba(255, 0, 140, 0.3);
+
+    animation: slideUp 2s ease-out;
+  }
+
+  @keyframes slideUp {
+    0% {
+      transform: translateY(50px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  /* Title */
+  .main h1 {
+    color: #ff0973;
+    font-size: 28px;
+    margin-bottom: 10px;
+    text-shadow: black 1px 1px 2px, black 0 0 1em, black 0 0 0.2em;
+  }
+
+  /* Add cute cat emoji decoration */
+  .main h1::after {
+    content: " 🐱💖";
   }
  
   .buttons {
@@ -48,11 +95,14 @@
 
   /* Popup styles */
   .popup {
+    border-radius: 20px;
+    padding: 20px;
     position: fixed;
-    background-color: rgb(226, 80, 117);
+    background: linear-gradient(180deg, var(--pink1), var(--pink2));
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
     text-align: center;
     animation: popupAnimation 1s;
     z-index: 1;
@@ -108,37 +158,69 @@
     }
   }
 
+  .no-button-animation {
+    animation: UIAICatMeme .1s infinite;
+  }
+  @keyframes UIAICatMeme {
+    0% { transform: rotateX(90deg); }
+    50% { transform: rotateY(180deg); }
+    100% { transform: rotateX(360deg); }
+  }
 
+  #happy-cat {
+  width: 300px;
+  margin-top: 20px;
+  border-radius: 10px;
+}
  
 </style>
-<audio src="swishcut.mp3" style="display: none" id="swish"></audio>
-<body>
- 
 
-  <section>
+
+<body>
+  <audio src="swishcut.mp3" style="display: none" id="swish"></audio>
+  <audio src="sfx/cutver/uia.mp3" style="display: none;" id="uia"></audio>
+  <audio src="sfx/cutver/meow.mp3" style="display: none;" id="meow"></audio>
+  
+  <section class="main">
     <h1>Will you be my valentine?</h1>
     <div class="buttons">
-      <button class="yes-btn" id="yes-button">YES</button>
-      <button id="no-button">NO</button>
+      <button class="yes-btn" id="yes-button">Yes</button>
+      <button id="no-button">No</button>
     </div>
+  </section>
+  
+    
+  <section class="popup">
+    <video src="video/happy happy.mp4" id="happy-cat"></video>
+     <div class="popup-content">
+       <h2>Thank you for accepting my proposal!</h2>
+       <p>I am so happy to have you as my valentine. I promise to protect and cherish you forever.</p>
+       <button class="close-btn" onclick="location.reload()">Close</button>
+     </div>
   </section>
 
-  <section class="popup">
-    <div class="popup-content">
-        <h2>Thank you for accepting my proposal!</h2>
-        <p>I am so happy to have you as my valentine. I promise to love and cherish you forever.</p>
-        <button class="close-btn" onclick="location.reload()">Close</button>
-    </div>
-  </section>
+
   
+
   
   <script>
+    const meow = document.getElementById('meow');
+    window.addEventListener('load', () => {
+      meow.play();
+      this.uia = uia;
+    });
+   
+ 
     // when hovering the button, it will move to a random position
     const noBtn = document.getElementById('no-button');
     const swish = document.getElementById('swish');
-
-    noBtn.addEventListener('mouseover', () => {
+    const uia = document.getElementById('uia');
+    const happyCat = document.getElementById('happy-cat');
+    
+    // when in mobile (click)
+    noBtn.addEventListener('click', () => {
       swish.play();
+      uia.play();
 
      // trigger yes button shake animation when hovering the no button multiple times
         const yesBtn = document.getElementById('yes-button');
@@ -147,17 +229,65 @@
           yesBtn.classList.remove('yes-btn-shake');
         }, 4000);
   
-        // move the no button to a random position
-        
-
-      const x = Math.floor(Math.random() * window.innerWidth);
-      const y = Math.floor(Math.random() * window.innerHeight);
-      document.querySelector("body").style.position = "relative";
+      // move the no button to a random position
+      // limit the random position of the noBtn to not overflow the window or size of the body  
+     
+      const container = document.querySelector(".main");
+      container.style.position = "relative";
+      const containerRect = container.getBoundingClientRect();
+      const buttonRect = noBtn.getBoundingClientRect();
+      
+      const x = Math.random() * (containerRect.width - buttonRect.width);
+      const y = Math.random() * (containerRect.height - buttonRect.height);
+      
+      //add the UIAICatMeme animation class to the no button
+      noBtn.classList.add('no-button-animation');
+      
+      setTimeout(() => {
+        noBtn.classList.remove('no-button-animation');
+      }, 1500);
       noBtn.style.position = 'absolute';
       noBtn.style.left = `${x}px`;
       noBtn.style.top = `${y}px`;
-
     });
+
+
+
+    // when in desktop
+    noBtn.addEventListener('mouseover', () => {
+      swish.play();
+      uia.play();
+
+     // trigger yes button shake animation when hovering the no button multiple times
+        const yesBtn = document.getElementById('yes-button');
+        yesBtn.classList.add('yes-btn-shake');
+        setTimeout(() => {
+          yesBtn.classList.remove('yes-btn-shake');
+        }, 4000);
+  
+      // move the no button to a random position
+      // limit the random position of the noBtn to not overflow the window or size of the body  
+     
+      const container = document.querySelector(".main");
+      container.style.position = "relative";
+      const containerRect = container.getBoundingClientRect();
+      const buttonRect = noBtn.getBoundingClientRect();
+      
+      const x = Math.random() * (containerRect.width - buttonRect.width);
+      const y = Math.random() * (containerRect.height - buttonRect.height);
+      
+      //add the UIAICatMeme animation class to the no button
+      noBtn.classList.add('no-button-animation');
+      
+      setTimeout(() => {
+        noBtn.classList.remove('no-button-animation');
+      }, 1500);
+      noBtn.style.position = 'absolute';
+      noBtn.style.left = `${x}px`;
+      noBtn.style.top = `${y}px`;
+    });
+
+    
 
    
 
@@ -169,14 +299,27 @@
 
     popup.style.display = 'none';
     
-
+    happyCat.style.display = 'none';
     yesBtn.addEventListener('click', () => {
       popup.style.display = 'flex';
       noBtn.style.display = 'none';
+      happyCat.style.display = 'block';
+
+      happyCat.play();
+      meow.play();
+      
     });
+    // Loop the happyCat video until the close button is clicked
+    happyCat.addEventListener('ended', () => {
+      if (popup.style.display === 'flex') {
+      happyCat.play();
+      }
+    });
+
+    // close the popup when clicking the close button (closes the window)
     closeBtn.addEventListener('click', () => {
       popup.style.display = 'none';
-      window.location.href = "../index.html";
+      window.close();
     });
     
 
