@@ -182,11 +182,23 @@ html, body {
   margin-top: 20px;
   border-radius: 10px;
 }
+
+nav {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+nav button{
+  padding: 10px 20px;
+}
  
 </style>
 
 
 <body>
+  <nav>
+    <a href="../flowers-for-you/flowers.html"><button>Back</button></a>
+  </nav>
   <audio src="swishcut.mp3" style="display: none" id="swish"></audio>
   <audio src="sfx/cutver/uia.mp3" style="display: none;" id="uia"></audio>
   <audio src="sfx/cutver/meow.mp3" style="display: none;" id="meow"></audio>
@@ -382,7 +394,7 @@ html, body {
     // close the popup when clicking the close button (closes the window)
     closeBtn.addEventListener('click', () => {
       popup.style.display = 'none';
-      window.close();
+     
     });
     
 
