@@ -39,15 +39,19 @@
     font-family: poppins, sans-serif;
     padding: 10px;
     height: 96vh;
+  
     background: linear-gradient(
       rgba(230, 160, 193, 0.2),
       rgba(223, 93, 208, 0.5)
     ),
     url("img/cat2.jpg");
-    background-size: cover;       /* 👈 makes it full screen */
-    background-position: center;  /* 👈 centers image */
+    background-size: cover;       
+    background-position: center; 
     background-repeat: no-repeat;
   }
+html, body {
+  overflow: hidden;
+}
  
   .main {
     background-color: transparent;
@@ -104,16 +108,22 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    animation: popupAnimation 1s;
+    animation: popupAnimation .75s;
     z-index: 1;
     color: rgb(255, 255, 255);
   }
 
   @keyframes popupAnimation {
     0% {
+      transform: scale(0.5);
       opacity: 0;
     }
+    50% {
+      transform: scale(2);
+      opacity: 1;
+    }
     100% {
+      transform: scale(1);
       opacity: 1;
     }
   }
@@ -180,7 +190,10 @@
   <audio src="swishcut.mp3" style="display: none" id="swish"></audio>
   <audio src="sfx/cutver/uia.mp3" style="display: none;" id="uia"></audio>
   <audio src="sfx/cutver/meow.mp3" style="display: none;" id="meow"></audio>
+  <audio src="sfx/cutver/confetti.mp3" style="display: none;" id="confetti"></audio>
+  <audio src="sfx/cutver/baloon pop.mp3" style="display: none;" id="baloon-pop"></audio>
   
+
   <section class="main">
     <h1>Will you be my valentine?</h1>
     <div class="buttons">
@@ -296,15 +309,65 @@
     const yesBtn = document.getElementById('yes-button');
     const popup = document.querySelector('.popup');
     const closeBtn = document.querySelector('.close-btn');
+    const confettiSound = document.getElementById('confetti');
+    const baloonPop = document.getElementById('baloon-pop');
 
     popup.style.display = 'none';
-    
+
     happyCat.style.display = 'none';
     yesBtn.addEventListener('click', () => {
       popup.style.display = 'flex';
       noBtn.style.display = 'none';
       happyCat.style.display = 'block';
+      document.querySelector('body').style.backdropFilter = 'blur(10px)';
 
+      // when the yes button is clicked we will display a confetti animation and play the happyCat video and meow sound effect
+      // Create and display confetti animation
+      confettiSound.play();
+      const confettiContainer = document.createElement('div');
+      confettiContainer.style.position = 'fixed';
+      confettiContainer.style.top = '0';
+      confettiContainer.style.left = '0';
+      confettiContainer.style.width = '100%';
+      confettiContainer.style.height = '100%';
+      confettiContainer.style.pointerEvents = 'none';
+      document.body.appendChild(confettiContainer);
+      confettiSound.play();
+      for (let i = 0; i < 500; i++) {
+        const confetti = document.createElement('div');
+        confetti.style.position = 'absolute';
+        confetti.style.width = '10px';
+        confetti.style.height = '10px';
+        confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+        confetti.style.borderRadius = '50%';
+        confetti.style.top = `${Math.random() * 100}%`;
+        confetti.style.left = `${Math.random() * 100}%`;
+        confetti.style.animation = `fall ${Math.random() * 3 + 2}s ease-out forwards`;
+        confetti.style.opacity = '0.8';
+        confettiContainer.appendChild(confetti);
+      }
+
+      // Define the falling animation
+      const style = document.createElement('style');
+      style.textContent = `
+        @keyframes fall {
+          0% {
+        transform: translateY(0) rotate(0deg);
+          }
+          100% {
+        transform: translateY(100vh) rotate(720deg);
+          }
+        }
+      `;
+      document.head.appendChild(style);
+
+      // Remove confetti after animation ends
+      setTimeout(() => {
+        confettiContainer.remove();
+        style.remove();
+      }, 5000);
+      baloonPop.play();
+      confettiSound.play();
       happyCat.play();
       meow.play();
       
