@@ -25,12 +25,48 @@
     <img src="img/cat4.jpg" alt="Background Image 4" class="bg-image">
   </div>
   
+  <style>
+    .bar1, .bar2, .bar3 {
+      width: 35px;
+      height: 5px;
+      background-color: #333; /* Change to your desired color */
+      margin: 6px 0; /* Creates distance between bars */
+      transition: 0.4s; /* Smooth transition for animations */
+    }
+
+    .hamburger-menu {
+      cursor: pointer; /* Makes it look clickable */
+    }
+    .hamburger-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end; /* Aligns the hamburger to the right */
+    }
+
+    .hamburger-contents {
+      display: none;
+      background-color: rgb(221, 83, 118);
+      padding: 10px;
+      border-radius: 10px;
+      position: absolute;
+      top: 40px;
+    }
+  </style>
 
 <div class="nav-container">
   <nav>
     <div class="notice">
       <button class="details" id="revealbtn">About and Credits</button>
-      <a href="flowers-for-you/flowers.html"><button class="flowers" id="flowers">Flowers for you 🌻</button></a>
+      <div class="hamburger-container">
+        <div class="hamburger-menu" id="hamburgerMenu">
+          <div class="bar1"></div>
+          <div class="bar2"></div>
+          <div class="bar3"></div>
+        </div>
+        <div class="hamburger-contents" id="hamburgerContents">
+          <a href="flowers-for-you/flowers.html"><button class="flowers" id="flowers">Flowers for you 🌻</button></a>
+        </div>
+      </div>
     </div>
     <ul class="list">
       <li><a id="showSong" href="#">Browse Your Cute Songs</a><p>I remember you when I listen to these songs</p></li>

@@ -452,6 +452,17 @@ function repeatSong() {
 // next is shuffle button logic (will implement later)
 
 
+// Hamburger menu contents 
+// toggle active class for hamburger menu when clicked
+document.getElementById("hamburgerMenu").addEventListener("click", () => {
+  const menu = document.getElementById("hamburgerContents");
+
+  menu.style.display = menu.style.display === "block" ? "none" : "block";
+  menu.style.animation = "fadeIn 0.3s ease"; // add fade-in animation
+
+});
+
+
     
     
     

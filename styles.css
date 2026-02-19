@@ -507,7 +507,7 @@ body {
     padding: 10px;
   }
   .nav-container .notice {
-    justify-content: start;
+    justify-content: space-between;
     display: flex;
   }
   .notice .details {
@@ -522,6 +522,7 @@ body {
   nav ul li a {
     font-size: 17px;
   }
+  
 
 }
 
