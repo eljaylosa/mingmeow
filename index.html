@@ -10,10 +10,11 @@
 <body onload="loadAlert()" class="body-work">
 
   <div class="custom-alert-box" id="alertBox">
-    <span class="alert-emoji">💖</span>
+    <span class="alert-emoji">☀️</span>
     <h3>What's new?!</h3>
-    <p>Valentines update happening now!</p>
-    <p>3 Songs Added and Flowers added, <br> Check your song library and flowers now! 🌸✨</p>
+    <p>Summer update is here! <br> So don't forget to drink your water and stay hydrated</p>
+    
+    <!-- <p>3 Songs Added and Flowers added, <br> Check your song library and flowers now! 🌸✨</p> -->
     <button class="alert-btn" id="closeBtn">✖</button>
   </div>
   
@@ -44,12 +45,15 @@
     }
 
     .hamburger-contents {
-      display: none;
+      opacity: 0;
       background-color: rgb(221, 83, 118);
       padding: 10px;
       border-radius: 10px;
       position: absolute;
       top: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
   </style>
 
@@ -65,6 +69,7 @@
         </div>
         <div class="hamburger-contents" id="hamburgerContents">
           <a href="flowers-for-you/flowers.html"><button class="flowers" id="flowers">Flowers for you 🌻</button></a>
+          <!-- <a href=""><button class="flowers">Lets Play Tic-Tac-Toe</button></a> -->
         </div>
       </div>
     </div>

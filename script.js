@@ -14,10 +14,11 @@ function loadAlert() {
 // alert(
 //   `3 Songs Added, Chect it on your library! `
 // );
-
+let clickCount = 0;
 const btn = document.getElementById("reveal-btn");
     
     btn.addEventListener("click", () => {
+      clickCount++;
       playSound("soundfx/click.mp3");
       playSound("soundfx/fairydust.mp3");
     
@@ -50,8 +51,9 @@ const btn = document.getElementById("reveal-btn");
       "HAHAHAH! Ang cute mo mag click! 😄",
       "Click mo pa ako! 🥺",
       "Select a song for best experience! 🎵",
-      "Happy Valentines Cutie"
-      // will add more for valentines
+      // since its now summer, add some summer related messages here later on :D
+      "Enjoy the sunny vibes! ☀️",
+      "Stay hydrated cutie!"
     ]
     
     function createRain() {
@@ -74,11 +76,13 @@ const btn = document.getElementById("reveal-btn");
     }
     
     let letters = ['A', 'L', 'J', 'N', 'E'];
+    
 
     function name() {
       const drop = document.createElement("div");
       drop.classList.add("rain");
       drop.textContent = Math.random() > 0.5 ? letters[Math.floor(Math.random() * letters.length)] : " ";
+      
       // ramdomize letters 
 
       drop.style.fontSize = Math.random() * 50 + 30 + "px";
@@ -421,9 +425,6 @@ listBtn.addEventListener("click", () => {
 
 
 
-
-
-
 document.getElementById("repeatBtn").style.display = "none"; // hide repeat button initially
 // Repeat button logic
 let shuffleMode = false;
@@ -456,10 +457,9 @@ function repeatSong() {
 // toggle active class for hamburger menu when clicked
 document.getElementById("hamburgerMenu").addEventListener("click", () => {
   const menu = document.getElementById("hamburgerContents");
-
-  menu.style.display = menu.style.display === "block" ? "none" : "block";
-  menu.style.animation = "fadeIn 0.3s ease"; // add fade-in animation
-
+  menu.style.opacity = menu.style.opacity === "1" ? "0" : "1";
+  menu.style.pointerEvents = menu.style.opacity === "1" ? "auto" : "none"; // allow clicks only when visible
+  menu.style.transition = "opacity 0.3s ease";
 });
 
 

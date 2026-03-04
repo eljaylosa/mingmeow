@@ -1220,9 +1220,7 @@ nav #showSong:hover {
   width: 80%;
   border-bottom: 1px solid #2a2a2a;
 }
-.song-boxes.list .song-card.new-song {
-  
-}
+
 
 
 
@@ -1314,6 +1312,7 @@ nav #showSong:hover {
   font-family: 'Comic Sans MS', cursive, sans-serif;
   box-shadow: 0 4px 10px rgba(255, 153, 204, 0.5);
   animation: pop 0.3s ease-out;
+  box-shadow: 4px 4px 4px 4xp rgba(255, 0, 128, 0.5);
 }
 
 .alert-emoji {
