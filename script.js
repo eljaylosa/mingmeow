@@ -53,7 +53,11 @@ const btn = document.getElementById("reveal-btn");
       "Select a song for best experience! 🎵",
       // since its now summer, add some summer related messages here later on :D
       "Enjoy the sunny vibes! ☀️",
-      "Stay hydrated cutie!"
+      "Stay hydrated cutie!",
+      "Kalapastangan ang 'di ka ibigin",
+      "Kalokohan ang di ka isipin",
+      "Kung ang mundo ang biglang gugunawin, ikaw ang una kong hahanapin",
+      "pass: jay123"
     ]
     
     function createRain() {

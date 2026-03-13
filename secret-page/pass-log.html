@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>password?</title>
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #fce4ec, #f3e5f5);
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+/* Form container */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  padding: 25px 35px;
+  border-radius: 20px;
+  background-color: #ffe4f0;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+/* Form title */
+form h2 {
+  margin: 0;
+  color: #d6336c;
+  font-size: 1.8rem;
+  text-shadow: 1px 1px 2px #fff;
+}
+
+/* Labels */
+label {
+  font-weight: bold;
+  color: #c2185b;
+}
+
+/* Input field */
+input {
+  width: 220px;
+  height: 35px;
+  border-radius: 15px;
+  border: 2px solid #f8bbd0;
+  padding: 0 10px;
+  font-size: 1rem;
+  text-align: center;
+  transition: 0.2s;
+}
+
+/* Input focus effect */
+input:focus {
+  outline: none;
+  border-color: #ff80ab;
+  box-shadow: 0 0 10px #ff80ab50;
+}
+
+/* Button styling */
+button {
+  width: 220px;
+  padding: 8px 0;
+  font-size: 1.1rem;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  color: white;
+  background: #ff4081;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  transition: 0.2s;
+}
+
+/* Button hover */
+button:hover {
+  background: #f50057;
+  transform: scale(1.05);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
+
+/* Placeholder text */
+input::placeholder {
+  color: #f48fb1;
+  font-style: italic;
+}
+</style>
+<body>
+  <form>
+    <h2>✨ Secret Login ✨</h2>
+    <label for="password">What's the password?</label>
+    <input type="password" id="password" placeholder="Type here...">
+    <button type="button" id="submitBtn">Submit 💖</button>
+    <p>hint: spam click button on meow page to see the password (pass: {password})</p>
+    <a href="../index.html"><- back to meow page</a>
+  </form>
+
+  <script>
+    let reyalPass = "jay123";
+
+    const passwordInput = document.getElementById("password");
+    const submitBtn = document.getElementById("submitBtn");
+
+    function checkPassword() {
+      const pass = passwordInput.value;
+
+      if (pass == reyalPass) {
+        window.location.href = "landing-page.html";
+      }
+      else {
+        alert("Wrong Password!");
+        passwordInput.value = "";
+        passwordInput.focus();
+      }
+    }
+
+    submitBtn.addEventListener("click", checkPassword);
+
+    // When ENTER key pressed
+    passwordInput.addEventListener("keydown", function(e) {
+      if (e.key == "Enter") {
+        e.preventDefault();
+        checkPassword();
+      }
+    });
+
+  </script>
+</body>
+</html>
