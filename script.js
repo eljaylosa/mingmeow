@@ -8,8 +8,18 @@ function loadAlert() {
   closeBtn.addEventListener("click", function() {
     alertBox.style.display = "none";
   });
-}
 
+  // Close when clicking outside
+  window.addEventListener("click", function(event) {
+    if (event.target === alertBox) {
+      // do nothing if clicking inside alert box itself
+      return;
+    }
+    if (!alertBox.contains(event.target)) {
+      alertBox.style.display = "none";
+    }
+  });
+}
 
 // alert(
 //   `3 Songs Added, Chect it on your library! `
