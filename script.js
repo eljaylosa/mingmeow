@@ -167,11 +167,18 @@ const btn = document.getElementById("reveal-btn");
 
 
     // Toggle songs container
-    showSong.addEventListener("click", () => {
-      if (songContainer.style.display === "none") {
-        songContainer.style.display = "flex";
+    showSong.addEventListener("click", (event) => {
+      // Toggle visibility
+      const isVisible = songContainer.style.display === "flex";
+      songContainer.style.display = isVisible ? "none" : "flex";
 
-      } else {
+      // prevent this click from closing the container immediately
+      event.stopPropagation();
+    });
+
+    // Close when clicking outside
+    window.addEventListener("click", (event) => {
+      if (!songContainer.contains(event.target) && event.target !== showSong) {
         songContainer.style.display = "none";
       }
     });
@@ -469,11 +476,27 @@ function repeatSong() {
 
 // Hamburger menu contents 
 // toggle active class for hamburger menu when clicked
-document.getElementById("hamburgerMenu").addEventListener("click", () => {
-  const menu = document.getElementById("hamburgerContents");
-  menu.style.opacity = menu.style.opacity === "1" ? "0" : "1";
-  menu.style.pointerEvents = menu.style.opacity === "1" ? "auto" : "none"; // allow clicks only when visible
+// Hamburger menu contents 
+const menu = document.getElementById("hamburgerContents");
+const hamburger = document.getElementById("hamburgerMenu");
+
+hamburger.addEventListener("click", (event) => {
+  // toggle menu visibility
+  const isVisible = menu.style.opacity === "1";
+  menu.style.opacity = isVisible ? "0" : "1";
+  menu.style.pointerEvents = isVisible ? "none" : "auto";
   menu.style.transition = "opacity 0.3s ease";
+
+  // prevent the click from triggering the window click listener
+  event.stopPropagation();
+});
+
+// Close when clicking outside
+window.addEventListener("click", function(event) {
+  if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
+    menu.style.opacity = "0";
+    menu.style.pointerEvents = "none";
+  }
 });
 
 
