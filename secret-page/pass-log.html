@@ -93,6 +93,15 @@ input::placeholder {
   color: #f48fb1;
   font-style: italic;
 }
+a {
+  text-decoration: underline;
+  color: #c2185b;
+  cursor: pointer;
+  transition: .1s;
+}
+a:hover {
+  color: #ff018d;
+}
 </style>
 <body>
   <form>
@@ -101,8 +110,15 @@ input::placeholder {
     <input type="password" id="password" placeholder="Type here...">
     <button type="button" id="submitBtn">Submit 💖</button>
     <p>hint: spam click button on meow page to see the password (pass: {password})</p>
-    <a href="../index.html"><- back to meow page</a>
+    <a id="back"><- back to meow page</a>
   </form>
+
+  <script>
+    document.getElementById("back").addEventListener("click", () => {
+      window.location.href = "../index.html";
+      window.close();
+    });
+  </script>
 
   <script>
     let reyalPass = "jay123";

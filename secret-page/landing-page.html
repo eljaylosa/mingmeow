@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,8 +15,24 @@
   <h1>hi! {1, 12, 10, 1, 14, 5} :)</h1>
   <p>this is where i'll store all the memories we make, if ever na.... alam mo na</p>
   <p>btw i miss u na hehe</p>
-  <a href="../index.html"><button id="backBtn">back to home</button></a>
+
+  <button onclick="startRecording()">🎤 Record</button>
+  <button onclick="stopRecording()">⏹ Stop</button>
+  
+  <div id="voices">(Voice records goes here, database coming soon!)</div>
+
+<button id="backBtn">back to home</button>
+
+  <script>
+    document.getElementById("backBtn").addEventListener("click", () => {
+      window.location.href = "../index.html";
+      window.close();
+    });
+  </script>
+
+
 
 
 </body>
 </html>
+

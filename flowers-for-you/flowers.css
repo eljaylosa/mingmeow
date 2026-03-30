@@ -318,7 +318,7 @@ h1 {
 }
 
 
-#back-button button {
+.back-button button {
   margin-top: 10px;
   display: inline-flex;
   align-items: center;
@@ -350,18 +350,18 @@ h1 {
 
 
 /* Hover */
-#back-button button:hover {
+.back-button button:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 26px rgba(220, 77, 25, 0.55);
 }
 
 /* Click */
-#back-button button:active {
+.back-button button:active {
   transform: scale(0.96);
 }
 
 /* Remove default link style */
-#back-button {
+.back-button {
   text-decoration: none;
 }
 
