@@ -1,33 +1,238 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Secret page</title>
-</head>
+<meta charset="UTF-8">
+<title>Grab me, cutie</title>
+
 <style>
-  * {
-    font-family: cursive;
+  body {
+    margin: 0;
+    background: black;
+    overflow: hidden;
+    cursor: crosshair;
+    font-family: monospace;
+    touch-action: none; /* prevents scrolling while dragging torch */
   }
+
+  /* world text */
+  #world {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    text-shadow: 2px 2px 0 black;
+  }
+
+  /* torch in world */
+  #worldTorch {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: #ffcc66;
+    border: 2px solid #000;
+    box-shadow: 0 0 10px #ffcc66;
+    left: 60%;
+    top: 60%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+  }
+
+  /* held torch (cursor) */
+  #heldTorch {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    background: #ffcc66;
+    border: 2px solid black;
+    box-shadow: 0 0 12px #ffcc66;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    display: none;
+  }
+
+  /* lighting */
+  #light {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+    background: black;
+  }
+
+
+  .secret {
+  position: absolute;
+  color: white;
+  font-size: 22px;
+  opacity: 0.15; /* almost invisible */
+  text-shadow: 0 0 5px white;
+  pointer-events: none;
+}
+
+
+/* TOP ROW */
+.tl { top: 10%; left: 10%; }
+.tc { top: 10%; left: 50%; transform: translateX(-50%); }
+.tr { top: 10%; right: 10%; }
+
+/* MIDDLE ROW */
+.ml { top: 50%; left: 5%; transform: translateY(-50%); }
+.mr { top: 50%; right: 5%; transform: translateY(-50%); }
+
+/* BOTTOM ROW */
+.bl { bottom: 10%; left: 10%; }
+.bc { bottom: 5%; left: 50%; transform: translateX(-50%); }
+.br { bottom: 10%; right: 10%; }
 </style>
+</head>
+
 <body>
-  <h1>hi! {1, 12, 10, 1, 14, 5} :)</h1>
-  <p>this is where i'll store all the memories we make, if ever na.... alam mo na</p>
-  <p>btw i miss u na hehe</p>
 
-  <button button id="backBtn">back to home</button>
+<div id="world">grab the light, cutie ❤️</div>
 
-  <script>
-    document.getElementById("backBtn").addEventListener("click", () => {
-      window.location.href = "../index.html";
-      window.close();
-    });
+<div class="secret tl">i</div>
+<div class="secret tc">miss</div>
+<div class="secret tr">u</div>
+
+<div class="secret ml">my</div>
+<div class="secret mr">cutie</div>
+
+<div class="secret bl">pretty</div>
+<div class="secret bc">baby</div>
+<div class="secret br">aljane</div>
+
+<div id="worldTorch"></div>
+<div id="heldTorch"></div>
+<div id="light"></div>
+
+
+<script>
+  const worldTorch = document.getElementById("worldTorch");
+  const heldTorch = document.getElementById("heldTorch");
+  const light = document.getElementById("light");
+  const secrets = document.querySelectorAll(".secret");
+  
+  let holding = false;
+  
+  let mouseX = 0;
+  let mouseY = 0;
+  
+  let x = 0;
+  let y = 0;
+  
+  let torchX = window.innerWidth * 0.6;
+  let torchY = window.innerHeight * 0.6;
+  
+  /* =========================
+     🖱️ DESKTOP SUPPORT
+  ========================= */
+  document.addEventListener("mousemove", (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+  
+  worldTorch.addEventListener("mousedown", () => {
+    holding = true;
+    worldTorch.style.display = "none";
+    heldTorch.style.display = "block";
+  });
+  
+  document.addEventListener("mouseup", () => {
+    if (holding) dropTorch();
+  });
+  
+  /* =========================
+     📱 MOBILE SUPPORT
+  ========================= */
+  
+  // touch move
+  document.addEventListener("touchmove", (e) => {
+    const t = e.touches[0];
+    mouseX = t.clientX;
+    mouseY = t.clientY;
+  });
+  
+  // tap / hold start
+  worldTorch.addEventListener("touchstart", (e) => {
+    holding = true;
+    worldTorch.style.display = "none";
+    heldTorch.style.display = "block";
+  
+    const t = e.touches[0];
+    mouseX = t.clientX;
+    mouseY = t.clientY;
+  });
+  
+  // release finger
+  document.addEventListener("touchend", () => {
+    if (holding) dropTorch();
+  });
+  
+  function dropTorch() {
+    holding = false;
+  
+    torchX = mouseX;
+    torchY = mouseY;
+  
+    worldTorch.style.left = torchX + "px";
+    worldTorch.style.top = torchY + "px";
+    worldTorch.style.display = "block";
+    heldTorch.style.display = "none";
+  }
+  
+  /* =========================
+     LOOP
+  ========================= */
+  function updateCursor() {
+      document.body.style.cursor = holding ? "none" : "crosshair";
+    }
+  function loop() {
+    
+  
+    if (holding) {
+      x += (mouseX - x) * 0.25;
+      y += (mouseY - y) * 0.25;
+  
+      heldTorch.style.left = x + "px";
+      heldTorch.style.top = y + "px";
+  
+      light.style.background = `
+        radial-gradient(circle 180px at ${x}px ${y}px,
+        rgba(255,220,120,0.9),
+        rgba(0,0,0,0.95) 70%)
+      `;
+  
+      secrets.forEach(el => {
+        const rect = el.getBoundingClientRect();
+  
+        const dx = rect.left + rect.width/2 - x;
+        const dy = rect.top + rect.height/2 - y;
+  
+        const dist = Math.sqrt(dx*dx + dy*dy);
+  
+        el.style.opacity = (dist < 180) ? 1 : 0.1;
+      });
+  
+    } else {
+      light.style.background = `
+        radial-gradient(circle 400px at ${torchX}px ${torchY}px,
+        rgba(255,220,120,0.9),
+        rgba(0,0,0,0.95) 70%)
+      `;
+  
+      secrets.forEach(el => el.style.opacity = 0.1);
+    }
+    updateCursor();
+    requestAnimationFrame(loop);
+  }
+  
+  loop();
   </script>
-
-
-
 
 </body>
 </html>
-
