@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const dataArray = new Uint8Array(bufferLength);
 
             const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-            const volumeThreshold = isMobile ? 30 : 40; // Adjusted threshold for mobile vs desktop
+            const volumeThreshold = isMobile ? 40 : 50; // Adjusted threshold for mobile vs desktop
             function checkVolume() {
                 if (candleBlown || !celebrationStarted) return;
                 analyser.getByteFrequencyData(dataArray);
