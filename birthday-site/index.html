@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magical Birthday Celebration</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body class="light-mode">
+    <div id="cursor-sparkles"></div>
+
+    <header>
+        <nav>
+            <div class="controls">
+                <button id="theme-toggle" title="Toggle Dark/Light Mode"><i class="fas fa-moon"></i></button>
+                <button id="music-toggle" title="Play/Pause Music"><i class="fas fa-music"></i></button>
+                <input type="range" id="volume-slider" min="0" max="1" step="0.1" value="0.5">
+            </div>
+        </nav>
+    </header>
+    
+    <!-- get the name before proceeding -->
+    <main class="name-section">
+      <input type="text" id="name-input" placeholder="Enter the birthday person's name" class="name-input">
+      <button id="start-button" class="btn">Start Celebration</button>
+    </main>
+
+    <style>
+      /* style the name-section */
+      .name-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+      }
+      .name-input {
+        padding: 15px 20px;
+        font-size: 1.2rem;
+        border: none;
+        border-radius: 30px;
+        margin-bottom: 20px;
+        width: 340px;
+        max-width: 80%;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      }
+      .name-input:focus {
+        outline: none;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+      }
+      .btn {
+        padding: 15px 30px;
+        font-size: 1.2rem;
+        border: none;
+        border-radius: 30px;
+        background-color: #ff6f61;
+        color: white;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      }
+      .btn:hover {
+        background-color: #ff3b2e;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      }
+
+
+        .hidden{
+      display:none;
+  }
+
+  #hero {
+    width: 100%;
+    min-height: 100vh;
+}
+     
+
+
+    </style>
+
+    <script>
+
+    document.getElementById('start-button').addEventListener('click', () => {
+      const nameInput = document.getElementById('name-input');
+      const recipientName = nameInput.value.trim();
+
+      if (!recipientName) {
+        alert('Please enter a name to start the celebration!');
+        return;
+      }
+
+      // set name
+      document.getElementById('recipient-name').textContent = recipientName;
+
+      // hide name screen
+      document.querySelector('.name-section').style.display = 'none';
+
+      // show hero properly
+      const hero = document.getElementById('hero');
+      hero.classList.remove('hidden');
+    });
+
+       
+    </script>
+
+    <main>
+        <!-- Hero Section: Cake and Candle -->
+        <section id="hero" class="hidden">
+            <div class="container">
+                <h1 class="fade-in">Make a Wish!</h1>
+                <p class="fade-in delay-1">Blow into your microphone or click the button to extinguish the candle.</p>
+                
+                <div class="cake-container">
+                    <div class="cake">
+                        <div class="plate"></div>
+                        <div class="layer layer-bottom"></div>
+                        <div class="layer layer-middle"></div>
+                        <div class="layer layer-top"></div>
+                        <div class="icing"></div>
+                        <div class="candle">
+                            <div class="flame" id="flame"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-actions">
+                    <button id="blow-button" class="btn">Blow Candle</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Message Section: Happy Birthday -->
+        <section id="celebration" class="hidden">
+            <div class="container">
+                <h2 id="birthday-message" class="magical-text">Happy Birthday, <span id="recipient-name">name</span>!</h2>
+                <p>May your day be filled with magic and joy.</p>
+                <div class="scroll-down-indicator">
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Elements Section -->
+        <section id="interactives" class="hidden">
+            <div class="container grid">
+                <!-- Gift Box -->
+                <div class="card gift-card">
+                    <h3>A Surprise for You</h3>
+                    <div class="gift-box" id="gift-box">
+                        <div class="gift-lid"></div>
+                        <div class="gift-body"></div>
+                        <div class="gift-ribbon"></div>
+                    </div>
+                    <div id="gift-message" class="hidden-content">
+                        <p>🎁 You've unlocked a special wish!</p>
+                    </div>
+                </div>
+
+                <!-- Birthday Letter -->
+                <div class="card letter-card">
+                    <h3>A Heartfelt Note</h3>
+                    <div class="envelope" id="envelope">
+                        <div class="flap"></div>
+                        <div class="letter">
+                            <p>Dear Friend,</p>
+                            <p>Wishing you a year full of adventure, laughter, and endless happiness. You deserve the best!</p>
+                            <p>Best regards, <br> Manus</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Photo Gallery -->
+            <div class="container gallery-container">
+                <h3>Memories</h3>
+                <div class="gallery">
+                    <div class="gallery-item"><img src="assets/img/sample-img.png" alt="Memory 1"></div>
+                    <div class="gallery-item"><img src="assets/img/sample-img.png" alt="Memory 2"></div>
+                    <div class="gallery-item"><img src="assets/img/sample-img.png" alt="Memory 3"></div>
+                    <div class="gallery-item"><img src="assets/img/sample-img.png" alt="Memory 4"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Background Elements -->
+    <div id="balloon-container"></div>
+    <div id="sparkle-container"></div>
+
+    <!-- Lightbox for Gallery -->
+    <div id="lightbox" class="lightbox">
+        <span class="close-lightbox">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <!-- Audio Element -->
+    <audio id="bg-music" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
