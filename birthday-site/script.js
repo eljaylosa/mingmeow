@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 // If volume threshold is met (blowing sound)
                 // if not met add a message to the user to blow harder
-                if (average > 40) {
+                if (average > 50) {
                     blowHint.classList.add('hidden'); // hide hint
                     extinguishCandle();
                 } 
