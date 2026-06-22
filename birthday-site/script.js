@@ -1,5 +1,7 @@
+
 document.addEventListener('DOMContentLoaded', () => {
     // --- Elements ---
+    
     const nameEntrySection = document.getElementById('name-entry');
     const startButton = document.getElementById('start-button');
     const nameInput = document.getElementById('name-input');
@@ -23,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeLightbox = document.querySelector('.close-lightbox');
     const galleryItems = document.querySelectorAll('.gallery-item img');
 
+    const blowHint = document.getElementById('blow-hint');
     let candleBlown = false;
     let celebrationStarted = false; // Flag to control microphone detection
 
@@ -95,9 +98,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 let average = sum / bufferLength;
                 
                 // If volume threshold is met (blowing sound)
+                // if not met add a message to the user to blow harder
                 if (average > 40) {
+                    blowHint.classList.add('hidden'); // hide hint
                     extinguishCandle();
+                } 
+                else if (average > 15) {
+                    // medium sound = show hint lightly
+                    blowHint.classList.remove('hidden');
+                    blowHint.textContent = "A bit stronger 💨";
+                } 
+                else if (average > 10) {
+                    // too low = strong hint
+                    blowHint.classList.remove('hidden');
+                    blowHint.textContent = "Blow harder into the mic 🎤💨";
                 }
+
+               
                 requestAnimationFrame(checkVolume);
             }
             checkVolume();
