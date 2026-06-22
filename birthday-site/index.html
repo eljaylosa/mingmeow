@@ -22,91 +22,16 @@
             </div>
         </nav>
     </header>
-    
-    <!-- get the name before proceeding -->
-    <main class="name-section">
-      <input type="text" id="name-input" placeholder="Enter the birthday person's name" class="name-input">
-      <button id="start-button" class="btn">Start Celebration</button>
-    </main>
 
-    <style>
-      /* style the name-section */
-      .name-section {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
-      }
-      .name-input {
-        padding: 15px 20px;
-        font-size: 1.2rem;
-        border: none;
-        border-radius: 30px;
-        margin-bottom: 20px;
-        width: 340px;
-        max-width: 80%;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-      }
-      .name-input:focus {
-        outline: none;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-      }
-      .btn {
-        padding: 15px 30px;
-        font-size: 1.2rem;
-        border: none;
-        border-radius: 30px;
-        background-color: #ff6f61;
-        color: white;
-        cursor: pointer;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        transition: background-color 0.3s ease, box-shadow 0.3s ease;
-      }
-      .btn:hover {
-        background-color: #ff3b2e;
-        box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-      }
-
-
-        .hidden{
-      display:none;
-  }
-
-  #hero {
-    width: 100%;
-    min-height: 100vh;
-}
-     
-
-
-    </style>
-
-    <script>
-
-    document.getElementById('start-button').addEventListener('click', () => {
-      const nameInput = document.getElementById('name-input');
-      const recipientName = nameInput.value.trim();
-
-      if (!recipientName) {
-        alert('Please enter a name to start the celebration!');
-        return;
-      }
-
-      // set name
-      document.getElementById('recipient-name').textContent = recipientName;
-
-      // hide name screen
-      document.querySelector('.name-section').style.display = 'none';
-
-      // show hero properly
-      const hero = document.getElementById('hero');
-      hero.classList.remove('hidden');
-    });
-
-       
-    </script>
+    <!-- Name Entry Section -->
+    <section id="name-entry" class="active">
+        <div class="container card">
+            <h1 class="magical-text">Welcome!</h1>
+            <p>Enter the birthday person's name to begin the magic.</p>
+            <input type="text" id="name-input" placeholder="Enter name..." class="name-input">
+            <button id="start-button" class="btn">Start Celebration</button>
+        </div>
+    </section>
 
     <main>
         <!-- Hero Section: Cake and Candle -->
@@ -137,7 +62,7 @@
         <!-- Message Section: Happy Birthday -->
         <section id="celebration" class="hidden">
             <div class="container">
-                <h2 id="birthday-message" class="magical-text">Happy Birthday, <span id="recipient-name">name</span>!</h2>
+                <h2 id="birthday-message" class="magical-text">Happy Birthday, <span id="recipient-name">Friend</span>!</h2>
                 <p>May your day be filled with magic and joy.</p>
                 <div class="scroll-down-indicator">
                     <i class="fas fa-chevron-down"></i>

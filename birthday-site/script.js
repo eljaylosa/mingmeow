@@ -1,6 +1,10 @@
-
 document.addEventListener('DOMContentLoaded', () => {
     // --- Elements ---
+    const nameEntrySection = document.getElementById('name-entry');
+    const startButton = document.getElementById('start-button');
+    const nameInput = document.getElementById('name-input');
+    const recipientNameSpan = document.getElementById('recipient-name');
+
     const flame = document.getElementById('flame');
     const blowButton = document.getElementById('blow-button');
     const heroSection = document.getElementById('hero');
@@ -20,6 +24,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const galleryItems = document.querySelectorAll('.gallery-item img');
 
     let candleBlown = false;
+    let celebrationStarted = false; // Flag to control microphone detection
+
+    // --- Start Celebration ---
+    startButton.addEventListener('click', () => {
+        const name = nameInput.value.trim();
+        if (name) {
+            recipientNameSpan.textContent = name;
+            nameEntrySection.classList.remove('active');
+            nameEntrySection.classList.add('hidden');
+            
+            heroSection.classList.remove('hidden');
+            heroSection.classList.add('active');
+            
+            celebrationStarted = true; // Enable mic detection
+            initMic(); // Start listening
+        } else {
+            alert("Please enter a name!");
+        }
+    });
 
     // --- Theme Toggle ---
     themeToggle.addEventListener('click', () => {
@@ -50,6 +73,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Microphone Detection (Web Audio API) ---
     async function initMic() {
+        if (!celebrationStarted) return; // Guard clause
+
         try {
             const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
             const audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -61,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const dataArray = new Uint8Array(bufferLength);
 
             function checkVolume() {
-                if (candleBlown) return;
+                if (candleBlown || !celebrationStarted) return;
                 analyser.getByteFrequencyData(dataArray);
                 let sum = 0;
                 for (let i = 0; i < bufferLength; i++) {
@@ -81,8 +106,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    initMic();
-
     // --- Candle Extinguish Logic ---
     function extinguishCandle() {
         if (candleBlown) return;
@@ -100,7 +123,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     blowButton.addEventListener('click', extinguishCandle);
-
 
     //trigger confetti noises
     function triggerConfettiNoises() {
