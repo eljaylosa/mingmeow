@@ -88,6 +88,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const bufferLength = analyser.frequencyBinCount;
             const dataArray = new Uint8Array(bufferLength);
 
+            const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+            const volumeThreshold = isMobile ? 30 : 40; // Adjusted threshold for mobile vs desktop
             function checkVolume() {
                 if (candleBlown || !celebrationStarted) return;
                 analyser.getByteFrequencyData(dataArray);
@@ -99,17 +101,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 // If volume threshold is met (blowing sound)
                 // if not met add a message to the user to blow harder
-                if (average > 41) {
-                    blowHint.classList.add('hidden'); // hide hint
+
+                if (average > volumeThreshold) {
+                    blowHint.classList.add('hidden');
                     extinguishCandle();
                 } 
-                else if (average > 15) {
-                    // medium sound = show hint lightly
+                else if (average > volumeThreshold * 0.3) {
                     blowHint.classList.remove('hidden');
                     blowHint.textContent = "A bit stronger 💨";
                 } 
-                else if (average > 10) {
-                    // too low = strong hint
+                else {
                     blowHint.classList.remove('hidden');
                     blowHint.textContent = "Blow harder into the mic 🎤💨";
                 }
