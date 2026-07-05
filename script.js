@@ -88,6 +88,9 @@ const btn = document.getElementById("reveal-btn");
         text: "i'm sorry if i'm pressuring u"
       },
       {
+        text: "allow me to love u, the way i love god, unconditionally"
+      },
+      {
         text: "i was doing fine without u, till i saw your face, now i can't erase 🎵",
         audio: "soundfx/lyrics.mp3",
         glow: true
