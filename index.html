@@ -8,6 +8,46 @@
 <title>meow meow</title>
 </head>
 <body onload="loadAlert()" class="body-work">
+  <div class="sliding-text">
+    <h2 class="text-slide">i like this code "QWxKNG5lXw==" but you're not nerdy enough to understand</h2>
+  </div>
+
+  <style>
+    .sliding-text {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      overflow: hidden;
+    }
+
+    .sliding-text h2 {
+      display: inline-block;
+      white-space: nowrap;
+      animation: slide 20s linear infinite;
+    }
+    
+    /* for mobile responsiveness */
+    @media (max-width: 600px) {
+      .sliding-text h2 {
+        font-size: 14px;
+      }
+    }
+
+    /* animation */
+    @keyframes slide {
+      0% {
+        transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+    
+  </style>
 
   <div class="custom-alert-box" id="alertBox">
     <span class="alert-emoji">☀️</span>

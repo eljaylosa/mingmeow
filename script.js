@@ -1,4 +1,4 @@
-
+let lyricAudio = null;
 
 function loadAlert() {
   let alertBox = document.getElementById("alertBox");
@@ -44,31 +44,76 @@ const btn = document.getElementById("reveal-btn");
       sound.play();
     }
 
+   function playLyricSound(src) {
+      if (lyricAudio) {
+        lyricAudio.pause();
+        lyricAudio.currentTime = 0;
+      }
+      lyricAudio = new Audio(src);
+      lyricAudio.play();
+    }
+
     const messages = [
-      "You are so cute 😍",
-      "Will you be my cute little Cat? 🐱",
-      "I adore you! 🥰",
-      "I miss you! 😘",
-      "Your smile makes my day ☀️",
-      "Valorant na kaya? 🎮",
-      "Eto namimiss na naman ikaw! 💕",
-      "Ah hihi hi hi hi! 😄",
-      "Hala! ang cute naman ng nag-kiclick! 🥺",
-      "Dahan dahan lang pag click, mahuhulog ako sayu! 😳",
-      "Cute naman ng mga click mo! 🥰",
-      "Miss q na yung click nang click! 😘",
-      "Sige click lang! Cute ka naman e 😍",
-      "HAHAHAH! Ang cute mo mag click! 😄",
-      "Click mo pa ako! 🥺",
-      "Select a song for best experience! 🎵",
-      // since its now summer, add some summer related messages here later on :D
-      "Enjoy the sunny vibes! ☀️",
-      "Stay hydrated cutie!",
-      "Kalapastangan ang 'di ka ibigin",
-      "Kalokohan ang di ka isipin",
-      "Kung ang mundo ang biglang gugunawin, ikaw ang una kong hahanapin",
-      "pass: jay123"
-    ]
+      {
+        text: "pass: jay123"
+      },
+      {
+        text: "i miss u"
+      },
+      {
+        text: "yearner pro max"
+      },
+      {
+        text: "i don't know bro, i just want to keep her"
+      },
+      {
+        text: "bro is a keeper"
+      },
+      {
+        text: "i'm sorry if im being annoying"
+      },
+      {
+        text: "i want to know u more huhu"
+      },
+      {
+        text: "i have so many plans for us"
+      },
+      {
+        text: "overthinking might kill me fr"
+      },
+      {
+        text: "imma take it slow for now fr"
+      },
+      {
+        text: "i'm sorry if i'm pressuring u"
+      },
+      {
+        text: "i was doing fine without u, till i saw your face, now i can't erase 🎵",
+        audio: "soundfx/lyrics.mp3",
+        glow: true
+      },
+      {
+        text: "come on, don't leave me, it can't be that easy babe 🎵",
+        audio: "soundfx/lyrics2.mp3",
+        glow: true
+      },
+      {
+        text: "cause i don't want to be in love with another, even in another life 🎵",
+        audio: "soundfx/lyrics3.mp3",
+        glow: true
+      },
+      {
+        text: "when you're all alone, i will reach for you 🎵",
+        audio: "soundfx/lyrics4.mp3",
+        glow: true
+      },
+      {
+        text: "and if a double-decker bus, crashes into us, to die by your side, is such a heavenly way to die 🎵",
+        audio: "soundfx/lyrics5.mp3",
+        glow: true
+      }
+    ];
+    let messagePool = [...messages]; // create a copy of the messages array
     
     function createRain() {
       const drop = document.createElement("div");
@@ -79,7 +124,30 @@ const btn = document.getElementById("reveal-btn");
       drop.style.color = `hsl(${Math.random() * 360}, 70%, 60%)`;
       drop.style.fontFamily= Math.random() > 0.5 ? "Comic Sans MS, cursive, sans-serif" : "Arial, sans-serif, Helvetica";
     
-      drop.textContent = messages[Math.floor(Math.random() * messages.length)];
+      // drop.textContent = messages[Math.floor(Math.random() * messages.length)];
+
+      // store the message in a variable to use it later for animation
+      // const msg = messages[Math.floor(Math.random() * messages.length)];
+     
+
+      // refill pool if empty
+      if (messagePool.length === 0) {
+        messagePool = [...messages];
+      }
+
+      // pick random index from remaining pool
+      const index = Math.floor(Math.random() * messagePool.length);
+      const msg = messagePool.splice(index, 1)[0]; // removes it from pool
+
+      drop.textContent = msg.text;
+      if (msg.audio) {
+        playLyricSound(msg.audio);
+      }
+
+      if (msg.glow) {
+        drop.classList.add("lyrics-glow");
+      }
+
       // drop.style.left = Math.random() * window.innerWidth + "px";
       drop.style.left = Math.random() * (window.innerWidth - 250) + "px";
       drop.style.animationDuration = Math.random() * 5 + 5 + "s";
