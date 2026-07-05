@@ -73,6 +73,18 @@ const btn = document.getElementById("reveal-btn");
         text: "i'm sorry if im being annoying"
       },
       {
+        text: "i'm sorry if i did something wrong"
+      },
+      {
+        text: "i'm sorry if i make u feel uncomfortable"
+      },
+      {
+        text: "i'm sorry if i make u feel pressured"
+      },
+      {
+        text: "i'm sorry if i ruined your peace"
+      },
+      {
         text: "i want to know u more huhu"
       },
       {
