@@ -103,7 +103,7 @@ const btn = document.getElementById("reveal-btn");
       //   text: "allow me to love u, the way i love god, unconditionally"
       // },
       {
-        text: "i was doing fine without u, till i saw your face, now i can't erase 🎵",
+        text: "i was doing fine without ya, 'till i saw your face, now i can't erase 🎵",
         audio: "soundfx/lyrics.mp3",
         glow: true
       },
@@ -126,7 +126,43 @@ const btn = document.getElementById("reveal-btn");
         text: "and if a double-decker bus, crashes into us, to die by your side, is such a heavenly way to die 🎵",
         audio: "soundfx/lyrics5.mp3",
         glow: true
+      },
+      {
+        text: "harvey, nobody knows what i see, nobody knows i'm waiting, waiting for you to call 🎵",
+        audio: "soundfx/lyrics6.mp3",
+        glow: true
+      },
+      {
+        text: "cause after all this time, i'm still into you, i should be over all the butterflies, but I'm into you (I'm into you), And, baby, even on our worst nights, I'm into you (I'm into you) 🎵",
+        audio: "soundfx/lyrics7.mp3",
+        glow: true
+      },
+      {
+        text: "but darling, you are the only exception, you are the only exception, you are the only exception, you are the only exception 🎵", 
+        audio: "soundfx/lyrics8.mp3",
+        glow: true
+      },
+      {
+        text: "but i'll pray for you all the time, if i could be by your side, i'll give you all my life, my seasons 🎵", 
+        audio: "soundfx/lyrics9.mp3",
+        glow: true
+      },
+      {
+        text: "'cause if one day you wake up and find that you're missing me, and your heart starts to wonder where on this earth i could be, thinkin' maybe you'll come back here to the place that we'd meet, and you'll see me waiting for you on the corner of the street, so I'm not moving, i'm not moving 🎵", 
+        audio: "soundfx/lyrics10.mp3",
+        glow: true
+      },
+      {
+        text: "how can I move on when i'm still in love with you 🎵", 
+        audio: "soundfx/lyrics10.5.mp3",
+        glow: true
+      },
+      {
+        text: "🎵🎵🎵🎵🎵🎵🎵🎵🎵🎵", 
+        audio: "soundfx/full_music1.mp3",
+        glow: true
       }
+      
     ];
     let messagePool = [...messages]; // create a copy of the messages array
     
@@ -165,11 +201,11 @@ const btn = document.getElementById("reveal-btn");
 
       // drop.style.left = Math.random() * window.innerWidth + "px";
       drop.style.left = Math.random() * (window.innerWidth - 250) + "px";
-      drop.style.animationDuration = Math.random() * 5 + 5 + "s";
+      drop.style.animationDuration = Math.random() * 20 + 20 + "s";
     
       document.body.appendChild(drop);
     
-      setTimeout(() => drop.remove(), 10000);
+      setTimeout(() => drop.remove(), 35000);
     }
     
     let letters = ['A', 'L', 'J', 'N', 'E'];
