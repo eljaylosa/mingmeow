@@ -57,51 +57,51 @@ const btn = document.getElementById("reveal-btn");
       {
         text: "pass: jay123"
       },
-      {
-        text: "i miss u"
-      },
-      {
-        text: "yearner pro max"
-      },
-      {
-        text: "i don't know bro, i just want to keep her"
-      },
-      {
-        text: "bro is a keeper"
-      },
-      {
-        text: "i'm sorry if im being annoying"
-      },
-      {
-        text: "i'm sorry if i did something wrong"
-      },
-      {
-        text: "i'm sorry if i make u feel uncomfortable"
-      },
-      {
-        text: "i'm sorry if i make u feel pressured"
-      },
-      {
-        text: "i'm sorry if i ruined your peace"
-      },
-      {
-        text: "i want to know u more huhu"
-      },
-      {
-        text: "i have so many plans for us"
-      },
-      {
-        text: "overthinking might kill me fr"
-      },
-      {
-        text: "imma take it slow for now fr"
-      },
-      {
-        text: "i'm sorry if i'm pressuring u"
-      },
-      {
-        text: "allow me to love u, the way i love god, unconditionally"
-      },
+      // {
+      //   text: "i miss u"
+      // },
+      // {
+      //   text: "yearner pro max"
+      // },
+      // {
+      //   text: "i don't know bro, i just want to keep her"
+      // },
+      // {
+      //   text: "bro is a keeper"
+      // },
+      // {
+      //   text: "i'm sorry if im being annoying"
+      // },
+      // {
+      //   text: "i'm sorry if i did something wrong"
+      // },
+      // {
+      //   text: "i'm sorry if i make u feel uncomfortable"
+      // },
+      // {
+      //   text: "i'm sorry if i make u feel pressured"
+      // },
+      // {
+      //   text: "i'm sorry if i ruined your peace"
+      // },
+      // {
+      //   text: "i want to know u more huhu"
+      // },
+      // {
+      //   text: "i have so many plans for us"
+      // },
+      // {
+      //   text: "overthinking might kill me fr"
+      // },
+      // {
+      //   text: "imma take it slow for now fr"
+      // },
+      // {
+      //   text: "i'm sorry if i'm pressuring u"
+      // },
+      // {
+      //   text: "allow me to love u, the way i love god, unconditionally"
+      // },
       {
         text: "i was doing fine without u, till i saw your face, now i can't erase 🎵",
         audio: "soundfx/lyrics.mp3",
