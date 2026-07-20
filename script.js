@@ -107,11 +107,11 @@ const btn = document.getElementById("reveal-btn");
         audio: "soundfx/lyrics.mp3",
         glow: true
       },
-      {
-        text: "come on, don't leave me, it can't be that easy babe 🎵",
-        audio: "soundfx/lyrics2.mp3",
-        glow: true
-      },
+      // {
+      //   text: "come on, don't leave me, it can't be that easy babe 🎵",
+      //   audio: "soundfx/lyrics2.mp3",
+      //   glow: true
+      // },
       {
         text: "cause i don't want to be in love with another, even in another life 🎵",
         audio: "soundfx/lyrics3.mp3",
