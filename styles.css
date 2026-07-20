@@ -1,5 +1,5 @@
 body {
-  font-family: 'Pacifico', cursive;
+  font-family: "Pacifico", cursive;
   margin: 0;
   overflow: hidden;
   display: flex;
@@ -24,7 +24,7 @@ body {
   inset: 0;
   border: 10px solid #432d1e;
   transform-origin: left center;
-  transition: transform .8s ease;
+  transition: transform 0.8s ease;
 }
 
 .front {
@@ -35,17 +35,17 @@ body {
   z-index: 3;
   backface-visibility: hidden;
   position: relative;
-  background-image: url('img/cat3.jpg'); /* your cat image */
+  background-image: url("img/cat3.jpg"); /* your cat image */
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
 /* Pinkish overlay */
 .front::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background: rgba(255, 182, 193, 0.3); /* soft pink overlay */
@@ -66,26 +66,44 @@ body {
 
 /* Heart floating animation */
 @keyframes floatHeartFront {
-  0% { transform: translateX(-50%) translateY(0) rotate(0deg); opacity: 0.8; }
-  50% { transform: translateX(-60%) translateY(-30px) rotate(15deg); opacity: 1; }
-  100% { transform: translateX(-40%) translateY(-60px) rotate(-15deg); opacity: 0; }
+  0% {
+    transform: translateX(-50%) translateY(0) rotate(0deg);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateX(-60%) translateY(-30px) rotate(15deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-40%) translateY(-60px) rotate(-15deg);
+    opacity: 0;
+  }
 }
 
 /* Front text pop */
 .front h1 {
-  font-family: 'Pacifico', cursive;
+  font-family: "Pacifico", cursive;
   font-size: 36px;
   text-shadow: 2px 2px 8px #ff92b0, -2px -2px 8px #ff1c14;
   animation: bounceIn 1s ease forwards;
 }
 
 @keyframes bounceIn {
-  0% { transform: scale(0.5); opacity: 0; }
-  60% { transform: scale(1.2); opacity: 1; }
-  80% { transform: scale(0.9); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  80% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
-
 
 .back {
   background: #ee2c00;
@@ -96,7 +114,12 @@ body {
 }
 
 .first-page {
-  background: linear-gradient(135deg, #ff9aa2, #ff6b81, #ff3b5f); /* soft pink-red gradient */
+  background: linear-gradient(
+    135deg,
+    #ff9aa2,
+    #ff6b81,
+    #ff3b5f
+  ); /* soft pink-red gradient */
   z-index: 1;
   display: flex;
   flex-direction: column;
@@ -105,15 +128,21 @@ body {
   border-radius: 20px;
   padding: 30px;
   position: relative;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   overflow: hidden;
   animation: fadeIn 1.5s ease forwards;
 }
 
 /* Fade in animation */
 @keyframes fadeIn {
-  0% { opacity: 0; transform: scale(0.8); }
-  100% { opacity: 1; transform: scale(1); }
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 /* Floating hearts inside first-page */
@@ -136,14 +165,23 @@ body {
 }
 
 @keyframes floatHearts {
-  0% { transform: translateY(0) scale(1) rotate(0deg); opacity: 0.8; }
-  50% { transform: translateY(-30px) scale(1.2) rotate(15deg); opacity: 1; }
-  100% { transform: translateY(-60px) scale(1) rotate(-15deg); opacity: 0; }
+  0% {
+    transform: translateY(0) scale(1) rotate(0deg);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-30px) scale(1.2) rotate(15deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-60px) scale(1) rotate(-15deg);
+    opacity: 0;
+  }
 }
 
 /* Text inside first-page */
 .first-page p {
-  font-family: 'Pacifico', cursive;
+  font-family: "Pacifico", cursive;
   font-size: 36px;
   font-weight: bold;
   color: #fff;
@@ -154,17 +192,26 @@ body {
 
 /* Bouncy text */
 @keyframes bounceIn {
-  0% { transform: scale(0.5); opacity: 0; }
-  60% { transform: scale(1.2); opacity: 1; }
-  80% { transform: scale(0.9); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  80% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
-
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
 
 .first-page p {
-  font-family: 'Pacifico', cursive;  /* cute handwritten font */
+  font-family: "Pacifico", cursive; /* cute handwritten font */
   font-size: 36px;
   font-weight: bold;
   color: #c0014d; /* soft pink */
@@ -217,7 +264,6 @@ body {
   }
 }
 
-
 .card:hover .front,
 .card:hover .back {
   transform: perspective(800px) rotateY(-170deg);
@@ -225,11 +271,15 @@ body {
 }
 
 .reveal {
-  font-family: 'Pacifico', cursive;  /* playful, cute font */
+  font-family: "Pacifico", cursive; /* playful, cute font */
   font-size: 20px;
   margin-top: 20px;
   padding: 12px 25px;
-  background: linear-gradient(45deg, #ff5e9e, #ff1c14); /* pink to red gradient */
+  background: linear-gradient(
+    45deg,
+    #ff5e9e,
+    #ff1c14
+  ); /* pink to red gradient */
   color: #fff;
   border: none;
   border-radius: 50px; /* rounder, cuter */
@@ -283,7 +333,6 @@ body {
   }
 }
 
-
 .rain {
   position: fixed;
   top: -50px;
@@ -336,7 +385,6 @@ body {
     gap: 16px;
     justify-items: center;
   }
-  
 }
 
 /* ===================== TABLET ===================== */
@@ -367,7 +415,7 @@ body {
   }
 
   .card .first-page #hello {
- margin: 0;
+    margin: 0;
   }
 }
 
@@ -392,14 +440,13 @@ body {
     justify-items: center;
   }
   .song-boxes.list .song-card {
-
     width: 100%;
     margin: 0;
   }
   * {
-    font-family: 'Pacifico';
+    font-family: "Pacifico";
   }
-  
+
   .card .first-page #hint {
     font-size: 8px;
   }
@@ -444,7 +491,6 @@ body {
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
     justify-items: center;
-    
   }
 
   .song-card {
@@ -476,7 +522,7 @@ body {
     justify-items: center;
   }
   * {
-    font-family: 'Pacifico';
+    font-family: "Pacifico";
   }
   nav ul li a {
     font-size: 17px;
@@ -496,7 +542,7 @@ body {
     margin: 0 auto;
   }
   * {
-    font-family: 'Pacifico';
+    font-family: "Pacifico";
   }
   .card {
     width: 140px;
@@ -521,8 +567,6 @@ body {
   nav ul li a {
     font-size: 17px;
   }
-  
-
 }
 
 @media (max-width: 448px) {
@@ -533,7 +577,7 @@ body {
     justify-items: center;
   }
   * {
-    font-family: 'Pacifico';
+    font-family: "Pacifico";
   }
   nav ul li a {
     font-size: 17px;
@@ -564,7 +608,7 @@ body {
     justify-items: center;
   }
   * {
-    font-family: 'Pacifico';
+    font-family: "Pacifico";
   }
   nav ul li a {
     font-size: 17px;
@@ -624,11 +668,10 @@ nav #showSong:hover {
   background: #ff2c2c;
   color: #fff;
   box-shadow: #5f0303 0px 0px 10px;
- 
 }
 
 .songs-container {
-  display: none; 
+  display: none;
   position: fixed;
   top: 80px;
   left: 50%;
@@ -638,15 +681,12 @@ nav #showSong:hover {
   border-radius: 10px;
   z-index: 100;
   width: 80%;
-  max-height: 70vh;  
-  overflow-y: auto;  
+  max-height: 70vh;
+  overflow-y: auto;
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
 }
-
-
-
 
 .songs-container::-webkit-scrollbar {
   width: 8px;
@@ -674,11 +714,10 @@ nav #showSong:hover {
   flex-direction: column;
   align-items: center;
 }
-.songs-container .song-card .new p{
+.songs-container .song-card .new p {
   margin: 0;
   padding: 4px;
 }
-
 
 .songs-container .song-card img {
   width: 100%;
@@ -695,7 +734,7 @@ nav #showSong:hover {
   margin: 0 0 10px;
   font-size: 14px;
   color: #ccc;
-  transition: .2s;
+  transition: 0.2s;
 }
 .songs-container .song-card a {
   text-decoration: none;
@@ -714,7 +753,6 @@ nav #showSong:hover {
 .songs-container .song-card:hover {
   transform: scale(1.05);
 }
-
 
 .audio-player {
   width: 100%;
@@ -754,17 +792,23 @@ nav #showSong:hover {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: url('https://img.freepik.com/free-vector/hand-drawn-music-notes-illustration_23-2151320661.jpg') no-repeat center/cover;
+  background: url("https://img.freepik.com/free-vector/hand-drawn-music-notes-illustration_23-2151320661.jpg")
+    no-repeat center/cover;
   /* example record image, replace with your own if you want */
   animation: spin 0s linear infinite;
 }
 
 @keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-.song-info h3, .song-info p {
+.song-info h3,
+.song-info p {
   margin: 0;
   color: #fff;
   text-align: left;
@@ -784,7 +828,6 @@ nav #showSong:hover {
 .custom-player.active {
   display: flex; /* show only active card */
 }
-
 
 .custom-player .slider {
   width: 90%;
@@ -832,21 +875,19 @@ nav #showSong:hover {
   font-size: 30px;
   cursor: pointer;
   z-index: 99999;
-  transition: .1s;
+  transition: 0.1s;
   border-radius: 10px;
 }
 .repeat-btn:hover {
   transform: scale(1.1);
 }
 .repeat-btn:active {
- background-color: #b91533;
+  background-color: #b91533;
 }
-
 
 .custom-player .time {
   font-size: 12px;
 }
-
 
 .play-btn {
   display: none;
@@ -900,7 +941,7 @@ nav #showSong:hover {
   right: 0;
   background: white;
   border-radius: 10px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
   overflow: hidden;
   z-index: 10;
 }
@@ -956,8 +997,7 @@ nav #showSong:hover {
   inset: 20px;
   border-radius: 25px;
   background: rgba(255, 255, 255, 0.15);
-  box-shadow:
-    inset 0 0 40px rgba(255,255,255,0.4),
+  box-shadow: inset 0 0 40px rgba(255, 255, 255, 0.4),
     0 0 60px rgba(255, 182, 193, 0.6);
   pointer-events: none;
 }
@@ -967,14 +1007,13 @@ nav #showSong:hover {
   content: "";
   position: absolute;
   inset: 0;
-  background-image:
-    repeating-linear-gradient(
-      45deg,
-      rgba(255,255,255,0.05) 0,
-      rgba(255,255,255,0.05) 1px,
-      transparent 1px,
-      transparent 6px
-    );
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.05) 0,
+    rgba(255, 255, 255, 0.05) 1px,
+    transparent 1px,
+    transparent 6px
+  );
   pointer-events: none;
 }
 
@@ -992,7 +1031,9 @@ nav #showSong:hover {
     transform: translateY(100vh) scale(0.8);
     opacity: 0;
   }
-  20% { opacity: 1; }
+  20% {
+    opacity: 1;
+  }
   to {
     transform: translateY(-10vh) scale(1.2);
     opacity: 0;
@@ -1019,7 +1060,7 @@ nav #showSong:hover {
   font-size: 24px;
   background-color: #cc2400;
   cursor: pointer;
-  transition: .1s;
+  transition: 0.1s;
 }
 
 .close-btn2 .x-btn:hover {
@@ -1043,12 +1084,12 @@ nav #showSong:hover {
   text-align: center;
   border: 5px solid #5f0303;
   background-color: #c0014d;
-  position: fixed;         
+  position: fixed;
   width: 50%;
   height: max-content;
   background: rgba(160, 0, 80, 0.95);
-  z-index: 9999;           
-  display: none;   
+  z-index: 9999;
+  display: none;
 }
 .details-reveal p {
   color: #fff;
@@ -1081,14 +1122,8 @@ nav #showSong:hover {
   cursor: pointer;
   box-shadow: 0 8px 20px rgba(255, 117, 140, 0.4);
 
-  transition: 
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
-
-
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
-
-
 
 /* Hover effect */
 .flowers:hover {
@@ -1111,12 +1146,12 @@ nav #showSong:hover {
   }
   .nav-container #showSong {
     font-size: 0.9rem;
-    padding: 10px ;
+    padding: 10px;
   }
 }
 
 .notice .details {
-  font-family: 'Pacifico', cursive;
+  font-family: "Pacifico", cursive;
   font-weight: 800;
   border-radius: 20px;
   border: none;
@@ -1132,7 +1167,8 @@ nav #showSong:hover {
 }
 
 @keyframes colorChange {
-  0%, 100% {
+  0%,
+  100% {
     color: #442828;
   }
   25% {
@@ -1154,8 +1190,8 @@ nav #showSong:hover {
   font-size: 20px;
 }
 
-.view-change button{
-  font-family: 'Pacifico', cursive;
+.view-change button {
+  font-family: "Pacifico", cursive;
   font-size: 16px;
   padding: 8px 16px;
   border-radius: 20px;
@@ -1168,10 +1204,12 @@ nav #showSong:hover {
 .view-change button:hover {
   background: #ff2c2c;
 }
-.view-change #gridView:active, .view-change #listView:active {
+.view-change #gridView:active,
+.view-change #listView:active {
   background: #cc0000;
 }
-.view-change #gridView:focus, .view-change #listView:focus {
+.view-change #gridView:focus,
+.view-change #listView:focus {
   background: #cc0000;
 }
 
@@ -1182,11 +1220,6 @@ nav #showSong:hover {
   outline-offset: 2px;
 }
 
-
-
-
-
-
 /* Grid View */
 .song-boxes {
   display: grid;
@@ -1194,9 +1227,6 @@ nav #showSong:hover {
   gap: 16px;
   justify-items: center;
 }
-
-
-
 
 /* ===== LIST VIEW (SPOTIFY STYLE) ===== */
 .song-boxes.list {
@@ -1208,20 +1238,17 @@ nav #showSong:hover {
 
 .song-boxes.list .song-card {
   justify-content: center;
-  display: grid;  
+  display: grid;
   grid-template-columns: 50px 1fr auto;
   align-items: center;
   padding: 10px 14px;
-  background: transparent;  
+  background: transparent;
   border-radius: 0;
   box-shadow: none;
   margin: 0 auto;
   width: 80%;
   border-bottom: 1px solid #2a2a2a;
 }
-
-
-
 
 .song-boxes.list .song-card .custom-player {
   grid-column: 1 / -1;
@@ -1275,21 +1302,20 @@ nav #showSong:hover {
 }
 
 .song-boxes .message {
- grid-column: 1 / -1;
- margin: 20px;
+  grid-column: 1 / -1;
+  margin: 20px;
 }
 
 .song-boxes .message p {
- font-size: 1.5em;
- color: #ff00bb;
- text-align: center;
- font-weight: 600;
+  font-size: 1.5em;
+  color: #ff00bb;
+  text-align: center;
+  font-weight: 600;
 }
-
 
 /* custom alert styles */
 
-.body-work{
+.body-work {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -1308,7 +1334,7 @@ nav #showSong:hover {
   width: 300px;
   text-align: center;
   position: relative;
-  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-family: "Comic Sans MS", cursive, sans-serif;
   box-shadow: 0 4px 10px rgba(255, 153, 204, 0.5);
   animation: pop 0.3s ease-out;
   box-shadow: 4px 4px 4px 4xp rgba(255, 0, 128, 0.5);
@@ -1342,23 +1368,23 @@ nav #showSong:hover {
 }
 
 @keyframes pop {
-  0% { transform: scale(0.5); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
-
 
 .lyrics-glow {
   color: #fff;
   font-weight: bold;
-  text-shadow:
-    0 0 5px #fff,
-    0 0 10px #ff7ac8,
-    0 0 20px #ff4da6,
-    0 0 35px #ff1493,
-    0 0 60px #ff1493;
+  text-shadow: 0 0 5px #fff, 0 0 10px #ff7ac8, 0 0 20px #ff4da6,
+    0 0 35px #ff1493, 0 0 60px #ff1493;
 
-  animation:
-    glowPulse 1.5s ease-in-out infinite alternate,
+  animation: glowPulse 1.5s ease-in-out infinite alternate,
     fall 8s linear forwards;
 }
 
@@ -1371,27 +1397,20 @@ nav #showSong:hover {
   }
 }
 
+/* The falling letter styling */
+.rain-letters {
+  animation-name: fallToBottom;
+  animation-timing-function: linear;
+  pointer-events: none; /* Prevents frozen letters from blocking clicks on your site */
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* The animation logic that lands them exactly at the bottom border */
+@keyframes fallToBottom {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    /* calc(100vh - 50px) stops the letter right before it goes completely under the screen fold */
+    transform: translateY(calc(90vh + 20px));
+  }
+}
