@@ -23,8 +23,6 @@ function decodePostcardData() {
 
 function loadSharedPostcard() {
   const data = decodePostcardData();
-  const stampImageEl = document.getElementById("postcardStampImage");
-  const defaultStampEl = document.getElementById("postcardDefaultStamp");
 
   if (!data) return;
 
@@ -32,6 +30,9 @@ function loadSharedPostcard() {
   const messageEl = document.getElementById("postcardMessage");
   const toEl = document.getElementById("postcardTo");
   const fromEl = document.getElementById("postcardFrom");
+
+  const stampBox = document.getElementById("postcardStampBox");
+  const stampImage = document.getElementById("postcardStampImage");
 
   if (catEl) {
     catEl.textContent = data.cat || "🐱";
@@ -49,16 +50,10 @@ function loadSharedPostcard() {
     fromEl.textContent = data.sender || "";
   }
 
-  // Stamp image
-  if (stampImageEl && defaultStampEl) {
-    if (data.stampImage) {
-      stampImageEl.src = data.stampImage;
-      stampImageEl.hidden = false;
-      defaultStampEl.hidden = true;
-    } else {
-      stampImageEl.hidden = true;
-      defaultStampEl.hidden = false;
-    }
+  // Load uploaded stamp image
+  if (stampImage && stampBox && data.stampImage) {
+    stampImage.src = data.stampImage;
+    stampBox.classList.add("has-image");
   }
 }
 
@@ -101,6 +96,24 @@ function initCardFlip() {
 
 /* ---------- Cat reaction ---------- */
 
+const catSound = [
+  "assets/sounds/meow1.mp3",
+  "assets/sounds/meow2.mp3",
+  "assets/sounds/meow3.mp3",
+  "assets/sounds/meow4.mp3",
+  "assets/sounds/meow5.mp3",
+  "assets/sounds/meow6.mp3",
+];
+
+function playRandomCatSound() {
+  const randomIndex = Math.floor(Math.random() * catSound.length);
+  const audio = new Audio(catSound[randomIndex]);
+
+  audio.play().catch((error) => {
+    console.warn("Meow Page: could not play cat sound", error);
+  });
+}
+
 function initCardCatReaction() {
   const cat = document.getElementById("postcardCat");
 
@@ -108,6 +121,9 @@ function initCardCatReaction() {
 
   const bounce = (event) => {
     event.stopPropagation();
+
+    // Play random cat sound
+    playRandomCatSound();
 
     cat.classList.remove("bounce");
 

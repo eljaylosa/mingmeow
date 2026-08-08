@@ -12,7 +12,7 @@ function initStampImageUpload() {
   const stampInput = document.getElementById("stampImageInput");
   const removeStampBtn = document.getElementById("removeStampImage");
 
-  const stampBox = document.getElementById("postcardStamp");
+  const stampBox = document.getElementById("postcardStampBox");
   const stampImage = document.getElementById("postcardStampImage");
 
   const previewBox = document.getElementById("stampUploadPreview");
@@ -40,29 +40,29 @@ function initStampImageUpload() {
       return;
     }
 
-    if (postcardData.stampImage) {
-      URL.revokeObjectURL(postcardData.stampImage);
-    }
+    const reader = new FileReader();
 
-    const imageURL = URL.createObjectURL(file);
+    reader.onload = (event) => {
+      const imageData = event.target.result;
 
-    postcardData.stampImage = imageURL;
+      // Store the actual image data so it can be included
+      // in the shareable postcard link.
+      postcardData.stampImage = imageData;
 
-    // Postcard stamp
-    stampImage.src = imageURL;
-    stampBox.classList.add("has-image");
+      // Show image on postcard
+      stampImage.src = imageData;
+      stampBox.classList.add("has-image");
 
-    // Editor preview
-    previewImage.src = imageURL;
-    previewBox.classList.add("has-image");
+      // Show image in editor preview
+      previewImage.src = imageData;
+      previewBox.classList.add("has-image");
+    };
+
+    reader.readAsDataURL(file);
   });
 
   removeStampBtn.addEventListener("click", () => {
-    if (postcardData.stampImage) {
-      URL.revokeObjectURL(postcardData.stampImage);
-    }
-
-    postcardData.stampImage = null;
+    postcardData.stampImage = "";
 
     // Reset postcard stamp
     stampImage.src = "";
