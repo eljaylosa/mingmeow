@@ -213,6 +213,7 @@ function generatePostcardLink(button) {
   };
 
   try {
+    // JSON → UTF-8 → Base64
     const json = JSON.stringify(data);
 
     const bytes = new TextEncoder().encode(json);
@@ -223,13 +224,18 @@ function generatePostcardLink(button) {
 
     const encodedData = btoa(binary);
 
-    // Always point to card.html
-    const shareUrl = `${window.location.origin}/postcard/meow-page/meow-page/card#${encodedData}`;
+    // /create and /card are siblings
+    const cardUrl = new URL("./card", window.location.href);
+
+    cardUrl.hash = encodedData;
+
+    const shareUrl = cardUrl.href;
 
     navigator.clipboard
       .writeText(shareUrl)
       .then(() => {
         showButtonFeedback(button, "LINK COPIED ✓", 2000);
+
         showShareHint("Your postcard link is ready! 🔗💌", 3000);
       })
       .catch((err) => {
