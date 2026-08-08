@@ -453,6 +453,26 @@ a {
   display: none;
 }
 
+/* Hide default stamp content whenever an uploaded image is present */
+.postcard-stamp-box.has-image .postcard-stamp-cat,
+.postcard-stamp-box.has-image .postcard-stamp-label {
+  display: none !important;
+}
+
+/* Uploaded stamp image */
+.postcard-stamp-box.has-image .postcard-stamp-image {
+  display: block !important;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+/* Keep the image completely inside the stamp */
+.postcard-stamp-box {
+  overflow: hidden;
+}
+
 /* ---------- Stamp image upload preview ---------- */
 
 .stamp-upload-preview {
