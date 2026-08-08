@@ -213,11 +213,6 @@ function generatePostcardLink(button) {
   };
 
   try {
-    // Convert postcard data → JSON → Base64
-    // const encodedData = btoa(
-    //   unescape(encodeURIComponent(JSON.stringify(data)))
-    // );
-
     const json = JSON.stringify(data);
 
     const bytes = new TextEncoder().encode(json);
@@ -228,15 +223,9 @@ function generatePostcardLink(button) {
 
     const encodedData = btoa(binary);
 
-    // Create the shareable URL
-    const shareUrl = `${
-      window.location.origin
-    }${window.location.pathname.replace(
-      "create.html",
-      "card.html"
-    )}#${encodedData}`;
+    // Always point to card.html
+    const shareUrl = `${window.location.origin}/card.html#${encodedData}`;
 
-    // Copy link
     navigator.clipboard
       .writeText(shareUrl)
       .then(() => {
@@ -245,10 +234,12 @@ function generatePostcardLink(button) {
       })
       .catch((err) => {
         console.error("Meow Page: could not copy postcard link", err);
+
         showButtonFeedback(button, "CAN'T COPY");
       });
   } catch (err) {
     console.error("Meow Page: could not generate postcard link", err);
+
     showButtonFeedback(button, "CAN'T CREATE LINK");
   }
 }
