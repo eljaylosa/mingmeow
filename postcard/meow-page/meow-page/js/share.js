@@ -224,7 +224,11 @@ function generatePostcardLink(button) {
     const encodedData = btoa(binary);
 
     // Always point to card.html
-    const shareUrl = `${window.location.origin}/card.html#${encodedData}`;
+    const cardUrl = new URL("../card", window.location.href);
+
+    cardUrl.hash = encodedData;
+
+    const shareUrl = cardUrl.href;
 
     navigator.clipboard
       .writeText(shareUrl)
