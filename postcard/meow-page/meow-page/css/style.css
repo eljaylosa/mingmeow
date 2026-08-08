@@ -228,8 +228,8 @@ a {
 
 /* ---------- Postcard ---------- */
 .postcard {
-  width: 600px;
-  height: 394px;
+  width: 640px;
+  height: 420px;
   perspective: 1400px;
   cursor: pointer;
   user-select: none;
@@ -1033,54 +1033,6 @@ a {
   display: none;
 }
 
-/* ---------- Mobile ---------- */
-
-@media (max-width: 600px) {
-  .floating-music {
-    width: min(285px, calc(100vw - 32px));
-
-    right: 16px;
-    bottom: 16px;
-
-    left: auto;
-    top: auto;
-  }
-
-  .music-card {
-    width: 100%;
-  }
-
-  .music-bubble {
-    width: 54px;
-    height: 54px;
-  }
-
-  .create-layout {
-    flex-direction: column-reverse;
-    gap: 24px;
-    padding: 0 16px 40px;
-    align-items: center;
-  }
-
-  .preview-pane {
-    order: 1;
-    width: 100%;
-    padding-top: 10px;
-  }
-
-  .editor-pane {
-    order: 2;
-    width: 100%;
-    max-width: 440px;
-  }
-
-  .postcard {
-    width: min(480px, calc(100vw - 32px));
-    height: auto;
-    aspect-ratio: 480 / 315;
-  }
-}
-
 .card-page {
   min-height: 100vh;
   display: flex;
@@ -1100,24 +1052,197 @@ a {
   flex-wrap: wrap;
 }
 
+/* =========================================================
+   MOBILE RESPONSIVE
+   ========================================================= */
+
 @media (max-width: 600px) {
+  /* ---------- Card page ---------- */
+
   .card-page {
+    min-height: 100vh;
     justify-content: flex-start;
-    padding-top: 30px;
+    align-items: center;
+
+    padding: 24px 8px 100px;
+
+    gap: 20px;
   }
 
   .postcard-container {
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
   }
+
+  /*
+    Make the postcard almost fill the phone screen.
+    Keeps only a small 8px margin on each side.
+  */
+  .card-page .postcard {
+    width: calc(100vw - 16px);
+    max-width: 600px;
+
+    height: auto;
+    aspect-ratio: 600 / 394;
+  }
+
+  /* Keep the postcard contents proportional */
+  .card-page .postcard-paper-back {
+    padding: 4%;
+    gap: 3%;
+  }
+
+  .card-page .postcard-message {
+    font-size: clamp(1rem, 4vw, 1.55rem);
+    line-height: 1.35;
+  }
+
+  .card-page .postcard-greeting-front {
+    font-size: clamp(0.85rem, 3.5vw, 1.15rem);
+  }
+
+  .card-page .postcard-cat-frame {
+    width: clamp(75px, 23vw, 116px);
+    height: clamp(75px, 23vw, 116px);
+  }
+
+  .card-page .postcard-cat {
+    font-size: clamp(2.2rem, 10vw, 3.5rem);
+  }
+
+  /* ---------- Stamp ---------- */
+
+  .card-page .postcard-stamp-box {
+    width: clamp(70px, 21vw, 128px);
+    height: clamp(65px, 19vw, 118px);
+  }
+
+  .card-page .postcard-stamp-cat {
+    font-size: clamp(1rem, 5vw, 1.45rem);
+  }
+
+  .card-page .postcard-stamp-label {
+    font-size: clamp(0.35rem, 1.8vw, 0.5rem);
+  }
+
+  /* ---------- To / From ---------- */
+
+  .card-page .postcard-to,
+  .card-page .postcard-from {
+    font-size: clamp(0.85rem, 4vw, 1.2rem);
+  }
+
+  .card-page .postcard-label {
+    font-size: clamp(0.5rem, 2vw, 0.7rem);
+  }
+
+  .card-page .postcard-address-lines {
+    gap: clamp(7px, 2.5vw, 14px);
+  }
+
+  /* ---------- Buttons ---------- */
 
   .card-actions {
     width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 10px;
+    flex-wrap: wrap;
   }
 
   .card-actions .btn {
+    width: auto;
+    min-width: 130px;
+    max-width: 180px;
+
+    padding: 11px 18px;
+    font-size: 0.82rem;
+  }
+
+  /* =========================================================
+     FLOATING MUSIC PLAYER
+     ========================================================= */
+
+  .floating-music {
+    width: calc(100vw - 24px);
+
+    max-width: 360px;
+
+    right: 12px;
+    bottom: 12px;
+
+    left: auto;
+    top: auto;
+
+    z-index: 9999;
+  }
+
+  /* Expanded music player */
+
+  .music-card {
     width: 100%;
-    max-width: 280px;
+
+    border-radius: 16px;
+  }
+
+  .music-card-header {
+    padding: 15px 14px 10px;
+    gap: 9px;
+  }
+
+  .music-cover {
+    width: 38px;
+    height: 38px;
+
+    font-size: 1.1rem;
+  }
+
+  .music-eyebrow {
+    font-size: 0.58rem;
+  }
+
+  .music-track-info strong {
+    font-size: 0.8rem;
+  }
+
+  .music-track-info > span:last-child {
+    font-size: 0.68rem;
+  }
+
+  .music-body {
+    padding: 4px 14px 10px;
+  }
+
+  .music-play {
+    width: 40px;
+    height: 40px;
+  }
+
+  .music-volume {
+    width: 32px;
+    height: 32px;
+  }
+
+  .music-tiny-label {
+    padding: 0 12px 11px;
+    font-size: 0.85rem;
+  }
+
+  /* ---------- Music bubble ---------- */
+
+  .music-bubble {
+    width: 56px;
+    height: 56px;
+
+    margin-left: auto;
+  }
+
+  .music-bubble-icon {
+    font-size: 1.35rem;
   }
 }
