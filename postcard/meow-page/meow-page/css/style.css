@@ -10,6 +10,7 @@ body {
   background: #fdf6f0;
   color: #3a2e2a;
   min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
 }
 
 a {
@@ -19,30 +20,59 @@ a {
 
 /* ---------- Buttons ---------- */
 .btn {
-  display: inline-block;
-  padding: 14px 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 28px;
   border: none;
   border-radius: 999px;
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
+  letter-spacing: 0.03em;
 }
 
 .btn-primary {
-  background: #ff9db3;
+  background: #ff8fa3;
   color: #fff;
+  box-shadow: 0 4px 14px rgba(255, 143, 163, 0.35);
+}
+
+.btn-primary:hover {
+  background: #ff7a94;
 }
 
 .btn-secondary {
   background: #fff;
   color: #3a2e2a;
-  border: 1px solid #e3d5cd;
+  border: 1px solid #d9c5bc;
+  box-shadow: 0 2px 6px rgba(58, 46, 42, 0.04);
+}
+
+.btn-secondary:hover {
+  background: #faf4ef;
+  border-color: #c9b4aa;
 }
 
 .action-row {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.share-hint {
+  font-size: 0.85rem;
+  color: #7a6a63;
+  min-height: 1.2em;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-style: italic;
+}
+
+.share-hint.visible {
+  opacity: 1;
 }
 
 /* ---------- Home page ---------- */
@@ -52,51 +82,87 @@ a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 16px;
+  gap: 18px;
   text-align: center;
   padding: 24px;
+  background: radial-gradient(circle at center, #fff9f5 0%, #fdf6f0 100%);
 }
 
 .home-cat {
-  font-size: 4rem;
+  font-size: 4.5rem;
+  filter: drop-shadow(0 6px 12px rgba(58, 46, 42, 0.08));
 }
 
 .home-title {
-  font-size: 2.5rem;
-  letter-spacing: 0.1em;
+  font-family: 'Special Elite', monospace;
+  font-size: 2.75rem;
+  letter-spacing: 0.12em;
+  color: #2e2421;
 }
 
 .home-subtitle {
   color: #7a6a63;
-  line-height: 1.5;
+  line-height: 1.6;
+  font-size: 1.05rem;
 }
 
 .home .btn {
-  margin-top: 16px;
+  margin-top: 12px;
+  padding: 15px 36px;
+  font-size: 1.05rem;
 }
 
 /* ---------- Create page ---------- */
 .create-header {
-  padding: 16px 24px;
+  padding: 20px 32px;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .back-link {
   font-weight: 600;
+  color: #6a5a53;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+.back-link:hover {
+  color: #3a2e2a;
 }
 
 .create-layout {
   display: flex;
-  gap: 32px;
-  padding: 0 24px 48px;
+  gap: 40px;
+  padding: 0 32px 56px;
   align-items: flex-start;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 .editor-pane {
   flex: 1;
-  max-width: 420px;
+  max-width: 440px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 18px;
+  background: #fff9f5;
+  padding: 24px;
+  border-radius: 16px;
+  border: 1px solid #ebdcd3;
+  box-shadow: 0 4px 20px rgba(58, 46, 42, 0.03);
+}
+
+.editor-pane h2 {
+  font-family: 'Special Elite', monospace;
+  font-size: 1.25rem;
+  letter-spacing: 0.05em;
+  color: #3a2e2a;
+  border-bottom: 2px dashed #ebdcd3;
+  padding-bottom: 8px;
 }
 
 .field {
@@ -107,57 +173,73 @@ a {
 
 .field label {
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
+  color: #5a4a43;
+  letter-spacing: 0.02em;
 }
 
 .field input,
 .field textarea {
-  padding: 10px 12px;
-  border: 1px solid #e3d5cd;
+  padding: 11px 14px;
+  border: 1px solid #d9c5bc;
   border-radius: 10px;
   font-family: inherit;
-  font-size: 1rem;
+  font-size: 0.98rem;
+  background: #fff;
+  color: #3a2e2a;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: #ff8fa3;
+  box-shadow: 0 0 0 3px rgba(255, 143, 163, 0.15);
 }
 
 .field textarea {
-  min-height: 100px;
+  min-height: 110px;
   resize: vertical;
 }
 
 .cat-options {
   display: flex;
-  gap: 8px;
+  gap: 10px;
 }
 
 .cat-option {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   background: #fff;
-  border: 1px solid #e3d5cd;
-  border-radius: 10px;
-  padding: 8px 12px;
+  border: 1px solid #d9c5bc;
+  border-radius: 12px;
+  padding: 8px 14px;
   cursor: pointer;
+  box-shadow: 0 2px 4px rgba(58, 46, 42, 0.03);
 }
 
 .preview-pane {
-  flex: 1;
+  flex: 1.1;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  padding-top: 24px;
+  padding-top: 32px;
 }
 
 /* ---------- Postcard ---------- */
 .postcard {
-  width: 460px;
-  height: 300px;
+  width: 480px;
+  height: 315px;
   perspective: 1200px;
   cursor: pointer;
+  user-select: none;
 }
 
 .postcard-inner {
   position: relative;
   width: 100%;
   height: 100%;
-  transition: transform 0.6s;
+  transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
   transform-style: preserve-3d;
 }
 
@@ -165,16 +247,14 @@ a {
   transform: rotateY(180deg);
 }
 
-/* Airmail striped frame: the front/back elements carry the diagonal
-   red/white/blue stripe as their background, and a small padding
-   reveals it as a border around the paper inside. */
+/* Airmail striped frame */
 .postcard-front,
 .postcard-back {
   position: absolute;
   inset: 0;
   backface-visibility: hidden;
-  border-radius: 14px;
-  padding: 8px;
+  border-radius: 16px;
+  padding: 9px;
   background: repeating-linear-gradient(
     45deg,
     #c8465a 0px,
@@ -186,7 +266,7 @@ a {
     #fdf8f0 30px,
     #fdf8f0 40px
   );
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 24px rgba(58, 46, 42, 0.12);
 }
 
 .postcard-back {
@@ -198,7 +278,7 @@ a {
   width: 100%;
   height: 100%;
   background: #fdf8f0;
-  border-radius: 8px;
+  border-radius: 9px;
   position: relative;
   overflow: visible;
 }
@@ -209,38 +289,39 @@ a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 14px;
+  gap: 16px;
 }
 
 .postcard-postmark {
   position: absolute;
-  top: 14px;
-  left: 16px;
-  font-size: 1.3rem;
+  top: 16px;
+  left: 18px;
+  font-size: 1.4rem;
   opacity: 0.45;
 }
 
 .postcard-cat-frame {
-  width: 108px;
-  height: 108px;
+  width: 116px;
+  height: 116px;
   border-radius: 50%;
   border: 2px dashed #c9b8ab;
   display: flex;
   align-items: center;
   justify-content: center;
   background: #fffdfa;
+  box-shadow: inset 0 2px 6px rgba(58, 46, 42, 0.04);
 }
 
 .postcard-cat {
-  font-size: 3.2rem;
+  font-size: 3.5rem;
   display: inline-block;
   cursor: pointer;
 }
 
 .postcard-greeting-front {
   font-family: 'Special Elite', monospace;
-  font-size: 1.1rem;
-  letter-spacing: 0.12em;
+  font-size: 1.15rem;
+  letter-spacing: 0.14em;
   text-align: center;
   color: #3a2e2a;
 }
@@ -248,8 +329,8 @@ a {
 /* ---------- Back face ---------- */
 .postcard-paper-back {
   display: flex;
-  padding: 20px 22px;
-  gap: 18px;
+  padding: 22px 24px;
+  gap: 20px;
 }
 
 .postcard-back-left {
@@ -281,7 +362,7 @@ a {
 
 .postcard-message {
   font-family: 'Caveat', cursive;
-  font-size: 1.5rem;
+  font-size: 1.55rem;
   line-height: 28px;
   color: #3a2e2a;
   word-wrap: break-word;
@@ -302,20 +383,21 @@ a {
 
 .postcard-stamp-box {
   align-self: flex-end;
-  width: 56px;
-  height: 64px;
+  width: 58px;
+  height: 66px;
   border: 2px dashed #b9c9d8;
-  border-radius: 4px;
+  border-radius: 6px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 2px;
   background: #f4f8fb;
+  box-shadow: 0 2px 4px rgba(58, 46, 42, 0.03);
 }
 
 .postcard-stamp-cat {
-  font-size: 1.4rem;
+  font-size: 1.45rem;
 }
 
 .postcard-stamp-label {
@@ -345,7 +427,7 @@ a {
 .postcard-to,
 .postcard-from {
   font-family: 'Caveat', cursive;
-  font-size: 1.15rem;
+  font-size: 1.2rem;
 }
 
 .postcard-address-lines {
@@ -362,6 +444,7 @@ a {
 }
 
 .cat-option.selected {
-  border-color: #ff9db3;
-  background: #fff5f7;
+  border-color: #ff8fa3;
+  background: #fff0f3;
+  box-shadow: 0 0 0 2px rgba(255, 143, 163, 0.2);
 }

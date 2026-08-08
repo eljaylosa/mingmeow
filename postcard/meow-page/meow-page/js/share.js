@@ -112,7 +112,59 @@ function canvasToPngFile(canvas) {
   });
 }
 
+// Detects whether the primary input is a mouse/trackpad (desktop-like)
+// rather than touch. Deliberately avoids user-agent sniffing — this uses
+// the standard capability-based media features instead, so it stays
+// accurate even on devices with mixed input (e.g. a touchscreen laptop
+// with a mouse still reads as desktop-like, which is what matters here:
+// Windows' native file-share picker is unreliable regardless of touch).
+function isDesktopEnvironment() {
+  return (
+    typeof window.matchMedia === 'function' &&
+    window.matchMedia('(hover: hover) and (pointer: fine)').matches
+  );
+}
+
+function showShareHint(message, duration = 2500) {
+  const hint = document.getElementById('shareHint');
+  if (!hint) return;
+
+  hint.textContent = message;
+  hint.classList.add('visible');
+
+  setTimeout(() => {
+    hint.classList.remove('visible');
+  }, duration);
+}
+
+// Desktop fallback: native file sharing can't be trusted to actually
+// succeed on Windows (navigator.share() resolves as soon as the OS picker
+// opens, not once a share completes), so instead we generate the same
+// postcard PNG and download it directly, then tell the person it's ready
+// to attach/share manually.
+function shareViaDesktopDownload(button) {
+  renderPostcardCanvas()
+    .then((canvas) => {
+      const link = document.createElement('a');
+      link.download = 'meow-postcard.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+
+      showButtonFeedback(button, 'DOWNLOADED ✓', 2000);
+      showShareHint("Your postcard is saved — attach it anywhere you'd like to share it! 💌");
+    })
+    .catch((err) => {
+      console.error('Meow Page: could not generate postcard image for desktop share', err);
+      showButtonFeedback(button, "CAN'T SHARE");
+    });
+}
+
 function sharePostcardImage(button) {
+  if (isDesktopEnvironment()) {
+    shareViaDesktopDownload(button);
+    return;
+  }
+
   if (!navigator.share || !navigator.canShare) {
     console.warn('Meow Page: Web Share (file) API not available in this browser');
     showButtonFeedback(button, 'IMAGE SHARING NOT SUPPORTED');
@@ -120,52 +172,25 @@ function sharePostcardImage(button) {
   }
 
   renderPostcardCanvas()
-    .then((canvas) => {
-      console.log('[MeowShare] 1. renderPostcardCanvas() resolved:', canvas, {
-        width: canvas.width,
-        height: canvas.height
-      });
-      return canvasToPngFile(canvas);
-    })
+    .then(canvasToPngFile)
     .then((file) => {
-      console.log('[MeowShare] 2/3. canvasToPngFile() resolved, File created:', {
-        name: file.name,
-        type: file.type,
-        size: file.size
-      });
-
-      const canShareFiles = navigator.canShare({ files: [file] });
-      console.log('[MeowShare] 4. navigator.canShare({ files: [file] }) =', canShareFiles);
-
-      if (!canShareFiles) {
+      if (!navigator.canShare({ files: [file] })) {
         showButtonFeedback(button, 'IMAGE SHARING NOT SUPPORTED');
         return;
       }
 
-      const shareData = {
+      return navigator.share({
         title: 'A Meow For You 🐱',
         text: getPostcardText(),
         files: [file]
-      };
-      console.log('[MeowShare] Calling navigator.share() with:', shareData);
-
-      return navigator.share(shareData);
-    })
-    .then(() => {
-      console.log('[MeowShare] navigator.share() resolved successfully');
+      });
     })
     .catch((err) => {
       // The user closing/cancelling the native share sheet is expected
       // behavior, not an error — don't show any feedback for it.
-      if (err && err.name === 'AbortError') {
-        console.log('[MeowShare] navigator.share() aborted by user (AbortError) — treated as normal cancellation');
-        return;
-      }
+      if (err && err.name === 'AbortError') return;
 
-      console.error('[MeowShare] 5. navigator.share() rejected:', err, {
-        name: err && err.name,
-        message: err && err.message
-      });
+      console.error('Meow Page: could not share postcard image', err);
       showButtonFeedback(button, "CAN'T SHARE");
     });
 }

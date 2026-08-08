@@ -1,4 +1,4 @@
-// Postcard state + live preview wiring (Phase 2)
+// Postcard state + live preview wiring (Phase 2 & 6D Accessibility)
 
 const postcardData = {
   recipient: '',
@@ -53,6 +53,13 @@ function initPostcardEditor() {
 
       updatePostcardPreview();
     });
+
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        btn.click();
+      }
+    });
   });
 
   // Mark the default cat as selected on load
@@ -67,8 +74,17 @@ function initPostcardFlip() {
   const postcard = document.getElementById('postcard');
   if (!postcard) return;
 
-  postcard.addEventListener('click', () => {
+  const toggleFlip = () => {
     postcard.classList.toggle('flipped');
+  };
+
+  postcard.addEventListener('click', toggleFlip);
+
+  postcard.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      toggleFlip();
+    }
   });
 }
 
@@ -76,14 +92,22 @@ function initCatReaction() {
   const postcardCat = document.getElementById('postcardCat');
   if (!postcardCat) return;
 
-  postcardCat.addEventListener('click', (event) => {
-    // Don't let a cat click also trigger the postcard flip
+  const triggerBounce = (event) => {
     event.stopPropagation();
 
     postcardCat.classList.remove('bounce');
     // restart the animation even if clicked rapidly
     void postcardCat.offsetWidth;
     postcardCat.classList.add('bounce');
+  };
+
+  postcardCat.addEventListener('click', triggerBounce);
+
+  postcardCat.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      triggerBounce(e);
+    }
   });
 
   postcardCat.addEventListener('animationend', () => {
