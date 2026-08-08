@@ -2,11 +2,11 @@
 // Facebook/Messenger/Instagram-specific behavior is added in a later phase.
 
 function getVisiblePostcardFace() {
-  const postcard = document.getElementById('postcard');
+  const postcard = document.getElementById("postcard");
   if (!postcard) return null;
 
-  const isFlipped = postcard.classList.contains('flipped');
-  const selector = isFlipped ? '.postcard-back' : '.postcard-front';
+  const isFlipped = postcard.classList.contains("flipped");
+  const selector = isFlipped ? ".postcard-back" : ".postcard-front";
   return postcard.querySelector(selector);
 }
 
@@ -16,8 +16,10 @@ function getVisiblePostcardFace() {
 // and resolves with the resulting canvas.
 function renderPostcardCanvas() {
   const faceEl = getVisiblePostcardFace();
-  if (!faceEl || typeof html2canvas === 'undefined') {
-    return Promise.reject(new Error('Postcard face is not available to render'));
+  if (!faceEl || typeof html2canvas === "undefined") {
+    return Promise.reject(
+      new Error("Postcard face is not available to render")
+    );
   }
 
   // The front/back faces carry their own 3D positioning (absolute position,
@@ -26,14 +28,14 @@ function renderPostcardCanvas() {
   // the flip state, so we clone the visible face, strip that positioning
   // inline, and render the clone off-screen instead of the live element.
   const clone = faceEl.cloneNode(true);
-  clone.style.position = 'static';
-  clone.style.transform = 'none';
-  clone.style.inset = 'auto';
+  clone.style.position = "static";
+  clone.style.transform = "none";
+  clone.style.inset = "auto";
 
-  const wrapper = document.createElement('div');
-  wrapper.style.position = 'fixed';
-  wrapper.style.top = '-9999px';
-  wrapper.style.left = '-9999px';
+  const wrapper = document.createElement("div");
+  wrapper.style.position = "fixed";
+  wrapper.style.top = "-9999px";
+  wrapper.style.left = "-9999px";
   wrapper.style.width = `${faceEl.offsetWidth}px`;
   wrapper.style.height = `${faceEl.offsetHeight}px`;
   wrapper.appendChild(clone);
@@ -41,7 +43,7 @@ function renderPostcardCanvas() {
 
   return html2canvas(clone, {
     scale: 3,
-    backgroundColor: null
+    backgroundColor: null,
   }).finally(() => {
     document.body.removeChild(wrapper);
   });
@@ -50,21 +52,21 @@ function renderPostcardCanvas() {
 function downloadPostcard() {
   renderPostcardCanvas()
     .then((canvas) => {
-      const link = document.createElement('a');
-      link.download = 'meow-postcard.png';
-      link.href = canvas.toDataURL('image/png');
+      const link = document.createElement("a");
+      link.download = "meow-postcard.png";
+      link.href = canvas.toDataURL("image/png");
       link.click();
     })
     .catch((err) => {
-      console.error('Meow Page: could not generate postcard image', err);
+      console.error("Meow Page: could not generate postcard image", err);
     });
 }
 
 function getPostcardText() {
   // postcardData is defined in postcard.js and always holds the live values
-  const recipient = postcardData.recipient || '';
-  const message = postcardData.message || '';
-  const sender = postcardData.sender || '';
+  const recipient = postcardData.recipient || "";
+  const message = postcardData.message || "";
+  const sender = postcardData.sender || "";
 
   return `To: ${recipient}\n\n${message}\n\nFrom: ${sender}`;
 }
@@ -84,7 +86,7 @@ function copyPostcard(button) {
   const text = getPostcardText();
 
   if (!navigator.clipboard || !navigator.clipboard.writeText) {
-    console.error('Meow Page: Clipboard API not available in this browser');
+    console.error("Meow Page: Clipboard API not available in this browser");
     showButtonFeedback(button, "CAN'T COPY");
     return;
   }
@@ -92,10 +94,10 @@ function copyPostcard(button) {
   navigator.clipboard
     .writeText(text)
     .then(() => {
-      showButtonFeedback(button, 'COPIED ✓');
+      showButtonFeedback(button, "COPIED ✓");
     })
     .catch((err) => {
-      console.error('Meow Page: could not copy postcard text', err);
+      console.error("Meow Page: could not copy postcard text", err);
       showButtonFeedback(button, "CAN'T COPY");
     });
 }
@@ -104,11 +106,11 @@ function canvasToPngFile(canvas) {
   return new Promise((resolve, reject) => {
     canvas.toBlob((blob) => {
       if (!blob) {
-        reject(new Error('Could not convert postcard canvas to an image blob'));
+        reject(new Error("Could not convert postcard canvas to an image blob"));
         return;
       }
-      resolve(new File([blob], 'meow-postcard.png', { type: 'image/png' }));
-    }, 'image/png');
+      resolve(new File([blob], "meow-postcard.png", { type: "image/png" }));
+    }, "image/png");
   });
 }
 
@@ -120,20 +122,20 @@ function canvasToPngFile(canvas) {
 // Windows' native file-share picker is unreliable regardless of touch).
 function isDesktopEnvironment() {
   return (
-    typeof window.matchMedia === 'function' &&
-    window.matchMedia('(hover: hover) and (pointer: fine)').matches
+    typeof window.matchMedia === "function" &&
+    window.matchMedia("(hover: hover) and (pointer: fine)").matches
   );
 }
 
 function showShareHint(message, duration = 2500) {
-  const hint = document.getElementById('shareHint');
+  const hint = document.getElementById("shareHint");
   if (!hint) return;
 
   hint.textContent = message;
-  hint.classList.add('visible');
+  hint.classList.add("visible");
 
   setTimeout(() => {
-    hint.classList.remove('visible');
+    hint.classList.remove("visible");
   }, duration);
 }
 
@@ -145,16 +147,21 @@ function showShareHint(message, duration = 2500) {
 function shareViaDesktopDownload(button) {
   renderPostcardCanvas()
     .then((canvas) => {
-      const link = document.createElement('a');
-      link.download = 'meow-postcard.png';
-      link.href = canvas.toDataURL('image/png');
+      const link = document.createElement("a");
+      link.download = "meow-postcard.png";
+      link.href = canvas.toDataURL("image/png");
       link.click();
 
-      showButtonFeedback(button, 'DOWNLOADED ✓', 2000);
-      showShareHint("Your postcard is saved — attach it anywhere you'd like to share it! 💌");
+      showButtonFeedback(button, "DOWNLOADED ✓", 2000);
+      showShareHint(
+        "Your postcard is saved — attach it anywhere you'd like to share it! 💌"
+      );
     })
     .catch((err) => {
-      console.error('Meow Page: could not generate postcard image for desktop share', err);
+      console.error(
+        "Meow Page: could not generate postcard image for desktop share",
+        err
+      );
       showButtonFeedback(button, "CAN'T SHARE");
     });
 }
@@ -166,8 +173,10 @@ function sharePostcardImage(button) {
   }
 
   if (!navigator.share || !navigator.canShare) {
-    console.warn('Meow Page: Web Share (file) API not available in this browser');
-    showButtonFeedback(button, 'IMAGE SHARING NOT SUPPORTED');
+    console.warn(
+      "Meow Page: Web Share (file) API not available in this browser"
+    );
+    showButtonFeedback(button, "IMAGE SHARING NOT SUPPORTED");
     return;
   }
 
@@ -175,42 +184,98 @@ function sharePostcardImage(button) {
     .then(canvasToPngFile)
     .then((file) => {
       if (!navigator.canShare({ files: [file] })) {
-        showButtonFeedback(button, 'IMAGE SHARING NOT SUPPORTED');
+        showButtonFeedback(button, "IMAGE SHARING NOT SUPPORTED");
         return;
       }
 
       return navigator.share({
-        title: 'A Meow For You 🐱',
+        title: "A Meow For You 🐱",
         text: getPostcardText(),
-        files: [file]
+        files: [file],
       });
     })
     .catch((err) => {
       // The user closing/cancelling the native share sheet is expected
       // behavior, not an error — don't show any feedback for it.
-      if (err && err.name === 'AbortError') return;
+      if (err && err.name === "AbortError") return;
 
-      console.error('Meow Page: could not share postcard image', err);
+      console.error("Meow Page: could not share postcard image", err);
       showButtonFeedback(button, "CAN'T SHARE");
     });
 }
 
-function initShare() {
-  const sendBtn = document.getElementById('sendBtn');
-  const copyBtn = document.getElementById('copyBtn');
-  const shareBtn = document.getElementById('shareBtn');
+function generatePostcardLink(button) {
+  const data = {
+    recipient: postcardData.recipient || "",
+    message: postcardData.message || "Hello!",
+    sender: postcardData.sender || "",
+    cat: postcardData.cat || "🐱",
+  };
 
-  if (sendBtn) {
-    sendBtn.addEventListener('click', downloadPostcard);
-  }
+  try {
+    // Convert postcard data → JSON → Base64
+    // const encodedData = btoa(
+    //   unescape(encodeURIComponent(JSON.stringify(data)))
+    // );
 
-  if (copyBtn) {
-    copyBtn.addEventListener('click', () => copyPostcard(copyBtn));
-  }
+    const json = JSON.stringify(data);
 
-  if (shareBtn) {
-    shareBtn.addEventListener('click', () => sharePostcardImage(shareBtn));
+    const bytes = new TextEncoder().encode(json);
+
+    const binary = Array.from(bytes)
+      .map((byte) => String.fromCharCode(byte))
+      .join("");
+
+    const encodedData = btoa(binary);
+
+    // Create the shareable URL
+    const shareUrl = `${
+      window.location.origin
+    }${window.location.pathname.replace(
+      "create.html",
+      "card.html"
+    )}#${encodedData}`;
+
+    // Copy link
+    navigator.clipboard
+      .writeText(shareUrl)
+      .then(() => {
+        showButtonFeedback(button, "LINK COPIED ✓", 2000);
+        showShareHint("Your postcard link is ready! 🔗💌", 3000);
+      })
+      .catch((err) => {
+        console.error("Meow Page: could not copy postcard link", err);
+        showButtonFeedback(button, "CAN'T COPY");
+      });
+  } catch (err) {
+    console.error("Meow Page: could not generate postcard link", err);
+    showButtonFeedback(button, "CAN'T CREATE LINK");
   }
 }
 
-document.addEventListener('DOMContentLoaded', initShare);
+function initShare() {
+  const sendBtn = document.getElementById("sendBtn");
+  const copyBtn = document.getElementById("copyBtn");
+  const shareBtn = document.getElementById("shareBtn");
+  const getlinkBtn = document.getElementById("getlinkBtn");
+
+  if (sendBtn) {
+    sendBtn.addEventListener("click", downloadPostcard);
+  }
+
+  if (copyBtn) {
+    copyBtn.addEventListener("click", () => copyPostcard(copyBtn));
+  }
+
+  if (shareBtn) {
+    shareBtn.addEventListener("click", () => sharePostcardImage(shareBtn));
+  }
+
+  if (getlinkBtn) {
+    getlinkBtn.addEventListener("click", () => {
+      generatePostcardLink(getlinkBtn);
+    });
+  }
+}
+
+document.addEventListener("DOMContentLoaded", initShare);

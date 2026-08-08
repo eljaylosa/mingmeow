@@ -1,122 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Meow Page — Create Postcard</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Special+Elite&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/animations.css" />
-  <link rel="stylesheet" href="css/responsive.css" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meow Page — Create Postcard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Special+Elite&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+  </head>
+  <body>
+    <header class="create-header">
+      <a
+        href="index.html"
+        class="back-link"
+        aria-label="Return to Meow Page home"
+        >← Meow Page</a
+      >
+    </header>
 
-  <header class="create-header">
-    <a href="index.html" class="back-link" aria-label="Return to Meow Page home">← Meow Page</a>
-  </header>
+    <main class="create-layout" role="main">
+      <section class="editor-pane" aria-labelledby="editorHeading">
+        <h2 id="editorHeading">Customize</h2>
 
-  <main class="create-layout" role="main">
-
-    <section class="editor-pane" aria-labelledby="editorHeading">
-      <h2 id="editorHeading">Customize</h2>
-
-      <div class="field">
-        <label for="recipientInput">To:</label>
-        <input type="text" id="recipientInput" placeholder="Someone" aria-label="Recipient name" />
-      </div>
-
-      <div class="field">
-        <label for="messageInput">Message:</label>
-        <textarea id="messageInput" placeholder="Write your message here..." aria-label="Postcard message"></textarea>
-      </div>
-
-      <div class="field">
-        <label for="senderInput">From:</label>
-        <input type="text" id="senderInput" placeholder="You" aria-label="Sender name" />
-      </div>
-
-      <div class="field">
-        <label id="catPickerLabel">Cat:</label>
-        <div class="cat-options" role="group" aria-labelledby="catPickerLabel">
-          <button class="cat-option" data-cat="🐱" aria-label="Select cat face 1">🐱</button>
-          <button class="cat-option" data-cat="🐈" aria-label="Select cat face 2">🐈</button>
-          <button class="cat-option" data-cat="🐈‍⬛" aria-label="Select cat face 3">🐈‍⬛</button>
-          <button class="cat-option" data-cat="😺" aria-label="Select cat face 4">😺</button>
+        <div class="field">
+          <label for="recipientInput">To:</label>
+          <input
+            type="text"
+            id="recipientInput"
+            placeholder="Someone"
+            aria-label="Recipient name"
+          />
         </div>
-      </div>
 
-      <div class="action-row">
-        <button class="btn btn-primary" id="sendBtn" aria-label="Download postcard as PNG image">SEND MEOW 💌</button>
-        <button class="btn btn-secondary" id="copyBtn" aria-label="Copy postcard text to clipboard">COPY 📋</button>
-        <button class="btn btn-secondary" id="shareBtn" aria-label="Share postcard image">SHARE ↗</button>
-      </div>
-      <p class="share-hint" id="shareHint" aria-live="polite"></p>
-    </section>
+        <div class="field">
+          <label for="messageInput">Message:</label>
+          <textarea
+            id="messageInput"
+            placeholder="Write your message here..."
+            aria-label="Postcard message"
+          ></textarea>
+        </div>
 
-    <section class="preview-pane" aria-label="Postcard preview">
-      <div class="postcard" id="postcard" tabindex="0" role="button" aria-label="Interactive postcard. Click to flip between front and back faces.">
-        <div class="postcard-inner" id="postcardInner">
+        <div class="field">
+          <label for="senderInput">From:</label>
+          <input
+            type="text"
+            id="senderInput"
+            placeholder="You"
+            aria-label="Sender name"
+          />
+        </div>
 
-          <div class="postcard-front">
-            <div class="postcard-paper postcard-paper-front">
-              <div class="postcard-postmark" aria-hidden="true">🐾</div>
+        <div class="field">
+          <label id="catPickerLabel">Cat:</label>
+          <div
+            class="cat-options"
+            role="group"
+            aria-labelledby="catPickerLabel"
+          >
+            <button
+              class="cat-option"
+              data-cat="🐱"
+              aria-label="Select cat face 1"
+            >
+              🐱
+            </button>
+            <button
+              class="cat-option"
+              data-cat="🐈"
+              aria-label="Select cat face 2"
+            >
+              🐈
+            </button>
+            <button
+              class="cat-option"
+              data-cat="🐈‍⬛"
+              aria-label="Select cat face 3"
+            >
+              🐈‍⬛
+            </button>
+            <button
+              class="cat-option"
+              data-cat="😺"
+              aria-label="Select cat face 4"
+            >
+              😺
+            </button>
+          </div>
+        </div>
 
-              <div class="postcard-cat-frame">
-                <div class="postcard-cat" id="postcardCat" tabindex="0" role="button" aria-label="Interactive cat. Click to make it bounce.">🐱</div>
+        <div class="action-row">
+          <button
+            class="btn btn-primary"
+            id="sendBtn"
+            aria-label="Download postcard as PNG image"
+          >
+            DOWNLOAD 💌
+          </button>
+          <button
+            class="btn btn-secondary"
+            id="copyBtn"
+            aria-label="Copy postcard text to clipboard"
+          >
+            COPY 📋
+          </button>
+          <button
+            class="btn btn-secondary"
+            id="shareBtn"
+            aria-label="Share postcard image"
+          >
+            SHARE ↗
+          </button>
+          <button
+            class="btn btn-secondary"
+            id="getlinkBtn"
+            aria-label="Share postcard LINK"
+          >
+            GET LINK 🔗
+          </button>
+        </div>
+        <p class="share-hint" id="shareHint" aria-live="polite"></p>
+      </section>
+
+      <section class="preview-pane" aria-label="Postcard preview">
+        <div
+          class="postcard"
+          id="postcard"
+          tabindex="0"
+          role="button"
+          aria-label="Interactive postcard. Click to flip between front and back faces."
+        >
+          <div class="postcard-inner" id="postcardInner">
+            <div class="postcard-front">
+              <div class="postcard-paper postcard-paper-front">
+                <div class="postcard-postmark" aria-hidden="true">🐾</div>
+
+                <div class="postcard-cat-frame">
+                  <div
+                    class="postcard-cat"
+                    id="postcardCat"
+                    tabindex="0"
+                    role="button"
+                    aria-label="Interactive cat. Click to make it bounce."
+                  >
+                    🐱
+                  </div>
+                </div>
+
+                <div class="postcard-greeting-front">A MEOW<br />FOR YOU</div>
               </div>
+            </div>
 
-              <div class="postcard-greeting-front">A MEOW<br />FOR YOU</div>
+            <div class="postcard-back">
+              <div class="postcard-paper postcard-paper-back">
+                <div class="postcard-back-left">
+                  <div class="postcard-dateplace" aria-hidden="true">
+                    🐾 somewhere, today
+                  </div>
+                  <div class="postcard-message-box">
+                    <div class="postcard-message" id="postcardMessage">
+                      Hello!
+                    </div>
+                  </div>
+                </div>
+
+                <div class="postcard-divider" aria-hidden="true"></div>
+
+                <div class="postcard-back-right">
+                  <div class="postcard-stamp-box" aria-hidden="true">
+                    <span class="postcard-stamp-cat">🐱</span>
+                    <span class="postcard-stamp-label">MEOW<br />POST</span>
+                  </div>
+
+                  <div class="postcard-to-row">
+                    <span class="postcard-label">To:</span>
+                    <span class="postcard-to" id="postcardTo"></span>
+                  </div>
+
+                  <div class="postcard-address-lines" aria-hidden="true">
+                    <span class="address-line"></span>
+                    <span class="address-line"></span>
+                    <span class="address-line"></span>
+                  </div>
+
+                  <div class="postcard-from-row">
+                    <span class="postcard-label">From:</span>
+                    <span class="postcard-from" id="postcardFrom"></span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-
-          <div class="postcard-back">
-            <div class="postcard-paper postcard-paper-back">
-
-              <div class="postcard-back-left">
-                <div class="postcard-dateplace" aria-hidden="true">🐾 somewhere, today</div>
-                <div class="postcard-message-box">
-                  <div class="postcard-message" id="postcardMessage">Hello!</div>
-                </div>
-              </div>
-
-              <div class="postcard-divider" aria-hidden="true"></div>
-
-              <div class="postcard-back-right">
-                <div class="postcard-stamp-box" aria-hidden="true">
-                  <span class="postcard-stamp-cat">🐱</span>
-                  <span class="postcard-stamp-label">MEOW<br />POST</span>
-                </div>
-
-                <div class="postcard-to-row">
-                  <span class="postcard-label">To:</span>
-                  <span class="postcard-to" id="postcardTo"></span>
-                </div>
-
-                <div class="postcard-address-lines" aria-hidden="true">
-                  <span class="address-line"></span>
-                  <span class="address-line"></span>
-                  <span class="address-line"></span>
-                </div>
-
-                <div class="postcard-from-row">
-                  <span class="postcard-label">From:</span>
-                  <span class="postcard-from" id="postcardFrom"></span>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
 
-  </main>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-  <script src="js/postcard.js"></script>
-  <script src="js/share.js"></script>
-</body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="js/postcard.js"></script>
+    <script src="js/share.js"></script>
+  </body>
 </html>

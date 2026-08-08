@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Meow Page | Your Postcard</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+  </head>
+
+  <body>
+    <main class="card-page">
+      <header class="card-header">
+        <h1>MEOW PAGE</h1>
+        <p>A little postcard for you 💌</p>
+      </header>
+
+      <section class="postcard-container">
+        <div
+          class="postcard"
+          id="postcard"
+          tabindex="0"
+          role="button"
+          aria-label="Interactive postcard. Click to flip between front and back faces."
+        >
+          <div class="postcard-inner" id="postcardInner">
+            <!-- FRONT -->
+            <div class="postcard-front">
+              <div class="postcard-paper postcard-paper-front">
+                <div class="postcard-postmark" aria-hidden="true">🐾</div>
+
+                <div class="postcard-cat-frame">
+                  <div
+                    class="postcard-cat"
+                    id="postcardCat"
+                    tabindex="0"
+                    role="button"
+                    aria-label="Interactive cat. Click to make it bounce."
+                  >
+                    Cat
+                  </div>
+                </div>
+
+                <div class="postcard-greeting-front">A MEOW<br />FOR YOU</div>
+              </div>
+            </div>
+
+            <!-- BACK -->
+            <div class="postcard-back">
+              <div class="postcard-paper postcard-paper-back">
+                <div class="postcard-back-left">
+                  <div class="postcard-dateplace" aria-hidden="true">
+                    🐾 somewhere, today
+                  </div>
+
+                  <div class="postcard-message-box">
+                    <div class="postcard-message" id="postcardMessage">
+                      Hello!
+                    </div>
+                  </div>
+                </div>
+
+                <div class="postcard-divider" aria-hidden="true"></div>
+
+                <div class="postcard-back-right">
+                  <div class="postcard-stamp-box" aria-hidden="true">
+                    <span class="postcard-stamp-cat"> 🐱 </span>
+
+                    <span class="postcard-stamp-label"> MEOW<br />POST </span>
+                  </div>
+
+                  <div class="postcard-to-row">
+                    <span class="postcard-label">To:</span>
+
+                    <span class="postcard-to" id="postcardTo"> </span>
+                  </div>
+
+                  <div class="postcard-address-lines" aria-hidden="true">
+                    <span class="address-line"></span>
+                    <span class="address-line"></span>
+                    <span class="address-line"></span>
+                  </div>
+
+                  <div class="postcard-from-row">
+                    <span class="postcard-label">From:</span>
+
+                    <span class="postcard-from" id="postcardFrom"> </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="card-actions">
+        <button class="btn" id="flipBtn">FLIP 💌</button>
+
+        <a href="create.html" class="btn btn-secondary"> MAKE YOUR OWN </a>
+      </div>
+    </main>
+
+    <script src="js/card.js"></script>
+  </body>
+</html>

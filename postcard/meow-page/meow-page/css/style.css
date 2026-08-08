@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
   background: #fdf6f0;
   color: #3a2e2a;
   min-height: 100vh;
@@ -94,7 +94,7 @@ a {
 }
 
 .home-title {
-  font-family: 'Special Elite', monospace;
+  font-family: "Special Elite", monospace;
   font-size: 2.75rem;
   letter-spacing: 0.12em;
   color: #2e2421;
@@ -157,7 +157,7 @@ a {
 }
 
 .editor-pane h2 {
-  font-family: 'Special Elite', monospace;
+  font-family: "Special Elite", monospace;
   font-size: 1.25rem;
   letter-spacing: 0.05em;
   color: #3a2e2a;
@@ -319,7 +319,7 @@ a {
 }
 
 .postcard-greeting-front {
-  font-family: 'Special Elite', monospace;
+  font-family: "Special Elite", monospace;
   font-size: 1.15rem;
   letter-spacing: 0.14em;
   text-align: center;
@@ -342,7 +342,7 @@ a {
 }
 
 .postcard-dateplace {
-  font-family: 'Special Elite', monospace;
+  font-family: "Special Elite", monospace;
   font-size: 0.75rem;
   letter-spacing: 0.06em;
   color: #9a8a82;
@@ -361,7 +361,7 @@ a {
 }
 
 .postcard-message {
-  font-family: 'Caveat', cursive;
+  font-family: "Caveat", cursive;
   font-size: 1.55rem;
   line-height: 28px;
   color: #3a2e2a;
@@ -401,7 +401,7 @@ a {
 }
 
 .postcard-stamp-label {
-  font-family: 'Special Elite', monospace;
+  font-family: "Special Elite", monospace;
   font-size: 0.5rem;
   letter-spacing: 0.05em;
   color: #6b8caa;
@@ -410,7 +410,7 @@ a {
 }
 
 .postcard-label {
-  font-family: 'Special Elite', monospace;
+  font-family: "Special Elite", monospace;
   font-size: 0.7rem;
   letter-spacing: 0.06em;
   color: #9a8a82;
@@ -426,7 +426,7 @@ a {
 
 .postcard-to,
 .postcard-from {
-  font-family: 'Caveat', cursive;
+  font-family: "Caveat", cursive;
   font-size: 1.2rem;
 }
 
@@ -447,4 +447,49 @@ a {
   border-color: #ff8fa3;
   background: #fff0f3;
   box-shadow: 0 0 0 2px rgba(255, 143, 163, 0.2);
+}
+
+/* ---------- Shared postcard viewer ---------- */
+
+.card-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 32px 20px;
+  background: radial-gradient(circle at center, #fff9f5 0%, #fdf6f0 100%);
+}
+
+.card-header {
+  text-align: center;
+}
+
+.card-header h1 {
+  font-family: "Special Elite", monospace;
+  font-size: 1.8rem;
+  letter-spacing: 0.1em;
+  color: #2e2421;
+}
+
+.card-header p {
+  margin-top: 6px;
+  color: #7a6a63;
+  font-size: 0.95rem;
+}
+
+.postcard-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.card-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
 }
