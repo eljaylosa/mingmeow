@@ -224,11 +224,7 @@ function generatePostcardLink(button) {
     const encodedData = btoa(binary);
 
     // Always point to card.html
-    const cardUrl = new URL("../card", window.location.href);
-
-    cardUrl.hash = encodedData;
-
-    const shareUrl = cardUrl.href;
+    const shareUrl = `${window.location.origin}/postcard/meow-page/meow-page/card#${encodedData}`;
 
     navigator.clipboard
       .writeText(shareUrl)
