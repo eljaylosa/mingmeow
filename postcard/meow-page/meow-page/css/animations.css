@@ -1,0 +1,104 @@
+/* Phase 4 — Interaction & Animation */
+
+/* ---------- Postcard hover ---------- */
+/* Applied to the OUTER .postcard wrapper, not .postcard-inner.
+   .postcard-inner owns the flip transform (rotateY via .flipped);
+   keeping the hover lift/tilt on a separate element avoids any
+   conflict between the two transforms. */
+.postcard {
+  transition: transform 0.35s ease;
+}
+
+.postcard:hover {
+  transform: translateY(-6px) rotate(-1.2deg);
+}
+
+.postcard-front,
+.postcard-back {
+  transition: box-shadow 0.35s ease;
+}
+
+.postcard:hover .postcard-front,
+.postcard:hover .postcard-back {
+  box-shadow: 0 16px 28px rgba(0, 0, 0, 0.18);
+}
+
+/* ---------- Cat reaction ---------- */
+.postcard-cat {
+  display: inline-block;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.postcard-cat:hover {
+  transform: scale(1.15) rotate(-5deg);
+}
+
+.postcard-cat.bounce {
+  animation: catBounce 0.4s ease;
+}
+
+@keyframes catBounce {
+  0%   { transform: scale(1) translateY(0); }
+  30%  { transform: scale(1.2) translateY(-10px); }
+  60%  { transform: scale(0.95) translateY(2px); }
+  100% { transform: scale(1) translateY(0); }
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+}
+
+.btn:active {
+  transform: scale(0.96);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+/* ---------- Cat picker ---------- */
+.cat-option {
+  transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.cat-option:hover {
+  transform: scale(1.1);
+}
+
+.cat-option:active {
+  transform: scale(0.95);
+}
+
+.cat-option.selected {
+  transform: scale(1.08);
+}
+
+/* ---------- Decorative floating movement ---------- */
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-5px); }
+}
+
+.home-cat {
+  display: inline-block;
+  animation: floatY 4s ease-in-out infinite;
+}
+
+/* ---------- Respect reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .postcard,
+  .postcard-inner,
+  .postcard-front,
+  .postcard-back,
+  .postcard-cat,
+  .btn,
+  .cat-option,
+  .home-cat {
+    animation: none !important;
+    transition: none !important;
+  }
+}

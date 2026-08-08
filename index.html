@@ -1,559 +1,787 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="styles.css">
-<link rel="icon" type="image/x-icon/jpg" href="img/cat2.jpg" sizes="16x16">
-<title>meow meow</title>
-</head>
-<body onload="loadAlert()" class="body-work">
-  <div class="sliding-text">
-    <h2 class="text-slide">i like this code "QWxKNG5lXw==" but you're not nerdy enough to understand</h2>
-  </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="icon"
+      type="image/x-icon/jpg"
+      href="img/cat2.jpg"
+      sizes="16x16"
+    />
+    <title>meow meow</title>
+  </head>
+  <body onload="loadAlert()" class="body-work">
+    <div class="sliding-text">
+      <h2 class="text-slide">
+        i like this code "QWxKNG5lXw==" but you're not nerdy enough to
+        understand
+      </h2>
+    </div>
 
-  <style>
-    .sliding-text {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      background-color: rgba(0, 0, 0, 0.7);
-      color: white;
-      text-align: center;
-      padding: 10px 0;
-      overflow: hidden;
-    }
+    <style>
+      .sliding-text {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+        overflow: hidden;
+      }
 
-    .sliding-text h2 {
-      display: inline-block;
-      white-space: nowrap;
-      animation: slide 20s linear infinite;
-    }
-    
-    /* for mobile responsiveness */
-    @media (max-width: 600px) {
       .sliding-text h2 {
-        font-size: 14px;
+        display: inline-block;
+        white-space: nowrap;
+        animation: slide 20s linear infinite;
       }
-    }
 
-    /* animation */
-    @keyframes slide {
-      0% {
-        transform: translateX(100%);
+      /* for mobile responsiveness */
+      @media (max-width: 600px) {
+        .sliding-text h2 {
+          font-size: 14px;
+        }
       }
-      100% {
-        transform: translateX(-100%);
+
+      /* animation */
+      @keyframes slide {
+        0% {
+          transform: translateX(100%);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
       }
-    }
-    
-  </style>
+    </style>
 
-  <div class="custom-alert-box" id="alertBox">
-    <span class="alert-emoji">☀️</span>
-    <h3>What's new?!</h3>
-    <p>Summer update is here! <br> So don't forget to drink your water and stay hydrated</p>
-    <p>2 song added, check your song library!</p>
-    
-    <!-- <p>3 Songs Added and Flowers added, <br> Check your song library and flowers now! 🌸✨</p> -->
-    <button class="alert-btn" id="closeBtn">✖</button>
-  </div>
-  
+    <div class="custom-alert-box" id="alertBox">
+      <span class="alert-emoji">☀️</span>
+      <h3>What's new?!</h3>
+      <p>
+        Summer update is here! <br />
+        So don't forget to drink your water and stay hydrated
+      </p>
+      <p>2 song added, check your song library!</p>
 
-  <div class="background-images">
-    <img src="img/cat1.jpg" alt="Background Image 1" class="bg-image">
-    <img src="img/cat2.jpg" alt="Background Image 2" class="bg-image">
-    <img src="img/cat3.jpg" alt="Background Image 3" class="bg-image">
-    <img src="img/cat4.jpg" alt="Background Image 4" class="bg-image">
-  </div>
-  
-  <style>
-    .bar1, .bar2, .bar3 {
-      width: 35px;
-      height: 5px;
-      background-color: #333; /* Change to your desired color */
-      margin: 6px 0; /* Creates distance between bars */
-      transition: 0.4s; /* Smooth transition for animations */
-    }
-
-    .hamburger-menu {
-      cursor: pointer; /* Makes it look clickable */
-    }
-    .hamburger-container {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end; /* Aligns the hamburger to the right */
-    }
-
-    .hamburger-contents {
-      opacity: 0;
-      background-color: rgb(221, 83, 118);
-      padding: 10px;
-      border-radius: 10px;
-      position: absolute;
-      top: 40px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-  </style>
-
-<div class="nav-container">
-  <nav>
-    <div class="notice">
-      <button class="details" id="revealbtn">About and Credits</button>
-      <div class="hamburger-container">
-        <div class="hamburger-menu" id="hamburgerMenu">
-          <div class="bar1"></div>
-          <div class="bar2"></div>
-          <div class="bar3"></div>
-        </div>
-        <div class="hamburger-contents" id="hamburgerContents">
-          <a href="flowers-for-you/flowers.html" target="_blank"><button class="flowers" id="flowers">Flowers for you 🌻</button></a>
-          <a href="https://our-voices.xo.je/" target="_blank"><button class="flowers" id="flowers">Our voices cutie 🎤</button></a>
-          <a href="secret-page/pass-log.html" target="_blank"><button class="flowers" id="flowers">Locked 🔒</button></a>
-          <a href="birthday-site/index.html"><button class="flowers" id="flowers">Birthday Site</button></a>
-          <!-- <a href=""><button class="flowers">Lets Play Tic-Tac-Toe</button></a> -->
-        </div>
-      </div>
-    </div>
-    <ul class="list">
-      <li><a id="showSong" href="#">Browse Your Songs, Cutie 💕</a><p>I remember you when I listen to these songs</p></li>
-    </ul>
-  </nav>
-</div>
-
-
-<div class="card">
-  <div class="front">
-    <h1>Hover me!</h1>
-  </div>
-  <div class="back"></div>
-  <div class="first-page">
-    <p id="hello">Hello Cutie!</p>
-    <button class="reveal" id="reveal-btn">Click Me!</button>
-    <p id="hint">Hint: Spam click button to see more of my favourite parts of song lyrics</p>
-  </div>
-</div>
-
-<section class="songs-container" id="songContainer">
-  <div class="search">
-    <input type="text" id="searchInput" placeholder="Search for songs or artists...">
-    <div class="dropdownmenu">
-      <button class="dropbtn">Filter ▼</button>
-      <div class="dropdown-content">
-        <a href="#" data-filter="all">All</a>
-        <a href="#" data-filter="recent">Recent</a>
-        <a href="#" data-filter="old">Old</a>
-      </div>
-    </div>
-    <div class="view-change">
-      <button id="gridView" class="active">Grid View</button>
-      <button id="listView">List View</button>
-    </div>
-  </div>
-  <button id="closeSongs" class="close-btn">✖</button>
-
-  
-
-  <div class="now-playing">
-    <div class="record"></div>
-    <div class="song-info">
-      <h3 id="currentTitle">No song playing</h3>
-      <p id="currentArtist">...</p>
-    </div>
-    <div class="song-controls">
-      <button class="repeat-btn" id="repeatBtn" onclick="repeatSong()">🔁</button>
-    </div>
-  </div>
-
-  <div class="song-boxes" id="songBoxes" >
-
-    <!-- add songs here -->
-
-    <div class="song-card new-song" data-type="recent" data-artist="Cup of Joe" data-title="Ikaw Pa rin Ang Pipiliin Ko" data-src="music/music/ikawpipiliinko.mp3">
-      <div class="new">
-        <p>New!</p>
-        <img src="music/music-poster/ikawparin.jfif" alt="Song 22">
-      </div>
-      
-      <h3>Ikaw Pa rin Ang Pipiliin Ko</h3>
-      <a href="https://www.youtube.com/@cupofjoemusic_" target="_blank"><p>Cup of Joe</p></a>
-  
-        <!-- Custom Player -->
-      <div class="custom-player">
-        <input type="range" class="slider" value="0" min="0" max="100">
-        <div class="controls">
-          <button class="play-btn">▶</button>
-          <span class="time">0:00 / 0:00</span>
-        </div>
-        <audio class="audio-player" controls></audio>
-      </div>
+      <!-- <p>3 Songs Added and Flowers added, <br> Check your song library and flowers now! 🌸✨</p> -->
+      <button class="alert-btn" id="closeBtn">✖</button>
     </div>
 
-    <div class="song-card new-song" data-type="recent" data-artist="Cup of Joe" data-title="Patutunguhan" data-src="music/music/patutunguhan.mp3">
-      <div class="new">
-        <p>New!</p>
-        <img src="music/music-poster/patutunguhan.jfif" alt="Song 21">
-      </div>
-      
-      <h3>Patutunguhan</h3>
-      <a href="https://www.youtube.com/@cupofjoemusic_" target="_blank"><p>Cup of Joe</p></a>
-  
-        <!-- Custom Player -->
-      <div class="custom-player">
-        <input type="range" class="slider" value="0" min="0" max="100">
-        <div class="controls">
-          <button class="play-btn">▶</button>
-          <span class="time">0:00 / 0:00</span>
-        </div>
-        <audio class="audio-player" controls></audio>
-      </div>
+    <div class="background-images">
+      <img src="img/cat1.jpg" alt="Background Image 1" class="bg-image" />
+      <img src="img/cat2.jpg" alt="Background Image 2" class="bg-image" />
+      <img src="img/cat3.jpg" alt="Background Image 3" class="bg-image" />
+      <img src="img/cat4.jpg" alt="Background Image 4" class="bg-image" />
     </div>
 
-    <div class="song-card new-song" data-type="old" data-artist="fitterkarma" data-title="Kalapastangan" data-src="music/music/kalapastangan.mp3">
-      <img src="music/music-poster/kalapastangan.jpg" alt="Song 20">
-      <h3>Kalapastangan</h3>
-      <a href="https://www.youtube.com/channel/UC_R0-bi-7dKi-80NWEApZeg" target="_blank"><p>fitterkarma</p></a>
-  
-        <!-- Custom Player -->
-      <div class="custom-player">
-        <input type="range" class="slider" value="0" min="0" max="100">
-        <div class="controls">
-          <button class="play-btn">▶</button>
-          <span class="time">0:00 / 0:00</span>
-        </div>
-        <audio class="audio-player" controls></audio>
-      </div>
-    </div>
+    <style>
+      .bar1,
+      .bar2,
+      .bar3 {
+        width: 35px;
+        height: 5px;
+        background-color: #333; /* Change to your desired color */
+        margin: 6px 0; /* Creates distance between bars */
+        transition: 0.4s; /* Smooth transition for animations */
+      }
 
-    <div class="song-card new-song" data-type="old" data-artist="fitterkarma" data-title="Pag-ibig ay Lanibalismo II" data-src="music/music/kanibalismo.mp3">
-      <img src="music/music-poster/kanibalismo.jpg" alt="Song 19">
-      <h3>Pag-ibig ay Kanibalismo II</h3>
-      <a href="https://www.youtube.com/channel/UC_R0-bi-7dKi-80NWEApZeg" target="_blank"><p>fitterkarma</p></a>
-  
-        <!-- Custom Player -->
-      <div class="custom-player">
-        <input type="range" class="slider" value="0" min="0" max="100">
-        <div class="controls">
-          <button class="play-btn">▶</button>
-          <span class="time">0:00 / 0:00</span>
-        </div>
-        <audio class="audio-player" controls></audio>
-      </div>
-    </div>
+      .hamburger-menu {
+        cursor: pointer; /* Makes it look clickable */
+      }
+      .hamburger-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end; /* Aligns the hamburger to the right */
+      }
 
-    <div class="song-card new-song" data-type="old" data-artist="Cup of Joe" data-title="Tingin" data-src="music/music/tingin.mp3">
-      <img src="music/music-poster/tingin.jfif" alt="Song 18">
-      <h3>Tingin</h3>
-      <a href="https://www.youtube.com/@cupofjoemusic_" target="_blank"><p>Cup of Joe</p></a>
-  
-        <!-- Custom Player -->
-      <div class="custom-player">
-        <input type="range" class="slider" value="0" min="0" max="100">
-        <div class="controls">
-          <button class="play-btn">▶</button>
-          <span class="time">0:00 / 0:00</span>
-        </div>
-        <audio class="audio-player" controls></audio>
-      </div>
-    </div>
+      .hamburger-contents {
+        opacity: 0;
+        background-color: rgb(221, 83, 118);
+        padding: 10px;
+        border-radius: 10px;
+        position: absolute;
+        top: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+    </style>
 
-    <div class="song-card new-song" data-type="old" data-artist="Cup of Joe" data-title="Misteryoso" data-src="music/music/misteryoso.mp3">
-      <img src="music/music-poster/misteryoso.jfif" alt="Song 17">
-      <h3>Misteryoso</h3>
-      <a href="https://www.youtube.com/@cupofjoemusic_" target="_blank"><p>Cup of Joe</p></a>
-  
-        <!-- Custom Player -->
-      <div class="custom-player">
-        <input type="range" class="slider" value="0" min="0" max="100">
-        <div class="controls">
-          <button class="play-btn">▶</button>
-          <span class="time">0:00 / 0:00</span>
-        </div>
-        <audio class="audio-player" controls></audio>
-      </div>
-    </div>
-
-    <div class="song-card new-song" data-type="old" data-artist="Cup of Joe" data-title="Silakbo" data-src="music/music/silakbo.mp3">
-        <img src="music/music-poster/silakbo.jfif" alt="Song 16">
-      <h3>Silakbo</h3>
-      <a href="https://www.youtube.com/@cupofjoemusic_" target="_blank"><p>Cup of Joe</p></a>
-  
-        <!-- Custom Player -->
-      <div class="custom-player">
-        <input type="range" class="slider" value="0" min="0" max="100">
-        <div class="controls">
-          <button class="play-btn">▶</button>
-          <span class="time">0:00 / 0:00</span>
-        </div>
-        <audio class="audio-player" controls></audio>
-      </div>
-    </div>
-
-    <div class="song-card new-song" data-type="old" data-artist="Cup of Joe" data-title="Sandali" data-src="music/music/sandali.mp3">
-      <img src="music/music-poster/sandali.jpg" alt="Song 15">
-      <h3>Sandali</h3>
-      <a href="https://www.youtube.com/@cupofjoemusic_" target="_blank"><p>Cup of Joe</p></a>
-  
-        <!-- Custom Player -->
-      <div class="custom-player">
-        <input type="range" class="slider" value="0" min="0" max="100">
-        <div class="controls">
-          <button class="play-btn">▶</button>
-          <span class="time">0:00 / 0:00</span>
-        </div>
-        <audio class="audio-player" controls></audio>
-      </div>
-    </div>
-
-    <div class="song-card new-song" data-type="old" data-artist="Cup of Joe" data-title="Tataya" data-src="music/music/tataya.mp3">
-      <img src="music/music-poster/tataya.jfif" alt="Song 14">
-      <h3>Tataya</h3>
-      <a href="https://www.youtube.com/@cupofjoemusic_" target="_blank"><p>Cup of Joe</p></a>
-  
-        <!-- Custom Player -->
-      <div class="custom-player">
-        <input type="range" class="slider" value="0" min="0" max="100">
-        <div class="controls">
-          <button class="play-btn">▶</button>
-          <span class="time">0:00 / 0:00</span>
-        </div>
-        <audio class="audio-player" controls></audio>
-      </div>
-    </div>
-    
-    <div class="song-card new-song" data-type="old" data-artist="Bruno Mars & Lady Gaga" data-title="Die With A Smile" data-src="music/music/die with a smile.mp3">
-      <img src="music/music-poster/die with a smile.png" alt="Song 13">
-      <h3>Die With A Smile</h3>
-      <a href="https://www.youtube.com/channel/UCoUM-UJ7rirJYP8CQ0EIaHA" target="_blank"><p>Bruno Mars & Lady Gaga</p></a>
-  
-        <!-- Custom Player -->
-      <div class="custom-player">
-        <input type="range" class="slider" value="0" min="0" max="100">
-        <div class="controls">
-          <button class="play-btn">▶</button>
-          <span class="time">0:00 / 0:00</span>
-        </div>
-        <audio class="audio-player" controls></audio>
-      </div>
-    </div>
-
-    <div class="song-card new-song" data-type="old" data-artist="Arctic Monkeys" data-title="I Wanna Be Yours" data-src="music/music/i wanna be yours.mp3">
-      <img src="music/music-poster/i wanna be yours.png" alt="Song 12">
-      <h3>I Wanna Be Yours</h3>
-      <a href="https://www.youtube.com/channel/UC-KTRBl9_6AX10-Y7IKwKdw" target="_blank"><p>Arctic Monkeys</p></a>
-  
-        <!-- Custom Player -->
-      <div class="custom-player">
-        <input type="range" class="slider" value="0" min="0" max="100">
-        <div class="controls">
-          <button class="play-btn">▶</button>
-          <span class="time">0:00 / 0:00</span>
-        </div>
-        <audio class="audio-player" controls></audio>
-      </div>
-    </div>
-
-    <div class="song-card new-song" data-type="old" data-artist="The 1975" data-title="About You" data-src="music/music/about you.mp3">
-      <img src="music/music-poster/about you poster.png" alt="Song 11">
-      <h3>About You</h3>
-      <a href="https://www.youtube.com/channel/UC_LfW1R3B0of9qOw1uI-QNQ" target="_blank"><p>The 1975</p></a>
-  
-        <!-- Custom Player -->
-      <div class="custom-player">
-        <input type="range" class="slider" value="0" min="0" max="100">
-        <div class="controls">
-          <button class="play-btn">▶</button>
-          <span class="time">0:00 / 0:00</span>
-        </div>
-        <audio class="audio-player" controls></audio>
-      </div>
-    </div>
-
-    <div class="song-card" data-type="old" data-artist="Wave To Earth" data-title="seasons" data-src="music/music/wave to earth - seasons.mp3">
-      <img src="music/music-poster/peach eyes.jfif" alt="Song 10">
-      <h3>seasons</h3>
-      <a href="https://www.youtube.com/@wavetoearth" target="_blank"><p>Wave To Earth</p></a>
-  
-        <!-- Custom Player -->
-      <div class="custom-player">
-        <input type="range" class="slider" value="0" min="0" max="100">
-        <div class="controls">
-          <button class="play-btn">▶</button>
-          <span class="time">0:00 / 0:00</span>
-        </div>
-        <audio class="audio-player" controls></audio>
-      </div>
-    </div>
-  
-    <div class="song-card" data-type="old" data-artist="Wave To Earth" data-title="ride" data-src="music/music/wave to earth - ride.mp3">
-      <img src="music/music-poster/peach eyes.jfif" alt="Song 9">
-      <h3>ride</h3>
-      <a href="https://www.youtube.com/@wavetoearth" target="_blank"><p>Wave To Earth</p></a>
-  
-        <!-- Custom Player -->
-      <div class="custom-player">
-        <input type="range" class="slider" value="0" min="0" max="100">
-        <div class="controls">
-          <button class="play-btn">▶</button>
-          <span class="time">0:00 / 0:00</span>
-        </div>
-        <audio class="audio-player" controls></audio>
-      </div>
-    </div>
-  
-    <div class="song-card " data-type="old" data-artist="Wave To Earth" data-title="love" data-src="music/music/wave to earth - love. (Official Lyric Video).mp3">
-      <img src="music/music-poster/peach eyes.jfif" alt="Song 8">
-      <h3>love</h3>
-      <a href="https://www.youtube.com/@wavetoearth" target="_blank"><p>Wave To Earth</p></a>
-  
-        <!-- Custom Player -->
-      <div class="custom-player">
-        <input type="range" class="slider" value="0" min="0" max="100">
-        <div class="controls">
-          <button class="play-btn">▶</button>
-          <span class="time">0:00 / 0:00</span>
-        </div>
-        <audio class="audio-player" controls></audio>
-      </div>
-    </div>
-  
-    <div class="song-card " data-type="old" data-artist="Wave To Earth" data-title="bad" data-src="music/music/wave to earth - bad (Official Lyric Video).mp3">
-      <img src="music/music-poster/peach eyes.jfif" alt="Song 7">
-      <h3>bad</h3>
-      <a href="https://www.youtube.com/@wavetoearth" target="_blank"><p>Wave To Earth</p></a>
-  
-        <!-- Custom Player -->
-      <div class="custom-player">
-        <input type="range" class="slider" value="0" min="0" max="100">
-        <div class="controls">
-          <button class="play-btn">▶</button>
-          <span class="time">0:00 / 0:00</span>
-        </div>
-        <audio class="audio-player" controls></audio>
-      </div>
-    </div>
-  
-    <div class="song-card " data-type="old" data-artist="Wave To Earth" data-title="sunny days" data-src="music/music/sunny days.mp3">
-      <img src="music/music-poster/peach eyes.jfif" alt="Song 6">
-      <h3>sunny days</h3>
-      <a href="https://www.youtube.com/@wavetoearth" target="_blank"><p>Wave To Earth</p></a>
-  
-        <!-- Custom Player -->
-      <div class="custom-player">
-        <input type="range" class="slider" value="0" min="0" max="100">
-        <div class="controls">
-          <button class="play-btn">▶</button>
-          <span class="time">0:00 / 0:00</span>
-        </div>
-        <audio class="audio-player" controls></audio>
-      </div>
-    </div>
-  
-    <div class="song-card " data-type="old" data-artist="Wave To Earth" data-title="peach eyes" data-src="music/music/peach eyes.mp3">
-      <img src="music/music-poster/peach eyes.jfif" alt="Song 5">
-      <h3>peach eyes</h3>
-      <a href="https://www.youtube.com/@wavetoearth" target="_blank"><p>Wave To Earth</p></a>
-  
-        <!-- Custom Player -->
-      <div class="custom-player">
-        <input type="range" class="slider" value="0" min="0" max="100">
-        <div class="controls">
-          <button class="play-btn">▶</button>
-          <span class="time">0:00 / 0:00</span>
-        </div>
-        <audio class="audio-player" controls></audio>
-      </div>
-    </div>
-  
-    <div class="song-card " data-type="old" data-artist="Wave To Earth" data-title="daisy" data-src="music/music/daisy.mp3">
-      <img src="music/music-poster/daisy.jpg" alt="Song 4">
-      <h3>daisy</h3>
-      <a href="https://www.youtube.com/@wavetoearth" target="_blank"><p>Wave To Earth</p></a>
-  
-        <!-- Custom Player -->
-      <div class="custom-player">
-        <input type="range" class="slider" value="0" min="0" max="100">
-        <div class="controls">
-          <button class="play-btn">▶</button>
-          <span class="time">0:00 / 0:00</span>
-        </div>
-        <audio class="audio-player" controls></audio>
-      </div>
-    </div>
-  
-    <div class="song-card" data-type="old" data-artist="Wave To Earth" data-title="pink" data-src="music/music/pink.mp3">
-      <img src="music/music-poster/pink.jpg" alt="Song 3">
-      <h3>pink</h3>
-      <a href="https://www.youtube.com/@wavetoearth" target="_blank"><p>Wave To Earth</p></a>
-  
-        <!-- Custom Player -->
-      <div class="custom-player">
-        <input type="range" class="slider" value="0" min="0" max="100">
-        <div class="controls">
-          <button class="play-btn">▶</button>
-          <span class="time">0:00 / 0:00</span>
-        </div>
-        <audio class="audio-player" controls></audio>
-      </div>
-    </div>
-  
-    <div class="song-card" data-type="old" data-artist="ILLIT" data-title="NOT CUTE ANYMORE" data-src="music/music/ILLIT (아일릿) 'Not cute anymore' (Color Coded Lyrics).mp3">
-      <img src="music/music-poster/not cute poster.jfif" alt="Song 2">
-      <h3>NOT CUTE ANYMORE</h3>
-      <a href="https://www.youtube.com/@ILLIT_official" target="_blank"><p>ILLIT</p></a>
-  
-        <!-- Custom Player -->
-      <div class="custom-player">
-        <input type="range" class="slider" value="0" min="0" max="100">
-        <div class="controls">
-          <button class="play-btn">▶</button>
-          <span class="time">0:00 / 0:00</span>
-        </div>
-        <audio class="audio-player" controls></audio>
-      </div>
-    </div>
-  
-    <div class="song-card" data-type="old" data-artist="WILLOW" data-title="Wait a Minute!" data-src="music/music/WILLOW - Wait A Minute! (Lyrics).mp3">
-      <img src="music/music-poster/wait a minute.jpg" alt="Song 1">
-      <h3>Wait a Minute!</h3>
-      <a href="https://www.youtube.com/channel/UCgnKlNm0QJY_9LKJ4vHPspg" target="_blank"><p>WILLOW</p></a>
-  
-        <!-- Custom Player -->
-        <div class="custom-player">
-          <input type="range" class="slider" value="0" min="0" max="100">
-          <div class="controls">
-            <button class="play-btn">▶</button>
-            <span class="time">0:00 / 0:00</span>
+    <div class="nav-container">
+      <nav>
+        <div class="notice">
+          <button class="details" id="revealbtn">About and Credits</button>
+          <div class="hamburger-container">
+            <div class="hamburger-menu" id="hamburgerMenu">
+              <div class="bar1"></div>
+              <div class="bar2"></div>
+              <div class="bar3"></div>
+            </div>
+            <div class="hamburger-contents" id="hamburgerContents">
+              <a href="flowers-for-you/flowers.html" target="_blank"
+                ><button class="flowers" id="flowers">
+                  Flowers for you 🌻
+                </button></a
+              >
+              <a href="https://our-voices.xo.je/" target="_blank"
+                ><button class="flowers" id="flowers">
+                  Our voices cutie 🎤
+                </button></a
+              >
+              <a href="secret-page/pass-log.html" target="_blank"
+                ><button class="flowers" id="flowers">Locked 🔒</button></a
+              >
+              <a href="birthday-site/index.html"
+                ><button class="flowers" id="flowers">Birthday Site</button></a
+              >
+              <a href="postcard/meow-page/meow-page/index.html"
+                ><button class="flowers" id="flowers">Postcard</button></a
+              >
+              <!-- <a href=""><button class="flowers">Lets Play Tic-Tac-Toe</button></a> -->
+            </div>
           </div>
-          <audio class="audio-player" controls></audio>
         </div>
+        <ul class="list">
+          <li>
+            <a id="showSong" href="#">Browse Your Songs, Cutie 💕</a>
+            <p>I remember you when I listen to these songs</p>
+          </li>
+        </ul>
+      </nav>
     </div>
-    <div class="message">
-      <p>Will add more songs soon!</p>
+
+    <div class="card">
+      <div class="front">
+        <h1>Hover me!</h1>
+      </div>
+      <div class="back"></div>
+      <div class="first-page">
+        <p id="hello">Hello Cutie!</p>
+        <button class="reveal" id="reveal-btn">Click Me!</button>
+        <p id="hint">
+          Hint: Spam click button to see more of my favourite parts of song
+          lyrics
+        </p>
+      </div>
     </div>
-  </div>
 
-</section>
+    <section class="songs-container" id="songContainer">
+      <div class="search">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search for songs or artists..."
+        />
+        <div class="dropdownmenu">
+          <button class="dropbtn">Filter ▼</button>
+          <div class="dropdown-content">
+            <a href="#" data-filter="all">All</a>
+            <a href="#" data-filter="recent">Recent</a>
+            <a href="#" data-filter="old">Old</a>
+          </div>
+        </div>
+        <div class="view-change">
+          <button id="gridView" class="active">Grid View</button>
+          <button id="listView">List View</button>
+        </div>
+      </div>
+      <button id="closeSongs" class="close-btn">✖</button>
 
+      <div class="now-playing">
+        <div class="record"></div>
+        <div class="song-info">
+          <h3 id="currentTitle">No song playing</h3>
+          <p id="currentArtist">...</p>
+        </div>
+        <div class="song-controls">
+          <button class="repeat-btn" id="repeatBtn" onclick="repeatSong()">
+            🔁
+          </button>
+        </div>
+      </div>
 
-<footer class="details-reveal" id="detailsReveal">
-  <div class="close-btn2">
-    <h2>About The Website</h2>
-    <button class="x-btn" id="btnClose">✖</button>
-  </div>
-  <div class="texts">
-    <p>© 2026 Meow Meow. All rights reserved.</p>
-    <p>This website was created for personal (someone) purposes only. No copyright infringement intended.</p>
-    <p>All music used belongs to their respective owners.</p>
-    <p >Website created by <a id="creator" href="https://www.facebook.com/ljlosa.69"  target="_blank">Eljay</a>.</p>
-  </div>
-  
-</footer>
+      <div class="song-boxes" id="songBoxes">
+        <!-- add songs here -->
 
-<script src="script.js?v=12345"></script>
+        <div
+          class="song-card new-song"
+          data-type="recent"
+          data-artist="Cup of Joe"
+          data-title="Ikaw Pa rin Ang Pipiliin Ko"
+          data-src="music/music/ikawpipiliinko.mp3"
+        >
+          <div class="new">
+            <p>New!</p>
+            <img src="music/music-poster/ikawparin.jfif" alt="Song 22" />
+          </div>
 
+          <h3>Ikaw Pa rin Ang Pipiliin Ko</h3>
+          <a href="https://www.youtube.com/@cupofjoemusic_" target="_blank"
+            ><p>Cup of Joe</p></a
+          >
 
-</body>
+          <!-- Custom Player -->
+          <div class="custom-player">
+            <input type="range" class="slider" value="0" min="0" max="100" />
+            <div class="controls">
+              <button class="play-btn">▶</button>
+              <span class="time">0:00 / 0:00</span>
+            </div>
+            <audio class="audio-player" controls></audio>
+          </div>
+        </div>
+
+        <div
+          class="song-card new-song"
+          data-type="recent"
+          data-artist="Cup of Joe"
+          data-title="Patutunguhan"
+          data-src="music/music/patutunguhan.mp3"
+        >
+          <div class="new">
+            <p>New!</p>
+            <img src="music/music-poster/patutunguhan.jfif" alt="Song 21" />
+          </div>
+
+          <h3>Patutunguhan</h3>
+          <a href="https://www.youtube.com/@cupofjoemusic_" target="_blank"
+            ><p>Cup of Joe</p></a
+          >
+
+          <!-- Custom Player -->
+          <div class="custom-player">
+            <input type="range" class="slider" value="0" min="0" max="100" />
+            <div class="controls">
+              <button class="play-btn">▶</button>
+              <span class="time">0:00 / 0:00</span>
+            </div>
+            <audio class="audio-player" controls></audio>
+          </div>
+        </div>
+
+        <div
+          class="song-card new-song"
+          data-type="old"
+          data-artist="fitterkarma"
+          data-title="Kalapastangan"
+          data-src="music/music/kalapastangan.mp3"
+        >
+          <img src="music/music-poster/kalapastangan.jpg" alt="Song 20" />
+          <h3>Kalapastangan</h3>
+          <a
+            href="https://www.youtube.com/channel/UC_R0-bi-7dKi-80NWEApZeg"
+            target="_blank"
+            ><p>fitterkarma</p></a
+          >
+
+          <!-- Custom Player -->
+          <div class="custom-player">
+            <input type="range" class="slider" value="0" min="0" max="100" />
+            <div class="controls">
+              <button class="play-btn">▶</button>
+              <span class="time">0:00 / 0:00</span>
+            </div>
+            <audio class="audio-player" controls></audio>
+          </div>
+        </div>
+
+        <div
+          class="song-card new-song"
+          data-type="old"
+          data-artist="fitterkarma"
+          data-title="Pag-ibig ay Lanibalismo II"
+          data-src="music/music/kanibalismo.mp3"
+        >
+          <img src="music/music-poster/kanibalismo.jpg" alt="Song 19" />
+          <h3>Pag-ibig ay Kanibalismo II</h3>
+          <a
+            href="https://www.youtube.com/channel/UC_R0-bi-7dKi-80NWEApZeg"
+            target="_blank"
+            ><p>fitterkarma</p></a
+          >
+
+          <!-- Custom Player -->
+          <div class="custom-player">
+            <input type="range" class="slider" value="0" min="0" max="100" />
+            <div class="controls">
+              <button class="play-btn">▶</button>
+              <span class="time">0:00 / 0:00</span>
+            </div>
+            <audio class="audio-player" controls></audio>
+          </div>
+        </div>
+
+        <div
+          class="song-card new-song"
+          data-type="old"
+          data-artist="Cup of Joe"
+          data-title="Tingin"
+          data-src="music/music/tingin.mp3"
+        >
+          <img src="music/music-poster/tingin.jfif" alt="Song 18" />
+          <h3>Tingin</h3>
+          <a href="https://www.youtube.com/@cupofjoemusic_" target="_blank"
+            ><p>Cup of Joe</p></a
+          >
+
+          <!-- Custom Player -->
+          <div class="custom-player">
+            <input type="range" class="slider" value="0" min="0" max="100" />
+            <div class="controls">
+              <button class="play-btn">▶</button>
+              <span class="time">0:00 / 0:00</span>
+            </div>
+            <audio class="audio-player" controls></audio>
+          </div>
+        </div>
+
+        <div
+          class="song-card new-song"
+          data-type="old"
+          data-artist="Cup of Joe"
+          data-title="Misteryoso"
+          data-src="music/music/misteryoso.mp3"
+        >
+          <img src="music/music-poster/misteryoso.jfif" alt="Song 17" />
+          <h3>Misteryoso</h3>
+          <a href="https://www.youtube.com/@cupofjoemusic_" target="_blank"
+            ><p>Cup of Joe</p></a
+          >
+
+          <!-- Custom Player -->
+          <div class="custom-player">
+            <input type="range" class="slider" value="0" min="0" max="100" />
+            <div class="controls">
+              <button class="play-btn">▶</button>
+              <span class="time">0:00 / 0:00</span>
+            </div>
+            <audio class="audio-player" controls></audio>
+          </div>
+        </div>
+
+        <div
+          class="song-card new-song"
+          data-type="old"
+          data-artist="Cup of Joe"
+          data-title="Silakbo"
+          data-src="music/music/silakbo.mp3"
+        >
+          <img src="music/music-poster/silakbo.jfif" alt="Song 16" />
+          <h3>Silakbo</h3>
+          <a href="https://www.youtube.com/@cupofjoemusic_" target="_blank"
+            ><p>Cup of Joe</p></a
+          >
+
+          <!-- Custom Player -->
+          <div class="custom-player">
+            <input type="range" class="slider" value="0" min="0" max="100" />
+            <div class="controls">
+              <button class="play-btn">▶</button>
+              <span class="time">0:00 / 0:00</span>
+            </div>
+            <audio class="audio-player" controls></audio>
+          </div>
+        </div>
+
+        <div
+          class="song-card new-song"
+          data-type="old"
+          data-artist="Cup of Joe"
+          data-title="Sandali"
+          data-src="music/music/sandali.mp3"
+        >
+          <img src="music/music-poster/sandali.jpg" alt="Song 15" />
+          <h3>Sandali</h3>
+          <a href="https://www.youtube.com/@cupofjoemusic_" target="_blank"
+            ><p>Cup of Joe</p></a
+          >
+
+          <!-- Custom Player -->
+          <div class="custom-player">
+            <input type="range" class="slider" value="0" min="0" max="100" />
+            <div class="controls">
+              <button class="play-btn">▶</button>
+              <span class="time">0:00 / 0:00</span>
+            </div>
+            <audio class="audio-player" controls></audio>
+          </div>
+        </div>
+
+        <div
+          class="song-card new-song"
+          data-type="old"
+          data-artist="Cup of Joe"
+          data-title="Tataya"
+          data-src="music/music/tataya.mp3"
+        >
+          <img src="music/music-poster/tataya.jfif" alt="Song 14" />
+          <h3>Tataya</h3>
+          <a href="https://www.youtube.com/@cupofjoemusic_" target="_blank"
+            ><p>Cup of Joe</p></a
+          >
+
+          <!-- Custom Player -->
+          <div class="custom-player">
+            <input type="range" class="slider" value="0" min="0" max="100" />
+            <div class="controls">
+              <button class="play-btn">▶</button>
+              <span class="time">0:00 / 0:00</span>
+            </div>
+            <audio class="audio-player" controls></audio>
+          </div>
+        </div>
+
+        <div
+          class="song-card new-song"
+          data-type="old"
+          data-artist="Bruno Mars & Lady Gaga"
+          data-title="Die With A Smile"
+          data-src="music/music/die with a smile.mp3"
+        >
+          <img src="music/music-poster/die with a smile.png" alt="Song 13" />
+          <h3>Die With A Smile</h3>
+          <a
+            href="https://www.youtube.com/channel/UCoUM-UJ7rirJYP8CQ0EIaHA"
+            target="_blank"
+            ><p>Bruno Mars & Lady Gaga</p></a
+          >
+
+          <!-- Custom Player -->
+          <div class="custom-player">
+            <input type="range" class="slider" value="0" min="0" max="100" />
+            <div class="controls">
+              <button class="play-btn">▶</button>
+              <span class="time">0:00 / 0:00</span>
+            </div>
+            <audio class="audio-player" controls></audio>
+          </div>
+        </div>
+
+        <div
+          class="song-card new-song"
+          data-type="old"
+          data-artist="Arctic Monkeys"
+          data-title="I Wanna Be Yours"
+          data-src="music/music/i wanna be yours.mp3"
+        >
+          <img src="music/music-poster/i wanna be yours.png" alt="Song 12" />
+          <h3>I Wanna Be Yours</h3>
+          <a
+            href="https://www.youtube.com/channel/UC-KTRBl9_6AX10-Y7IKwKdw"
+            target="_blank"
+            ><p>Arctic Monkeys</p></a
+          >
+
+          <!-- Custom Player -->
+          <div class="custom-player">
+            <input type="range" class="slider" value="0" min="0" max="100" />
+            <div class="controls">
+              <button class="play-btn">▶</button>
+              <span class="time">0:00 / 0:00</span>
+            </div>
+            <audio class="audio-player" controls></audio>
+          </div>
+        </div>
+
+        <div
+          class="song-card new-song"
+          data-type="old"
+          data-artist="The 1975"
+          data-title="About You"
+          data-src="music/music/about you.mp3"
+        >
+          <img src="music/music-poster/about you poster.png" alt="Song 11" />
+          <h3>About You</h3>
+          <a
+            href="https://www.youtube.com/channel/UC_LfW1R3B0of9qOw1uI-QNQ"
+            target="_blank"
+            ><p>The 1975</p></a
+          >
+
+          <!-- Custom Player -->
+          <div class="custom-player">
+            <input type="range" class="slider" value="0" min="0" max="100" />
+            <div class="controls">
+              <button class="play-btn">▶</button>
+              <span class="time">0:00 / 0:00</span>
+            </div>
+            <audio class="audio-player" controls></audio>
+          </div>
+        </div>
+
+        <div
+          class="song-card"
+          data-type="old"
+          data-artist="Wave To Earth"
+          data-title="seasons"
+          data-src="music/music/wave to earth - seasons.mp3"
+        >
+          <img src="music/music-poster/peach eyes.jfif" alt="Song 10" />
+          <h3>seasons</h3>
+          <a href="https://www.youtube.com/@wavetoearth" target="_blank"
+            ><p>Wave To Earth</p></a
+          >
+
+          <!-- Custom Player -->
+          <div class="custom-player">
+            <input type="range" class="slider" value="0" min="0" max="100" />
+            <div class="controls">
+              <button class="play-btn">▶</button>
+              <span class="time">0:00 / 0:00</span>
+            </div>
+            <audio class="audio-player" controls></audio>
+          </div>
+        </div>
+
+        <div
+          class="song-card"
+          data-type="old"
+          data-artist="Wave To Earth"
+          data-title="ride"
+          data-src="music/music/wave to earth - ride.mp3"
+        >
+          <img src="music/music-poster/peach eyes.jfif" alt="Song 9" />
+          <h3>ride</h3>
+          <a href="https://www.youtube.com/@wavetoearth" target="_blank"
+            ><p>Wave To Earth</p></a
+          >
+
+          <!-- Custom Player -->
+          <div class="custom-player">
+            <input type="range" class="slider" value="0" min="0" max="100" />
+            <div class="controls">
+              <button class="play-btn">▶</button>
+              <span class="time">0:00 / 0:00</span>
+            </div>
+            <audio class="audio-player" controls></audio>
+          </div>
+        </div>
+
+        <div
+          class="song-card"
+          data-type="old"
+          data-artist="Wave To Earth"
+          data-title="love"
+          data-src="music/music/wave to earth - love. (Official Lyric Video).mp3"
+        >
+          <img src="music/music-poster/peach eyes.jfif" alt="Song 8" />
+          <h3>love</h3>
+          <a href="https://www.youtube.com/@wavetoearth" target="_blank"
+            ><p>Wave To Earth</p></a
+          >
+
+          <!-- Custom Player -->
+          <div class="custom-player">
+            <input type="range" class="slider" value="0" min="0" max="100" />
+            <div class="controls">
+              <button class="play-btn">▶</button>
+              <span class="time">0:00 / 0:00</span>
+            </div>
+            <audio class="audio-player" controls></audio>
+          </div>
+        </div>
+
+        <div
+          class="song-card"
+          data-type="old"
+          data-artist="Wave To Earth"
+          data-title="bad"
+          data-src="music/music/wave to earth - bad (Official Lyric Video).mp3"
+        >
+          <img src="music/music-poster/peach eyes.jfif" alt="Song 7" />
+          <h3>bad</h3>
+          <a href="https://www.youtube.com/@wavetoearth" target="_blank"
+            ><p>Wave To Earth</p></a
+          >
+
+          <!-- Custom Player -->
+          <div class="custom-player">
+            <input type="range" class="slider" value="0" min="0" max="100" />
+            <div class="controls">
+              <button class="play-btn">▶</button>
+              <span class="time">0:00 / 0:00</span>
+            </div>
+            <audio class="audio-player" controls></audio>
+          </div>
+        </div>
+
+        <div
+          class="song-card"
+          data-type="old"
+          data-artist="Wave To Earth"
+          data-title="sunny days"
+          data-src="music/music/sunny days.mp3"
+        >
+          <img src="music/music-poster/peach eyes.jfif" alt="Song 6" />
+          <h3>sunny days</h3>
+          <a href="https://www.youtube.com/@wavetoearth" target="_blank"
+            ><p>Wave To Earth</p></a
+          >
+
+          <!-- Custom Player -->
+          <div class="custom-player">
+            <input type="range" class="slider" value="0" min="0" max="100" />
+            <div class="controls">
+              <button class="play-btn">▶</button>
+              <span class="time">0:00 / 0:00</span>
+            </div>
+            <audio class="audio-player" controls></audio>
+          </div>
+        </div>
+
+        <div
+          class="song-card"
+          data-type="old"
+          data-artist="Wave To Earth"
+          data-title="peach eyes"
+          data-src="music/music/peach eyes.mp3"
+        >
+          <img src="music/music-poster/peach eyes.jfif" alt="Song 5" />
+          <h3>peach eyes</h3>
+          <a href="https://www.youtube.com/@wavetoearth" target="_blank"
+            ><p>Wave To Earth</p></a
+          >
+
+          <!-- Custom Player -->
+          <div class="custom-player">
+            <input type="range" class="slider" value="0" min="0" max="100" />
+            <div class="controls">
+              <button class="play-btn">▶</button>
+              <span class="time">0:00 / 0:00</span>
+            </div>
+            <audio class="audio-player" controls></audio>
+          </div>
+        </div>
+
+        <div
+          class="song-card"
+          data-type="old"
+          data-artist="Wave To Earth"
+          data-title="daisy"
+          data-src="music/music/daisy.mp3"
+        >
+          <img src="music/music-poster/daisy.jpg" alt="Song 4" />
+          <h3>daisy</h3>
+          <a href="https://www.youtube.com/@wavetoearth" target="_blank"
+            ><p>Wave To Earth</p></a
+          >
+
+          <!-- Custom Player -->
+          <div class="custom-player">
+            <input type="range" class="slider" value="0" min="0" max="100" />
+            <div class="controls">
+              <button class="play-btn">▶</button>
+              <span class="time">0:00 / 0:00</span>
+            </div>
+            <audio class="audio-player" controls></audio>
+          </div>
+        </div>
+
+        <div
+          class="song-card"
+          data-type="old"
+          data-artist="Wave To Earth"
+          data-title="pink"
+          data-src="music/music/pink.mp3"
+        >
+          <img src="music/music-poster/pink.jpg" alt="Song 3" />
+          <h3>pink</h3>
+          <a href="https://www.youtube.com/@wavetoearth" target="_blank"
+            ><p>Wave To Earth</p></a
+          >
+
+          <!-- Custom Player -->
+          <div class="custom-player">
+            <input type="range" class="slider" value="0" min="0" max="100" />
+            <div class="controls">
+              <button class="play-btn">▶</button>
+              <span class="time">0:00 / 0:00</span>
+            </div>
+            <audio class="audio-player" controls></audio>
+          </div>
+        </div>
+
+        <div
+          class="song-card"
+          data-type="old"
+          data-artist="ILLIT"
+          data-title="NOT CUTE ANYMORE"
+          data-src="music/music/ILLIT (아일릿) 'Not cute anymore' (Color Coded Lyrics).mp3"
+        >
+          <img src="music/music-poster/not cute poster.jfif" alt="Song 2" />
+          <h3>NOT CUTE ANYMORE</h3>
+          <a href="https://www.youtube.com/@ILLIT_official" target="_blank"
+            ><p>ILLIT</p></a
+          >
+
+          <!-- Custom Player -->
+          <div class="custom-player">
+            <input type="range" class="slider" value="0" min="0" max="100" />
+            <div class="controls">
+              <button class="play-btn">▶</button>
+              <span class="time">0:00 / 0:00</span>
+            </div>
+            <audio class="audio-player" controls></audio>
+          </div>
+        </div>
+
+        <div
+          class="song-card"
+          data-type="old"
+          data-artist="WILLOW"
+          data-title="Wait a Minute!"
+          data-src="music/music/WILLOW - Wait A Minute! (Lyrics).mp3"
+        >
+          <img src="music/music-poster/wait a minute.jpg" alt="Song 1" />
+          <h3>Wait a Minute!</h3>
+          <a
+            href="https://www.youtube.com/channel/UCgnKlNm0QJY_9LKJ4vHPspg"
+            target="_blank"
+            ><p>WILLOW</p></a
+          >
+
+          <!-- Custom Player -->
+          <div class="custom-player">
+            <input type="range" class="slider" value="0" min="0" max="100" />
+            <div class="controls">
+              <button class="play-btn">▶</button>
+              <span class="time">0:00 / 0:00</span>
+            </div>
+            <audio class="audio-player" controls></audio>
+          </div>
+        </div>
+        <div class="message">
+          <p>Will add more songs soon!</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="details-reveal" id="detailsReveal">
+      <div class="close-btn2">
+        <h2>About The Website</h2>
+        <button class="x-btn" id="btnClose">✖</button>
+      </div>
+      <div class="texts">
+        <p>© 2026 Meow Meow. All rights reserved.</p>
+        <p>
+          This website was created for personal (someone) purposes only. No
+          copyright infringement intended.
+        </p>
+        <p>All music used belongs to their respective owners.</p>
+        <p>
+          Website created by
+          <a
+            id="creator"
+            href="https://www.facebook.com/ljlosa.69"
+            target="_blank"
+            >Eljay</a
+          >.
+        </p>
+      </div>
+    </footer>
+
+    <script src="script.js?v=12345"></script>
+  </body>
 </html>
