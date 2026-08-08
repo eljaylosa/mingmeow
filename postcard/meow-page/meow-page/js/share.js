@@ -152,7 +152,7 @@ function shareViaDesktopDownload(button) {
       link.href = canvas.toDataURL("image/png");
       link.click();
 
-      showButtonFeedback(button, "DOWNLOADED ✓", 2000);
+      showButtonFeedback(button, "DOWNLOADED ✓", 10000);
       showShareHint(
         "Your postcard is saved — attach it anywhere you'd like to share it! 💌"
       );

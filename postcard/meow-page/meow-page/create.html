@@ -58,7 +58,7 @@
         </div>
 
         <div class="field">
-          <label id="catPickerLabel">Cat:</label>
+          <label id="catPickerLabel">Cat Cover:</label>
           <div
             class="cat-options"
             role="group"
@@ -95,6 +95,23 @@
           </div>
         </div>
 
+        <div class="field">
+          <label for="stampImageInput">Stamp Image</label>
+
+          <input type="file" id="stampImageInput" accept="image/*" />
+
+          <!-- Image preview -->
+          <div class="stamp-upload-preview" id="stampUploadPreview">
+            <img id="stampPreviewImage" src="" alt="Selected stamp preview" />
+
+            <span id="stampPreviewPlaceholder"> No image selected </span>
+          </div>
+
+          <button type="button" id="removeStampImage" class="btn btn-secondary">
+            Remove Image
+          </button>
+        </div>
+
         <div class="action-row">
           <button
             class="btn btn-primary"
@@ -112,17 +129,17 @@
           </button>
           <button
             class="btn btn-secondary"
-            id="shareBtn"
-            aria-label="Share postcard image"
-          >
-            SHARE ↗
-          </button>
-          <button
-            class="btn btn-secondary"
             id="getlinkBtn"
             aria-label="Share postcard LINK"
           >
             GET LINK 🔗
+          </button>
+          <button
+            class="btn btn-secondary"
+            id="shareBtn"
+            aria-label="Share postcard image"
+          >
+            SHARE ↗
           </button>
         </div>
         <p class="share-hint" id="shareHint" aria-live="polite"></p>
@@ -153,7 +170,9 @@
                   </div>
                 </div>
 
-                <div class="postcard-greeting-front">A MEOW<br />FOR YOU</div>
+                <div class="postcard-greeting-front">
+                  A MESSAGE<br />FOR YOU
+                </div>
               </div>
             </div>
 
@@ -173,9 +192,20 @@
                 <div class="postcard-divider" aria-hidden="true"></div>
 
                 <div class="postcard-back-right">
-                  <div class="postcard-stamp-box" aria-hidden="true">
-                    <span class="postcard-stamp-cat">🐱</span>
-                    <span class="postcard-stamp-label">MEOW<br />POST</span>
+                  <div class="postcard-stamp-box" id="postcardStamp">
+                    <span class="postcard-stamp-cat" id="postcardStampCat"
+                      >🐱</span
+                    >
+
+                    <span class="postcard-stamp-label" id="postcardStampLabel">
+                      MEOW POST
+                    </span>
+
+                    <img
+                      id="postcardStampImage"
+                      class="postcard-stamp-image"
+                      alt="Uploaded stamp"
+                    />
                   </div>
 
                   <div class="postcard-to-row">
@@ -201,8 +231,99 @@
       </section>
     </main>
 
+    <!-- Floating Music Player -->
+    <div class="floating-music" id="floatingMusic">
+      <!-- Collapsed floating button -->
+      <button
+        class="music-bubble"
+        id="musicBubble"
+        type="button"
+        aria-label="Open music player"
+        title="Open music player"
+      >
+        <span class="music-bubble-icon">🎵</span>
+        <span class="music-bubble-note">♪</span>
+      </button>
+
+      <!-- Expanded player -->
+      <div class="music-card" id="musicCard" aria-label="Music player">
+        <div class="music-card-header" id="musicDragHandle">
+          <div class="music-cover">🎵</div>
+
+          <div class="music-track-info">
+            <span class="music-eyebrow"> A SONG FOR THIS POSTCARD </span>
+
+            <strong>Last Night on Earth</strong>
+
+            <span>Green Day</span>
+          </div>
+
+          <button
+            class="music-minimize"
+            id="musicMinimize"
+            type="button"
+            aria-label="Minimize music player"
+            title="Minimize"
+          >
+            ×
+          </button>
+        </div>
+
+        <div class="music-body">
+          <div class="music-progress-wrapper">
+            <input
+              type="range"
+              id="musicProgress"
+              class="music-progress"
+              min="0"
+              max="100"
+              value="0"
+              step="0.1"
+              aria-label="Music progress"
+            />
+
+            <div class="music-time">
+              <span id="musicCurrentTime">0:00</span>
+              <span id="musicDuration">0:00</span>
+            </div>
+          </div>
+
+          <div class="music-main-controls">
+            <button
+              class="music-volume"
+              id="musicVolumeBtn"
+              type="button"
+              aria-label="Mute music"
+            >
+              🔊
+            </button>
+
+            <button
+              class="music-play"
+              id="musicPlayBtn"
+              type="button"
+              aria-label="Play music"
+            >
+              ▶
+            </button>
+
+            <span class="music-decor">♡</span>
+          </div>
+        </div>
+
+        <div class="music-tiny-label">
+          the song inspiration for this website 💌
+        </div>
+
+        <audio id="meowMusic" preload="metadata">
+          <source src="assets/last-night-on-earth.mp3" type="audio/mpeg" />
+        </audio>
+      </div>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="js/postcard.js"></script>
     <script src="js/share.js"></script>
+    <script src="js/music.js"></script>
   </body>
 </html>

@@ -162,3 +162,26 @@ body {
     min-width: 140px;
   }
 }
+
+@media (max-width: 500px) {
+  .music-player {
+    margin-top: 22px;
+    padding: 16px;
+  }
+
+  .music-eyebrow {
+    font-size: 0.5rem;
+  }
+
+  .music-info strong {
+    font-size: 0.85rem;
+  }
+
+  .music-note {
+    display: none;
+  }
+
+  .music-controls {
+    gap: 9px;
+  }
+}

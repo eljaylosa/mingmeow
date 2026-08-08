@@ -228,9 +228,9 @@ a {
 
 /* ---------- Postcard ---------- */
 .postcard {
-  width: 480px;
-  height: 315px;
-  perspective: 1200px;
+  width: 600px;
+  height: 394px;
+  perspective: 1400px;
   cursor: pointer;
   user-select: none;
 }
@@ -383,17 +383,85 @@ a {
 
 .postcard-stamp-box {
   align-self: flex-end;
-  width: 58px;
-  height: 66px;
+  width: 128px;
+  height: 118px;
+
   border: 2px dashed #b9c9d8;
   border-radius: 6px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
   gap: 2px;
   background: #f4f8fb;
+
   box-shadow: 0 2px 4px rgba(58, 46, 42, 0.03);
+
+  overflow: hidden;
+}
+
+.postcard-stamp-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+  display: none;
+}
+
+.postcard-stamp-box.has-image {
+  padding: 3px;
+  overflow: hidden;
+}
+
+.postcard-stamp-box.has-image .postcard-stamp-image {
+  display: block;
+}
+
+.postcard-stamp-box.has-image .postcard-stamp-cat,
+.postcard-stamp-box.has-image .postcard-stamp-label {
+  display: none;
+}
+
+/* ---------- Stamp image upload preview ---------- */
+
+.stamp-upload-preview {
+  width: 110px;
+  height: 110px;
+
+  border: 2px dashed #d9c5bc;
+  border-radius: 12px;
+
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  color: #9a8a82;
+  font-size: 0.75rem;
+  text-align: center;
+
+  margin-top: 4px;
+}
+
+.stamp-upload-preview img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: none;
+}
+
+.stamp-upload-preview.has-image img {
+  display: block;
+}
+
+.stamp-upload-preview.has-image #stampPreviewPlaceholder {
+  display: none;
 }
 
 .postcard-stamp-cat {
@@ -449,47 +517,527 @@ a {
   box-shadow: 0 0 0 2px rgba(255, 143, 163, 0.2);
 }
 
-/* ---------- Shared postcard viewer ---------- */
+/* =========================================================
+   FLOATING MUSIC PLAYER
+   ========================================================= */
 
-.card-page {
-  min-height: 100vh;
+.floating-music {
+  position: fixed;
+
+  right: 28px;
+  bottom: 28px;
+
+  left: auto;
+  top: auto;
+
+  width: 310px;
+
+  z-index: 9999;
+
+  user-select: none;
+
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+/* ---------- Floating bubble ---------- */
+
+.music-bubble {
+  width: 58px;
+  height: 58px;
+
+  margin-left: auto;
+
+  border: 1px solid #ebc9d0;
+  border-radius: 50%;
+
+  background: #fff9f5;
+
+  color: #3a2e2a;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+
+  box-shadow: 0 8px 24px rgba(58, 46, 42, 0.15),
+    0 2px 6px rgba(255, 143, 163, 0.15);
+
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.25s ease;
+}
+
+.music-bubble:hover {
+  transform: scale(1.1) rotate(-4deg);
+
+  box-shadow: 0 12px 28px rgba(58, 46, 42, 0.18),
+    0 3px 10px rgba(255, 143, 163, 0.2);
+}
+
+.music-bubble:active {
+  transform: scale(0.94);
+}
+
+.music-bubble-icon {
+  font-size: 1.45rem;
+}
+
+.music-bubble-note {
+  position: absolute;
+
+  right: 7px;
+  top: 5px;
+
+  font-family: "Caveat", cursive;
+  font-size: 1rem;
+
+  color: #c8465a;
+
+  transform: rotate(12deg);
+}
+
+/* ---------- Expanded player ---------- */
+
+.music-card {
+  width: 310px;
+
+  background: #fff9f5;
+
+  border: 1px solid #ebdcd3;
+  border-radius: 18px;
+
+  overflow: hidden;
+
+  box-shadow: 0 14px 40px rgba(58, 46, 42, 0.16),
+    0 3px 10px rgba(58, 46, 42, 0.06);
+
+  position: relative;
+
+  animation: musicCardOpen 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Vintage airmail stripe */
+
+.music-card::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  top: 0;
+
+  height: 5px;
+
+  background: repeating-linear-gradient(
+    90deg,
+    #c8465a 0px,
+    #c8465a 12px,
+    #fdf8f0 12px,
+    #fdf8f0 24px,
+    #3a6ea5 24px,
+    #3a6ea5 36px,
+    #fdf8f0 36px,
+    #fdf8f0 48px
+  );
+}
+
+/* ---------- Header / drag handle ---------- */
+
+.music-card-header {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 18px 16px 12px;
+  cursor: grab; /* Important for mobile dragging */
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.music-card-header:active {
+  cursor: grabbing;
+}
+
+/* Buttons must remain clickable on touch devices */
+.music-minimize,
+.music-play,
+.music-volume {
+  touch-action: manipulation;
+  pointer-events: auto;
+  position: relative;
+  z-index: 10;
+}
+
+.music-cover {
+  width: 42px;
+  height: 42px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  background: #fff0f3;
+
+  border: 1px solid #f1cbd3;
+
+  font-size: 1.25rem;
+
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.music-track-info {
+  min-width: 0;
+
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 24px;
-  padding: 32px 20px;
-  background: radial-gradient(circle at center, #fff9f5 0%, #fdf6f0 100%);
+
+  gap: 1px;
 }
 
-.card-header {
-  text-align: center;
-}
-
-.card-header h1 {
+.music-eyebrow {
   font-family: "Special Elite", monospace;
-  font-size: 1.8rem;
-  letter-spacing: 0.1em;
-  color: #2e2421;
+
+  font-size: 0.7rem;
+
+  letter-spacing: 0.08em;
+
+  color: #9a8a82;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.card-header p {
-  margin-top: 6px;
+.music-track-info strong {
+  font-family: "Special Elite", monospace;
+
+  font-size: 0.88rem;
+
+  color: #3a2e2a;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+.music-track-info > span:last-child {
+  font-size: 0.72rem;
+
   color: #7a6a63;
-  font-size: 0.95rem;
 }
 
-.postcard-container {
+/* ---------- Minimize button ---------- */
+
+.music-minimize {
+  margin-left: auto;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: #9a8a82;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; /* Mobile touch fix */
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+  z-index: 20;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.music-minimize:hover {
+  background: #fff0f3;
+  color: #c8465a;
+  transform: rotate(90deg);
+}
+
+.music-minimize:active {
+  transform: scale(0.9);
+}
+
+/* ---------- Body ---------- */
+
+.music-body {
+  padding: 4px 16px 12px;
+}
+
+.music-progress-wrapper {
   width: 100%;
 }
 
-.card-actions {
+.music-progress {
+  width: 100%;
+
+  height: 5px;
+
+  appearance: none;
+  -webkit-appearance: none;
+
+  border-radius: 999px;
+
+  background: #eadbd3;
+
+  cursor: pointer;
+}
+
+.music-progress::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+
+  width: 13px;
+  height: 13px;
+
+  border-radius: 50%;
+
+  border: 2px solid #fff;
+
+  background: #ff8fa3;
+
+  box-shadow: 0 2px 5px rgba(58, 46, 42, 0.15);
+}
+
+.music-progress::-moz-range-thumb {
+  width: 13px;
+  height: 13px;
+
+  border-radius: 50%;
+
+  border: 2px solid #fff;
+
+  background: #ff8fa3;
+
+  box-shadow: 0 2px 5px rgba(58, 46, 42, 0.15);
+}
+
+.music-time {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+
+  margin-top: 4px;
+
+  font-size: 0.62rem;
+
+  color: #9a8a82;
+
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Controls ---------- */
+
+.music-main-controls {
+  display: flex;
+
   align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
+
+  justify-content: space-between;
+
+  margin-top: 8px;
+}
+
+.music-play {
+  width: 42px;
+  height: 42px;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background: #ff8fa3;
+
+  color: #fff;
+
+  font-size: 0.82rem;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 5px 14px rgba(255, 143, 163, 0.3);
+
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+    background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.music-play:hover {
+  transform: scale(1.08);
+
+  background: #ff7a94;
+
+  box-shadow: 0 7px 18px rgba(255, 143, 163, 0.35);
+}
+
+.music-play:active {
+  transform: scale(0.94);
+}
+
+.music-volume {
+  width: 34px;
+  height: 34px;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  font-size: 0.95rem;
+
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.music-volume:hover {
+  background: #fff0f3;
+
+  transform: scale(1.08);
+}
+
+.music-decor {
+  font-family: "Caveat", cursive;
+
+  font-size: 1.6rem;
+
+  color: #c8465a;
+
+  transform: rotate(-8deg);
+}
+
+/* ---------- Tiny footer ---------- */
+
+.music-tiny-label {
+  padding: 0 16px 13px;
+
+  text-align: center;
+
+  font-weight: bold;
+
+  font-family: "Caveat", cursive;
+
+  font-size: 1rem;
+
+  color: #9a8a82;
+}
+
+/* ---------- Playing animation ---------- */
+
+.floating-music.playing .music-cover {
+  animation: musicPulse 1.2s ease-in-out infinite;
+}
+
+.floating-music.playing .music-decor {
+  animation: musicNoteFloat 1.2s ease-in-out infinite;
+}
+
+@keyframes musicPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.06);
+  }
+}
+
+@keyframes musicNoteFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-8deg);
+  }
+
+  50% {
+    transform: translateY(-4px) rotate(5deg);
+  }
+}
+
+@keyframes musicCardOpen {
+  from {
+    opacity: 0;
+    transform: scale(0.88) translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ---------- Hidden state ---------- */
+
+.floating-music.collapsed .music-card {
+  display: none;
+}
+
+.floating-music.collapsed .music-bubble {
+  display: flex;
+}
+
+.floating-music:not(.collapsed) .music-bubble {
+  display: none;
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 600px) {
+  .floating-music {
+    width: min(285px, calc(100vw - 32px));
+
+    right: 16px;
+    bottom: 16px;
+
+    left: auto;
+    top: auto;
+  }
+
+  .music-card {
+    width: 100%;
+  }
+
+  .music-bubble {
+    width: 54px;
+    height: 54px;
+  }
+
+  .create-layout {
+    flex-direction: column-reverse;
+    gap: 24px;
+    padding: 0 16px 40px;
+    align-items: center;
+  }
+
+  .preview-pane {
+    order: 1;
+    width: 100%;
+    padding-top: 10px;
+  }
+
+  .editor-pane {
+    order: 2;
+    width: 100%;
+    max-width: 440px;
+  }
+
+  .postcard {
+    width: min(480px, calc(100vw - 32px));
+    height: auto;
+    aspect-ratio: 480 / 315;
+  }
 }

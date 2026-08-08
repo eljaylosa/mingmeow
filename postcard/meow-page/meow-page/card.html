@@ -101,8 +101,65 @@
 
         <a href="create.html" class="btn btn-secondary"> MAKE YOUR OWN </a>
       </div>
+
+      <section class="music-player" aria-label="Music player">
+        <div class="music-header">
+          <div class="music-icon">🎵</div>
+
+          <div class="music-info">
+            <span class="music-eyebrow">A LITTLE SONG FOR THIS POSTCARD</span>
+            <strong>Last Night on Earth</strong>
+            <span>Green Day</span>
+          </div>
+
+          <div class="music-note">♪</div>
+        </div>
+
+        <div class="music-controls">
+          <button
+            class="music-play"
+            id="musicPlayBtn"
+            type="button"
+            aria-label="Play music"
+          >
+            ▶
+          </button>
+
+          <div class="music-progress-area">
+            <input
+              type="range"
+              id="musicProgress"
+              class="music-progress"
+              min="0"
+              max="100"
+              value="0"
+              step="0.1"
+              aria-label="Music progress"
+            />
+
+            <div class="music-time">
+              <span id="musicCurrentTime">0:00</span>
+              <span id="musicDuration">0:00</span>
+            </div>
+          </div>
+
+          <button
+            class="music-volume"
+            id="musicVolumeBtn"
+            type="button"
+            aria-label="Mute music"
+          >
+            🔊
+          </button>
+        </div>
+
+        <audio id="meowMusic" preload="metadata">
+          <source src="assets/last-night-on-earth.mp3" type="audio/mpeg" />
+        </audio>
+      </section>
     </main>
 
     <script src="js/card.js"></script>
+    <script src="js/music.js"></script>
   </body>
 </html>
