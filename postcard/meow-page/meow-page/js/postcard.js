@@ -5,7 +5,7 @@ const postcardData = {
   message: "Hello!",
   sender: "",
   cat: "🐱",
-  stampImage: null,
+  stampImage: "",
 };
 
 function initStampImageUpload() {

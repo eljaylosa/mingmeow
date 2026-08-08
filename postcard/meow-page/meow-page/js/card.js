@@ -23,6 +23,8 @@ function decodePostcardData() {
 
 function loadSharedPostcard() {
   const data = decodePostcardData();
+  const stampImageEl = document.getElementById("postcardStampImage");
+  const defaultStampEl = document.getElementById("postcardDefaultStamp");
 
   if (!data) return;
 
@@ -45,6 +47,18 @@ function loadSharedPostcard() {
 
   if (fromEl) {
     fromEl.textContent = data.sender || "";
+  }
+
+  // Stamp image
+  if (stampImageEl && defaultStampEl) {
+    if (data.stampImage) {
+      stampImageEl.src = data.stampImage;
+      stampImageEl.hidden = false;
+      defaultStampEl.hidden = true;
+    } else {
+      stampImageEl.hidden = true;
+      defaultStampEl.hidden = false;
+    }
   }
 }
 

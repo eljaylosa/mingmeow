@@ -210,6 +210,7 @@ function generatePostcardLink(button) {
     message: postcardData.message || "Hello!",
     sender: postcardData.sender || "",
     cat: postcardData.cat || "🐱",
+    stampImage: postcardData.stampImage || null,
   };
 
   try {
