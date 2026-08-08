@@ -1041,3 +1041,44 @@ a {
     aspect-ratio: 480 / 315;
   }
 }
+
+.card-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 40px 20px 80px;
+  background: radial-gradient(circle at center, #fff9f5 0%, #fdf6f0 100%);
+}
+
+.card-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 600px) {
+  .card-page {
+    justify-content: flex-start;
+    padding-top: 30px;
+  }
+
+  .postcard-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .card-actions {
+    width: 100%;
+  }
+
+  .card-actions .btn {
+    width: 100%;
+    max-width: 280px;
+  }
+}
