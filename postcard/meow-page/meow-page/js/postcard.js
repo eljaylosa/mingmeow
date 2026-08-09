@@ -17,7 +17,7 @@ function initStampImageUpload() {
   const stampInput = document.getElementById("stampImageInput");
   const removeStampBtn = document.getElementById("removeStampImage");
 
-  const stampBox = document.getElementById("postcardStampBox");
+  const stampBox = document.getElementById("postcardStamp");
   const stampImage = document.getElementById("postcardStampImage");
 
   const previewBox = document.getElementById("stampUploadPreview");

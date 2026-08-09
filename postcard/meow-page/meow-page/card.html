@@ -16,195 +16,195 @@
     <link rel="stylesheet" href="css/animations.css" />
     <link rel="stylesheet" href="css/responsive.css" />
   </head>
-  <body><main class="card-page">
-  <section class="postcard-container">
-    <div
-      class="postcard"
-      id="postcard"
-      tabindex="0"
-      role="button"
-      aria-label="Interactive postcard. Click to flip between front and back faces."
-    >
-      <div class="postcard-inner">
-        <!-- FRONT -->
-        <div class="postcard-front">
-          <div class="postcard-paper postcard-paper-front">
-            <div class="postcard-postmark" aria-hidden="true">🐾</div>
+  <body>
+    <main class="card-page">
+      <section class="postcard-container">
+        <div
+          class="postcard"
+          id="postcard"
+          tabindex="0"
+          role="button"
+          aria-label="Interactive postcard. Click to flip between front and back faces."
+        >
+          <div class="postcard-inner">
+            <!-- FRONT -->
+            <div class="postcard-front">
+              <div class="postcard-paper postcard-paper-front">
+                <div class="postcard-postmark" aria-hidden="true">🐾</div>
 
-            <div class="postcard-cat-frame">
-              <div
-                class="postcard-cat"
-                id="postcardCat"
-                tabindex="0"
-                role="button"
-                aria-label="Interactive cat. Click to make it bounce."
-              >
-                🐱
-              </div>
-            </div>
+                <div class="postcard-cat-frame">
+                  <div
+                    class="postcard-cat"
+                    id="postcardCat"
+                    tabindex="0"
+                    role="button"
+                    aria-label="Interactive cat. Click to make it bounce."
+                  >
+                    🐱
+                  </div>
+                </div>
 
-            <div class="postcard-greeting-front">
-              A MESSAGE<br />
-              FOR YOU
-            </div>
-          </div>
-        </div>
-
-        <!-- BACK -->
-        <div class="postcard-back">
-          <div class="postcard-paper postcard-paper-back">
-            <div class="postcard-back-left">
-              <div class="postcard-dateplace">🐾 somewhere, today</div>
-
-              <div class="postcard-message-box">
-                <div class="postcard-message" id="postcardMessage">Hello!</div>
-              </div>
-            </div>
-
-            <div class="postcard-divider"></div>
-
-            <div class="postcard-back-right">
-              <div class="postcard-stamp-box" id="postcardStampBox">
-                <img
-                  id="postcardStampImage"
-                  class="postcard-stamp-image"
-                  alt="Postcard stamp image"
-                />
-
-                <div class="postcard-stamp-default">
-                  <span class="postcard-stamp-cat">🐱</span>
-                  <span class="postcard-stamp-label">
-                    MEOW<br />
-                    POST
-                  </span>
+                <div class="postcard-greeting-front">
+                  A MESSAGE<br />
+                  FOR YOU
                 </div>
               </div>
+            </div>
 
-              <div class="postcard-to-row">
-                <span class="postcard-label">To:</span>
+            <!-- BACK -->
+            <div class="postcard-back">
+              <div class="postcard-paper postcard-paper-back">
+                <div class="postcard-back-left">
+                  <div class="postcard-dateplace">🐾 somewhere, today</div>
 
-                <span class="postcard-to" id="postcardTo"></span>
-              </div>
+                  <div class="postcard-message-box">
+                    <div class="postcard-message" id="postcardMessage">
+                      Hello!
+                    </div>
+                  </div>
+                </div>
 
-              <div class="postcard-address-lines">
-                <span class="address-line"></span>
-                <span class="address-line"></span>
-                <span class="address-line"></span>
-              </div>
+                <div class="postcard-divider"></div>
 
-              <div class="postcard-from-row">
-                <span class="postcard-label">From:</span>
+                <div class="postcard-back-right">
+                  <div class="postcard-stamp-box" id="postcardStampBox">
+                    <img
+                      id="postcardStampImage"
+                      class="postcard-stamp-image"
+                      alt="Postcard stamp image"
+                    />
 
-                <span class="postcard-from" id="postcardFrom"></span>
+                    <div class="postcard-stamp-default">
+                      <span class="postcard-stamp-cat">🐱</span>
+                      <span class="postcard-stamp-label">
+                        MEOW<br />
+                        POST
+                      </span>
+                    </div>
+                  </div>
+
+                  <div class="postcard-to-row">
+                    <span class="postcard-label">To:</span>
+
+                    <span class="postcard-to" id="postcardTo"></span>
+                  </div>
+
+                  <div class="postcard-address-lines">
+                    <span class="address-line"></span>
+                    <span class="address-line"></span>
+                    <span class="address-line"></span>
+                  </div>
+
+                  <div class="postcard-from-row">
+                    <span class="postcard-label">From:</span>
+
+                    <span class="postcard-from" id="postcardFrom"></span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
+      </section>
+
+      <div class="card-actions">
+        <button class="btn" id="flipBtn" type="button">FLIP 💌</button>
+
+        <a href="create.html" class="btn btn-secondary"> MAKE YOUR OWN </a>
       </div>
-    </div>
-  </section>
+    </main>
 
-  <div class="card-actions">
-    <button class="btn" id="flipBtn" type="button">FLIP 💌</button>
-
-    <a href="create.html" class="btn btn-secondary"> MAKE YOUR OWN </a>
-  </div>
-</main>
-
-<!-- FLOATING MUSIC PLAYER -->
-<div class="floating-music collapsed" id="floatingMusic">
-  <!-- COLLAPSED MUSIC ICON -->
-  <button
-    class="music-bubble"
-    id="musicBubble"
-    type="button"
-    aria-label="Open music player"
-  >
-    <span class="music-bubble-icon">🎵</span>
-    <span class="music-bubble-note">♪</span>
-  </button>
-
-  <!-- EXPANDED PLAYER -->
-  <div class="music-card" id="musicCard">
-    <div class="music-card-header" id="musicDragHandle">
-      <div class="music-cover">🎵</div>
-
-      <div class="music-track-info">
-        <span class="music-eyebrow"> A SONG FOR THIS POSTCARD </span>
-
-        <strong> Last Night on Earth </strong>
-
-        <span> Green Day </span>
-      </div>
-
+    <!-- FLOATING MUSIC PLAYER -->
+    <div class="floating-music collapsed" id="floatingMusic">
+      <!-- COLLAPSED MUSIC ICON -->
       <button
-        class="music-minimize"
-        id="musicMinimize"
+        class="music-bubble"
+        id="musicBubble"
         type="button"
-        aria-label="Minimize music player"
+        aria-label="Open music player"
       >
-        ×
+        <span class="music-bubble-icon">🎵</span>
+        <span class="music-bubble-note">♪</span>
       </button>
-    </div>
 
-    <div class="music-body">
-      <div class="music-progress-wrapper">
-        <input
-          type="range"
-          id="musicProgress"
-          class="music-progress"
-          min="0"
-          max="100"
-          value="0"
-          step="0.1"
-          aria-label="Music progress"
-        />
+      <!-- EXPANDED PLAYER -->
+      <div class="music-card" id="musicCard">
+        <div class="music-card-header" id="musicDragHandle">
+          <div class="music-cover">🎵</div>
 
-        <div class="music-time">
-          <span id="musicCurrentTime">0:00</span>
-          <span id="musicDuration">0:00</span>
+          <div class="music-track-info">
+            <span class="music-eyebrow"> A SONG FOR THIS POSTCARD </span>
+
+            <strong> Last Night on Earth </strong>
+
+            <span> Green Day </span>
+          </div>
+
+          <button
+            class="music-minimize"
+            id="musicMinimize"
+            type="button"
+            aria-label="Minimize music player"
+          >
+            ×
+          </button>
+        </div>
+
+        <div class="music-body">
+          <div class="music-progress-wrapper">
+            <input
+              type="range"
+              id="musicProgress"
+              class="music-progress"
+              min="0"
+              max="100"
+              value="0"
+              step="0.1"
+              aria-label="Music progress"
+            />
+
+            <div class="music-time">
+              <span id="musicCurrentTime">0:00</span>
+              <span id="musicDuration">0:00</span>
+            </div>
+          </div>
+
+          <div class="music-main-controls">
+            <button
+              class="music-play"
+              id="musicPlayBtn"
+              type="button"
+              aria-label="Play music"
+            >
+              ▶
+            </button>
+
+            <div class="music-decor">♪</div>
+
+            <button
+              class="music-volume"
+              id="musicVolumeBtn"
+              type="button"
+              aria-label="Mute music"
+            >
+              🔊
+            </button>
+          </div>
+        </div>
+
+        <div class="music-tiny-label">
+          the song inspiration for this website 💌
         </div>
       </div>
-
-      <div class="music-main-controls">
-        <button
-          class="music-play"
-          id="musicPlayBtn"
-          type="button"
-          aria-label="Play music"
-        >
-          ▶
-        </button>
-
-        <div class="music-decor">♪</div>
-
-        <button
-          class="music-volume"
-          id="musicVolumeBtn"
-          type="button"
-          aria-label="Mute music"
-        >
-          🔊
-        </button>
-      </div>
     </div>
 
-    <div class="music-tiny-label">the song inspiration for this website 💌</div>
-  </div>
-</div>
+    <audio id="meowMusic" preload="metadata">
+      <source src="assets/last-night-on-earth.mp3" type="audio/mpeg" />
+    </audio>
 
-<audio id="meowMusic" preload="metadata">
-  <source src="assets/last-night-on-earth.mp3" type="audio/mpeg" />
-</audio>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<script src="js/supabase.js"></script>
-
-<script src="js/card.js"></script>
-<script src="js/music.js"></script>
-<!-- <script src="js/postcard.js"></script> --></body>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase.js"></script>
+    <script src="js/card.js"></script>
+    <script src="js/music.js"></script>
+  </body>
 </html>
-
-
-
