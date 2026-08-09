@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Credits | Meow Page</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Special+Elite&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/icon/icon.png"
+    />
+  </head>
+
+  <body>
+    <main class="credits-page">
+      <section class="credits-card">
+        <a href="create.html" class="credits-back">
+          ← Back to Postcard Editor
+        </a>
+
+        <header class="credits-header">
+          <div class="credits-cat">🐱</div>
+
+          <h1>MEOW PAGE</h1>
+
+          <h2>Made by Jay</h2>
+
+          <p class="credits-date">
+            A little postcard project made with lots of code & love 💌
+          </p>
+        </header>
+
+        <!-- Creator -->
+        <section class="creator-section">
+          <div class="creator-avatar" id="creatorAvatar" title="Click me 🐱">
+            <img src="assets/img/credits-pf.jpg" alt="Jay" />
+          </div>
+
+          <!-- <audio id="meowSound" preload="auto">
+            <source src="assets/sounds/meow1.mp3" type="audio/mpeg" />
+          </audio> -->
+
+          <div class="creator-info">
+            <span class="creator-label"> THE HUMAN BEHIND THE CODE </span>
+
+            <h3>Jay</h3>
+
+            <p class="creator-role">Web Developer • Designer • Creator</p>
+
+            <p class="creator-description">
+              Hey! I'm Jay — a BSIT student who enjoys building websites,
+              experimenting with designs, coding random ideas, and turning small
+              concepts into something people can actually use.
+            </p>
+          </div>
+        </section>
+
+        <!-- What went into the project -->
+        <section class="credits-section">
+          <h3>🐾 What went into this?</h3>
+
+          <p>
+            Meow Page started as a simple idea: make sending a message feel a
+            little more personal than just sending a chat.
+          </p>
+
+          <p>
+            Inspired by Green Day's <em>“Last Time on Earth”</em> and its
+            postcard imagery, I wanted to turn that idea into a little digital
+            postcard — something you can write, decorate, and send to someone
+            special. 💌
+          </p>
+
+          <p>
+            So I turned it into a tiny digital postcard — with cats, stamps,
+            themes, music, animations, and shareable links. 💌
+          </p>
+        </section>
+
+        <!-- Built with -->
+        <section class="credits-section">
+          <h3>🛠️ Built with</h3>
+
+          <div class="credits-tools">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+            <span>Supabase</span>
+            <span>HTML2Canvas</span>
+          </div>
+        </section>
+
+        <!-- Portfolio CTA -->
+        <section class="portfolio-cta">
+          <div class="portfolio-cat">💌</div>
+
+          <h3>Want to know me more?</h3>
+
+          <p>
+            This postcard is only one of the things I've made. Check out my
+            portfolio to see more of my projects, designs, and experiments.
+          </p>
+
+          <a
+            href="https://portfolionieljay.netlify.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="portfolio-button"
+          >
+            VISIT MY PORTFOLIO ↗
+          </a>
+          <a
+            href="https://www.facebook.com/ljlosa.69/"
+            class="portfolio-button-outline"
+            >OR CONTACT ME</a
+          >
+        </section>
+
+        <div class="credits-ending">
+          Made with love, cats, and questionable amounts of code. 🐾
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-content">
+        <span>🐾 Meow Page</span>
+
+        <span class="footer-divider">•</span>
+
+        <a href="credits.html"> Credits ✨ </a>
+
+        <span class="footer-divider">•</span>
+
+        <a href="privacy.html"> Privacy Policy 🔒 </a>
+      </div>
+
+      <p>Made with love, cats, and questionable amounts of code. 💌</p>
+    </footer>
+
+    <script>
+      const meowSounds = [
+        "assets/sounds/meow1.mp3",
+        "assets/sounds/meow2.mp3",
+        "assets/sounds/meow3.mp3",
+        "assets/sounds/meow4.mp3",
+        "assets/sounds/meow5.mp3",
+        "assets/sounds/meow6.mp3",
+      ];
+
+      const creatorAvatar = document.getElementById("creatorAvatar");
+
+      let lastMeow = -1;
+
+      creatorAvatar.addEventListener("click", () => {
+        let randomIndex;
+
+        do {
+          randomIndex = Math.floor(Math.random() * meowSounds.length);
+        } while (randomIndex === lastMeow && meowSounds.length > 1);
+
+        lastMeow = randomIndex;
+
+        const audio = new Audio(meowSounds[randomIndex]);
+        audio.play();
+
+        // Restart click animation
+        creatorAvatar.classList.remove("meowing");
+        void creatorAvatar.offsetWidth;
+        creatorAvatar.classList.add("meowing");
+      });
+    </script>
+  </body>
+</html>
