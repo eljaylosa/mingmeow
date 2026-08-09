@@ -15,35 +15,78 @@ function getVisiblePostcardFace() {
 // positioning), renders it off-screen at high resolution via html2canvas,
 // and resolves with the resulting canvas.
 function renderPostcardCanvas() {
+  const postcard = document.getElementById("postcard");
+
+  if (!postcard || typeof html2canvas === "undefined") {
+    return Promise.reject(new Error("Postcard is not available to render"));
+  }
+
   const faceEl = getVisiblePostcardFace();
-  if (!faceEl || typeof html2canvas === "undefined") {
+
+  if (!faceEl) {
     return Promise.reject(
       new Error("Postcard face is not available to render")
     );
   }
 
-  // The front/back faces carry their own 3D positioning (absolute position,
-  // and .postcard-back also has a permanent rotateY(180deg) so it sits behind
-  // the front face until the parent flips). html2canvas doesn't know about
-  // the flip state, so we clone the visible face, strip that positioning
-  // inline, and render the clone off-screen instead of the live element.
+  // ----------------------------------------
+  // Clone the postcard face
+  // ----------------------------------------
+
   const clone = faceEl.cloneNode(true);
+
+  // Remove 3D positioning from the cloned face
   clone.style.position = "static";
   clone.style.transform = "none";
   clone.style.inset = "auto";
 
+  // ----------------------------------------
+  // Preserve the active theme
+  // ----------------------------------------
+
+  const themeClass = Array.from(postcard.classList).find((className) =>
+    className.startsWith("theme-")
+  );
+
+  // Create a wrapper that carries the theme.
+  // This is important because many theme styles
+  // depend on .postcard.theme-xxxx selectors.
   const wrapper = document.createElement("div");
+
+  wrapper.className = "postcard";
+
+  if (themeClass) {
+    wrapper.classList.add(themeClass);
+  }
+
   wrapper.style.position = "fixed";
   wrapper.style.top = "-9999px";
   wrapper.style.left = "-9999px";
   wrapper.style.width = `${faceEl.offsetWidth}px`;
   wrapper.style.height = `${faceEl.offsetHeight}px`;
+  wrapper.style.overflow = "visible";
+
+  // Preserve the same face class
+  if (faceEl.classList.contains("postcard-front")) {
+    wrapper.classList.add("rendering-front");
+  }
+
+  if (faceEl.classList.contains("postcard-back")) {
+    wrapper.classList.add("rendering-back");
+  }
+
   wrapper.appendChild(clone);
   document.body.appendChild(wrapper);
 
-  return html2canvas(clone, {
+  // ----------------------------------------
+  // Render
+  // ----------------------------------------
+
+  return html2canvas(wrapper, {
     scale: 3,
     backgroundColor: null,
+    useCORS: true,
+    allowTaint: false,
   }).finally(() => {
     document.body.removeChild(wrapper);
   });

@@ -1035,7 +1035,7 @@ a {
 
 /* ---------- Mobile ---------- */
 
-@media (max-width: 600px) {
+/* @media (max-width: 600px) {
   .floating-music {
     width: min(285px, calc(100vw - 32px));
 
@@ -1079,7 +1079,7 @@ a {
     height: auto;
     aspect-ratio: 480 / 315;
   }
-}
+} */
 
 .card-page {
   min-height: 100vh;
@@ -1188,5 +1188,1487 @@ a {
   .music-bubble {
     width: 56px;
     height: 56px;
+  }
+}
+
+/* =========================================================
+   🎨 MEOW PAGE — POSTCARD THEMES
+   12 COMPLETE THEMES
+   ========================================================= */
+
+/* =========================================================
+   ✈️ CLASSIC AIRMAIL
+   ========================================================= */
+
+.postcard.theme-airmail .postcard-paper {
+  background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.82),
+      rgba(250, 243, 230, 0.96)
+    ),
+    repeating-linear-gradient(
+      45deg,
+      #c94f4f 0 8px,
+      transparent 8px 16px,
+      #5278a5 16px 24px,
+      transparent 24px 32px
+    );
+
+  color: #3b302b;
+  border: 3px solid #e5d8c5;
+}
+
+.postcard.theme-airmail .postcard-paper::before {
+  content: "✈️  ✉️  🐾";
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  font-size: 1rem;
+  letter-spacing: 5px;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.postcard.theme-airmail .postcard-paper::after {
+  content: "✈ AIR MAIL • MEOW POST";
+  position: absolute;
+  bottom: 10px;
+  left: 18px;
+  font-family: "Special Elite", monospace;
+  font-size: 0.65rem;
+  color: #a94742;
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+/* =========================================================
+   🌸 SAKURA
+   ========================================================= */
+
+.postcard.theme-sakura .postcard-paper {
+  background: radial-gradient(circle at 12% 18%, #f9a9c4 0 3px, transparent 4px),
+    radial-gradient(circle at 84% 22%, #ffc6da 0 4px, transparent 5px),
+    radial-gradient(circle at 25% 82%, #f6b5cd 0 3px, transparent 4px),
+    radial-gradient(circle at 90% 78%, #ffd8e6 0 4px, transparent 5px),
+    linear-gradient(135deg, #fffafd, #ffeaf2);
+
+  color: #4b3040;
+  border: 2px solid #efc2d2;
+}
+
+.postcard.theme-sakura .postcard-paper::before {
+  content: "🌸  桜  🌸";
+  position: absolute;
+  top: 10px;
+  right: 18px;
+  font-size: 0.95rem;
+  letter-spacing: 5px;
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+.postcard.theme-sakura .postcard-paper::after {
+  content: "🌸 SAKURA MAIL • 東京";
+  position: absolute;
+  bottom: 10px;
+  left: 18px;
+  font-family: "Special Elite", monospace;
+  font-size: 0.65rem;
+  color: #b85b7b;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.postcard.theme-sakura .postcard-message,
+.postcard.theme-sakura .postcard-to,
+.postcard.theme-sakura .postcard-from,
+.postcard.theme-sakura .postcard-greeting-front {
+  color: #4b3040;
+}
+
+.postcard.theme-sakura .postcard-label,
+.postcard.theme-sakura .postcard-dateplace {
+  color: #a45270;
+}
+
+/* =========================================================
+   ⛩️ RETRO JAPAN / SHOWA
+   ========================================================= */
+
+.postcard.theme-retro-japan .postcard-paper {
+  background: linear-gradient(
+      rgba(255, 249, 231, 0.95),
+      rgba(255, 249, 231, 0.95)
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 24px,
+      rgba(164, 42, 42, 0.08) 24px 25px
+    );
+
+  color: #382b25;
+  border: 3px solid #d9c4a5;
+}
+
+.postcard.theme-retro-japan .postcard-paper::before {
+  content: "⛩️  富士山  🌅";
+  position: absolute;
+  top: 10px;
+  left: 18px;
+  font-size: 0.95rem;
+  letter-spacing: 5px;
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+.postcard.theme-retro-japan .postcard-paper::after {
+  content: "昭和 POST • 東京";
+  position: absolute;
+  bottom: 10px;
+  right: 18px;
+  font-family: "Special Elite", monospace;
+  font-size: 0.65rem;
+  color: #9d3c34;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.postcard.theme-retro-japan .postcard-message,
+.postcard.theme-retro-japan .postcard-to,
+.postcard.theme-retro-japan .postcard-from,
+.postcard.theme-retro-japan .postcard-greeting-front {
+  color: #382b25;
+}
+
+.postcard.theme-retro-japan .postcard-label,
+.postcard.theme-retro-japan .postcard-dateplace {
+  color: #9a4038;
+}
+
+/* =========================================================
+   🌙 MIDNIGHT
+   ========================================================= */
+
+.postcard.theme-midnight .postcard-paper {
+  background: radial-gradient(
+      circle at 12% 22%,
+      rgba(255, 255, 255, 0.25) 0 2px,
+      transparent 3px
+    ),
+    radial-gradient(
+      circle at 70% 15%,
+      rgba(255, 255, 255, 0.2) 0 2px,
+      transparent 3px
+    ),
+    radial-gradient(
+      circle at 85% 55%,
+      rgba(255, 255, 255, 0.18) 0 2px,
+      transparent 3px
+    ),
+    radial-gradient(
+      circle at 35% 78%,
+      rgba(255, 255, 255, 0.2) 0 2px,
+      transparent 3px
+    ),
+    linear-gradient(145deg, #10172d, #222e58);
+
+  color: #fffdf7;
+  border: 2px solid #455581;
+  box-shadow: inset 0 0 35px rgba(0, 0, 0, 0.22);
+}
+
+.postcard.theme-midnight .postcard-paper::before {
+  content: "🌙  ✦  ⭐  ✦";
+  position: absolute;
+  top: 10px;
+  right: 18px;
+  font-size: 0.95rem;
+  letter-spacing: 5px;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.postcard.theme-midnight .postcard-paper::after {
+  content: "MIDNIGHT MAIL • 🌌";
+  position: absolute;
+  bottom: 10px;
+  left: 18px;
+  font-family: "Special Elite", monospace;
+  font-size: 0.65rem;
+  color: #dce5ff;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.postcard.theme-midnight .postcard-message,
+.postcard.theme-midnight .postcard-to,
+.postcard.theme-midnight .postcard-from,
+.postcard.theme-midnight .postcard-greeting-front {
+  color: #fffdf7;
+}
+
+.postcard.theme-midnight .postcard-label,
+.postcard.theme-midnight .postcard-dateplace {
+  color: #cbd8ff;
+}
+
+.postcard.theme-midnight .postcard-divider {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.postcard.theme-midnight .address-line {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.postcard.theme-midnight .postcard-message-box {
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 24px,
+    rgba(255, 255, 255, 0.16) 25px
+  );
+}
+
+/* =========================================================
+   🎞️ VINTAGE FILM
+   ========================================================= */
+
+.postcard.theme-vintage-film .postcard-paper {
+  background: radial-gradient(
+      circle at center,
+      transparent 40%,
+      rgba(79, 57, 42, 0.12) 100%
+    ),
+    linear-gradient(135deg, #f1dfbd, #e6cfaa);
+
+  color: #49382c;
+  border: 3px solid #c4a77b;
+  filter: saturate(0.82);
+}
+
+.postcard.theme-vintage-film .postcard-paper::before {
+  content: "🎞️  REC • 08.26 • 📷";
+  position: absolute;
+  top: 10px;
+  left: 18px;
+  font-family: "Special Elite", monospace;
+  font-size: 0.65rem;
+  letter-spacing: 3px;
+  color: #745d48;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.postcard.theme-vintage-film .postcard-paper::after {
+  content: "MEMORIES • MEOW POST";
+  position: absolute;
+  bottom: 10px;
+  right: 18px;
+  font-family: "Special Elite", monospace;
+  font-size: 0.65rem;
+  color: #745d48;
+  pointer-events: none;
+}
+
+.postcard.theme-vintage-film .postcard-message,
+.postcard.theme-vintage-film .postcard-to,
+.postcard.theme-vintage-film .postcard-from,
+.postcard.theme-vintage-film .postcard-greeting-front {
+  color: #49382c;
+}
+
+/* =========================================================
+   ☕ COZY CAFÉ
+   ========================================================= */
+
+.postcard.theme-cozy-cafe .postcard-paper {
+  background: radial-gradient(
+      circle at 85% 20%,
+      rgba(126, 82, 52, 0.08) 0 30px,
+      transparent 31px
+    ),
+    linear-gradient(135deg, #fff8ea, #ead9c0);
+
+  color: #49352a;
+  border: 3px solid #c8a889;
+}
+
+.postcard.theme-cozy-cafe .postcard-paper::before {
+  content: "☕  🐱  ✦";
+  position: absolute;
+  top: 10px;
+  right: 18px;
+  font-size: 1rem;
+  letter-spacing: 5px;
+  opacity: 0.65;
+  pointer-events: none;
+}
+
+.postcard.theme-cozy-cafe .postcard-paper::after {
+  content: "MEOW CAFÉ • EST. 2026";
+  position: absolute;
+  bottom: 10px;
+  left: 18px;
+  font-family: "Special Elite", monospace;
+  font-size: 0.65rem;
+  color: #866044;
+  pointer-events: none;
+}
+
+.postcard.theme-cozy-cafe .postcard-message,
+.postcard.theme-cozy-cafe .postcard-to,
+.postcard.theme-cozy-cafe .postcard-from,
+.postcard.theme-cozy-cafe .postcard-greeting-front {
+  color: #49352a;
+}
+
+/* =========================================================
+   🌧️ RAINY DAY
+   ========================================================= */
+
+.postcard.theme-rainy-day .postcard-paper {
+  background: repeating-linear-gradient(
+      105deg,
+      transparent 0 35px,
+      rgba(80, 110, 135, 0.08) 35px 37px
+    ),
+    linear-gradient(135deg, #e8f0f4, #cbdce5);
+
+  color: #263b49;
+  border: 2px solid #a7bfcc;
+}
+
+.postcard.theme-rainy-day .postcard-paper::before {
+  content: "☔  🌧️  💧  ☁️";
+  position: absolute;
+  top: 10px;
+  right: 18px;
+  font-size: 0.95rem;
+  letter-spacing: 4px;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.postcard.theme-rainy-day .postcard-paper::after {
+  content: "A MESSAGE ON A RAINY DAY";
+  position: absolute;
+  bottom: 10px;
+  left: 18px;
+  font-family: "Special Elite", monospace;
+  font-size: 0.6rem;
+  color: #577487;
+  pointer-events: none;
+}
+
+.postcard.theme-rainy-day .postcard-message,
+.postcard.theme-rainy-day .postcard-to,
+.postcard.theme-rainy-day .postcard-from,
+.postcard.theme-rainy-day .postcard-greeting-front {
+  color: #263b49;
+}
+
+.postcard.theme-rainy-day .postcard-label,
+.postcard.theme-rainy-day .postcard-dateplace {
+  color: #527083;
+}
+
+/* =========================================================
+   🌊 OCEAN SUMMER
+   ========================================================= */
+
+.postcard.theme-ocean .postcard-paper {
+  background: radial-gradient(
+      circle at 20% 75%,
+      rgba(255, 255, 255, 0.5) 0 35px,
+      transparent 36px
+    ),
+    repeating-linear-gradient(
+      -8deg,
+      transparent 0 18px,
+      rgba(49, 126, 157, 0.09) 18px 20px
+    ),
+    linear-gradient(135deg, #effcff, #bde7ee);
+
+  color: #174b5c;
+  border: 3px solid #91ccd5;
+}
+
+.postcard.theme-ocean .postcard-paper::before {
+  content: "🌊  ☀️  🐚  🐟";
+  position: absolute;
+  top: 10px;
+  right: 18px;
+  font-size: 0.95rem;
+  letter-spacing: 5px;
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+.postcard.theme-ocean .postcard-paper::after {
+  content: "🌊 GREETINGS FROM THE SEA";
+  position: absolute;
+  bottom: 10px;
+  left: 18px;
+  font-family: "Special Elite", monospace;
+  font-size: 0.6rem;
+  color: #287387;
+  pointer-events: none;
+}
+
+.postcard.theme-ocean .postcard-message,
+.postcard.theme-ocean .postcard-to,
+.postcard.theme-ocean .postcard-from,
+.postcard.theme-ocean .postcard-greeting-front {
+  color: #174b5c;
+}
+
+/* =========================================================
+   🍓 STRAWBERRY PICNIC
+   ========================================================= */
+
+.postcard.theme-strawberry .postcard-paper {
+  background: linear-gradient(
+        90deg,
+        rgba(220, 80, 91, 0.05) 50%,
+        transparent 50%
+      )
+      0 0 / 26px 26px,
+    linear-gradient(rgba(220, 80, 91, 0.05) 50%, transparent 50%) 0 0 / 26px
+      26px,
+    #fff8ed;
+
+  color: #60383a;
+  border: 3px solid #e5a3a4;
+}
+
+.postcard.theme-strawberry .postcard-paper::before {
+  content: "🍓  🌼  🍓  🌼";
+  position: absolute;
+  top: 10px;
+  right: 18px;
+  font-size: 0.9rem;
+  letter-spacing: 5px;
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+.postcard.theme-strawberry .postcard-paper::after {
+  content: "🍓 SWEET MAIL";
+  position: absolute;
+  bottom: 10px;
+  left: 18px;
+  font-family: "Special Elite", monospace;
+  font-size: 0.65rem;
+  color: #c45761;
+  pointer-events: none;
+}
+
+.postcard.theme-strawberry .postcard-message,
+.postcard.theme-strawberry .postcard-to,
+.postcard.theme-strawberry .postcard-from,
+.postcard.theme-strawberry .postcard-greeting-front {
+  color: #60383a;
+}
+
+/* =========================================================
+   🎂 BIRTHDAY
+   ========================================================= */
+
+.postcard.theme-birthday .postcard-paper {
+  background: radial-gradient(circle at 15% 20%, #ffd1df 0 8px, transparent 9px),
+    radial-gradient(circle at 80% 25%, #cce5ff 0 8px, transparent 9px),
+    radial-gradient(circle at 30% 75%, #fff0a8 0 8px, transparent 9px),
+    radial-gradient(circle at 85% 75%, #d6f2cc 0 8px, transparent 9px),
+    linear-gradient(135deg, #fffaf2, #fff0f5);
+
+  color: #50382e;
+  border: 3px solid #efc3cf;
+}
+
+.postcard.theme-birthday .postcard-paper::before {
+  content: "🎈  🎉  🎂  ✨";
+  position: absolute;
+  top: 10px;
+  left: 18px;
+  font-size: 0.95rem;
+  letter-spacing: 5px;
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.postcard.theme-birthday .postcard-paper::after {
+  content: "HAPPY MAIL! 🎁";
+  position: absolute;
+  bottom: 10px;
+  right: 18px;
+  font-family: "Special Elite", monospace;
+  font-size: 0.65rem;
+  color: #c65d79;
+  pointer-events: none;
+}
+
+.postcard.theme-birthday .postcard-message,
+.postcard.theme-birthday .postcard-to,
+.postcard.theme-birthday .postcard-from,
+.postcard.theme-birthday .postcard-greeting-front {
+  color: #50382e;
+}
+
+/* =========================================================
+   🖤 NOIR ROMANCE
+   ========================================================= */
+
+.postcard.theme-noir .postcard-paper {
+  background: radial-gradient(
+      circle at 80% 20%,
+      rgba(156, 40, 62, 0.2),
+      transparent 35%
+    ),
+    linear-gradient(145deg, #171518, #2a2025);
+
+  color: #f7eee7;
+  border: 2px solid #5f4149;
+  box-shadow: inset 0 0 45px rgba(0, 0, 0, 0.3);
+}
+
+.postcard.theme-noir .postcard-paper::before {
+  content: "🥀  ♡  🌙";
+  position: absolute;
+  top: 10px;
+  right: 18px;
+  font-size: 0.95rem;
+  letter-spacing: 5px;
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.postcard.theme-noir .postcard-paper::after {
+  content: "LOVE • AFTER DARK";
+  position: absolute;
+  bottom: 10px;
+  left: 18px;
+  font-family: "Special Elite", monospace;
+  font-size: 0.65rem;
+  color: #e2b4bc;
+  pointer-events: none;
+}
+
+.postcard.theme-noir .postcard-message,
+.postcard.theme-noir .postcard-to,
+.postcard.theme-noir .postcard-from,
+.postcard.theme-noir .postcard-greeting-front {
+  color: #fff8f1;
+}
+
+.postcard.theme-noir .postcard-label,
+.postcard.theme-noir .postcard-dateplace {
+  color: #dfadb7;
+}
+
+.postcard.theme-noir .postcard-divider,
+.postcard.theme-noir .address-line {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.postcard.theme-noir .postcard-message-box {
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 24px,
+    rgba(255, 255, 255, 0.14) 25px
+  );
+}
+
+/* =========================================================
+   📼 Y2K
+   ========================================================= */
+
+.postcard.theme-y2k .postcard-paper {
+  background: radial-gradient(
+      circle at 20% 20%,
+      rgba(255, 255, 255, 0.9) 0 3px,
+      transparent 4px
+    ),
+    radial-gradient(
+      circle at 80% 70%,
+      rgba(255, 255, 255, 0.8) 0 2px,
+      transparent 3px
+    ),
+    linear-gradient(135deg, #f6f5ff, #d9eaff 45%, #f8d8f0);
+
+  color: #3d4264;
+  border: 3px solid #c4c8ed;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.8),
+    0 5px 18px rgba(117, 105, 180, 0.15);
+}
+
+.postcard.theme-y2k .postcard-paper::before {
+  content: "💿  ✦  💻  ♡";
+  position: absolute;
+  top: 10px;
+  right: 18px;
+  font-size: 0.95rem;
+  letter-spacing: 5px;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.postcard.theme-y2k .postcard-paper::after {
+  content: "♡ ONLINE • 2000";
+  position: absolute;
+  bottom: 10px;
+  left: 18px;
+  font-family: "Special Elite", monospace;
+  font-size: 0.65rem;
+  color: #7475b4;
+  pointer-events: none;
+}
+
+.postcard.theme-y2k .postcard-message,
+.postcard.theme-y2k .postcard-to,
+.postcard.theme-y2k .postcard-from,
+.postcard.theme-y2k .postcard-greeting-front {
+  color: #3d4264;
+}
+
+/* =========================================================
+   🎨 GENERAL THEME POLISH
+   ========================================================= */
+
+.postcard-paper::before,
+.postcard-paper::after {
+  pointer-events: none;
+}
+
+.postcard-message,
+.postcard-to,
+.postcard-from,
+.postcard-label,
+.postcard-dateplace,
+.postcard-greeting-front,
+.postcard-cat-frame {
+  position: relative;
+  z-index: 2;
+}
+
+/* Keep dark themes readable */
+
+.postcard.theme-midnight .postcard-paper,
+.postcard.theme-noir .postcard-paper {
+  color: #fffdf7;
+}
+
+.postcard.theme-midnight .postcard-message,
+.postcard.theme-midnight .postcard-to,
+.postcard.theme-midnight .postcard-from,
+.postcard.theme-noir .postcard-message,
+.postcard.theme-noir .postcard-to,
+.postcard.theme-noir .postcard-from {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+/* =========================================================
+   📱 MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+  .postcard-paper::before {
+    font-size: 0.78rem !important;
+    letter-spacing: 3px !important;
+  }
+
+  .postcard-paper::after {
+    font-size: 0.52rem !important;
+  }
+}
+
+/* =========================================================
+   🎨 THEME PICKER
+   ========================================================= */
+
+.theme-picker {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.section-title {
+  margin-bottom: 12px;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+}
+
+.theme-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.theme-option {
+  min-height: 78px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 6px;
+
+  border: 2px solid #dfd3c8;
+  border-radius: 14px;
+
+  background: #fffaf5;
+  color: #493d37;
+
+  cursor: pointer;
+
+  font-family: inherit;
+
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.theme-option:first-line {
+  font-size: 1.4rem;
+}
+
+.theme-option span {
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.theme-option:hover {
+  transform: translateY(-3px);
+  border-color: #ff9aae;
+  box-shadow: 0 7px 18px rgba(70, 50, 40, 0.12);
+}
+
+.theme-option.selected {
+  border-color: #ff8fa3;
+  background: #fff1f4;
+  box-shadow: 0 0 0 3px rgba(255, 143, 163, 0.15),
+    0 6px 16px rgba(70, 50, 40, 0.1);
+
+  transform: translateY(-2px);
+}
+
+.theme-random-btn {
+  width: 100%;
+  margin-top: 12px;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+  .theme-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .theme-option {
+    min-height: 70px;
+  }
+}
+
+/* =========================================================
+   🎨 THEME-SPECIFIC POSTCARD DECORATIONS
+   ========================================================= */
+
+.postcard {
+  position: relative;
+  overflow: visible;
+}
+
+.theme-decorations {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 20;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.theme-deco {
+  position: absolute;
+  display: block;
+  pointer-events: none;
+}
+
+/* Make sure decorations don't interfere with the flip */
+.postcard-inner {
+  position: relative;
+  z-index: 5;
+}
+
+/* =========================================================
+   🌸 SAKURA
+   ========================================================= */
+
+.theme-sakura .deco-1::before {
+  content: "🌸";
+  font-size: 2rem;
+}
+
+.theme-sakura .deco-2::before {
+  content: "🌸";
+  font-size: 1.4rem;
+}
+
+.theme-sakura .deco-3::before {
+  content: "✿";
+  font-size: 1.8rem;
+}
+
+.theme-sakura .deco-4::before {
+  content: "🌸";
+  font-size: 1rem;
+}
+
+.theme-sakura .deco-1 {
+  top: 12px;
+  right: 18px;
+  transform: rotate(15deg);
+}
+
+.theme-sakura .deco-2 {
+  top: 65px;
+  right: 75px;
+  transform: rotate(-20deg);
+}
+
+.theme-sakura .deco-3 {
+  bottom: 20px;
+  left: 18px;
+  transform: rotate(15deg);
+}
+
+.theme-sakura .deco-4 {
+  bottom: 65px;
+  left: 70px;
+}
+
+/* =========================================================
+   🌙 MIDNIGHT
+   ========================================================= */
+
+.theme-midnight .deco-1::before {
+  content: "🌙";
+  font-size: 2.2rem;
+}
+
+.theme-midnight .deco-2::before {
+  content: "✦";
+  font-size: 1.4rem;
+}
+
+.theme-midnight .deco-3::before {
+  content: "✧";
+  font-size: 1.8rem;
+}
+
+.theme-midnight .deco-4::before {
+  content: "•";
+  font-size: 1.8rem;
+}
+
+.theme-midnight .deco-1 {
+  top: 12px;
+  right: 20px;
+}
+
+.theme-midnight .deco-2 {
+  top: 45px;
+  right: 75px;
+}
+
+.theme-midnight .deco-3 {
+  bottom: 30px;
+  left: 22px;
+}
+
+.theme-midnight .deco-4 {
+  bottom: 70px;
+  left: 80px;
+}
+
+.theme-midnight .postcard-greeting-front,
+.theme-midnight .postcard-message,
+.theme-midnight .postcard-to,
+.theme-midnight .postcard-from {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.25);
+}
+
+/* =========================================================
+   🎂 BIRTHDAY
+   ========================================================= */
+
+.theme-birthday .deco-1::before {
+  content: "🎈";
+  font-size: 2rem;
+}
+
+.theme-birthday .deco-2::before {
+  content: "✨";
+  font-size: 1.5rem;
+}
+
+.theme-birthday .deco-3::before {
+  content: "🎉";
+  font-size: 1.7rem;
+}
+
+.theme-birthday .deco-4::before {
+  content: "🎈";
+  font-size: 1.3rem;
+}
+
+.theme-birthday .deco-1 {
+  top: 10px;
+  right: 18px;
+}
+
+.theme-birthday .deco-2 {
+  top: 65px;
+  right: 85px;
+}
+
+.theme-birthday .deco-3 {
+  bottom: 18px;
+  left: 20px;
+}
+
+.theme-birthday .deco-4 {
+  bottom: 60px;
+  left: 75px;
+}
+
+/* =========================================================
+   ✉️ CLASSIC AIRMAIL
+   ========================================================= */
+
+.theme-airmail .postcard {
+  /* intentionally empty — theme styling comes from
+     your existing theme-airmail rules */
+}
+
+.theme-airmail .deco-1::before {
+  content: "✈";
+  font-size: 1.5rem;
+}
+
+.theme-airmail .deco-2::before {
+  content: "✉";
+  font-size: 1.3rem;
+}
+
+.theme-airmail .deco-3::before {
+  content: "• • •";
+  font-size: 0.8rem;
+  letter-spacing: 4px;
+}
+
+.theme-airmail .deco-4::before {
+  content: "AIR MAIL";
+  font-size: 0.55rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.theme-airmail .deco-1 {
+  top: 15px;
+  left: 18px;
+  transform: rotate(-8deg);
+}
+
+.theme-airmail .deco-2 {
+  bottom: 18px;
+  right: 20px;
+  transform: rotate(8deg);
+}
+
+.theme-airmail .deco-3 {
+  top: 18px;
+  right: 90px;
+}
+
+.theme-airmail .deco-4 {
+  bottom: 20px;
+  left: 20px;
+}
+
+/* =========================================================
+   🇯🇵 RETRO JAPAN
+   ========================================================= */
+
+.theme-retro-japan .deco-1::before {
+  content: "〒";
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.theme-retro-japan .deco-2::before {
+  content: "和";
+  font-size: 1.7rem;
+}
+
+.theme-retro-japan .deco-3::before {
+  content: "✿";
+  font-size: 1.4rem;
+}
+
+.theme-retro-japan .deco-4::before {
+  content: "郵便";
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+}
+
+.theme-retro-japan .deco-1 {
+  top: 12px;
+  right: 18px;
+  transform: rotate(-5deg);
+}
+
+.theme-retro-japan .deco-2 {
+  bottom: 18px;
+  left: 20px;
+  transform: rotate(5deg);
+}
+
+.theme-retro-japan .deco-3 {
+  top: 65px;
+  right: 80px;
+}
+
+.theme-retro-japan .deco-4 {
+  bottom: 22px;
+  right: 22px;
+}
+
+/* =========================================================
+   ☕ KISSA
+   ========================================================= */
+
+.theme-kissa .deco-1::before {
+  content: "☕";
+  font-size: 1.8rem;
+}
+
+.theme-kissa .deco-2::before {
+  content: "☕";
+  font-size: 1.1rem;
+}
+
+.theme-kissa .deco-3::before {
+  content: "✦";
+  font-size: 1.2rem;
+}
+
+.theme-kissa .deco-4::before {
+  content: "♡";
+  font-size: 1.3rem;
+}
+
+.theme-kissa .deco-1 {
+  top: 15px;
+  right: 18px;
+  transform: rotate(-8deg);
+}
+
+.theme-kissa .deco-2 {
+  bottom: 20px;
+  left: 20px;
+}
+
+.theme-kissa .deco-3 {
+  top: 65px;
+  right: 75px;
+}
+
+.theme-kissa .deco-4 {
+  bottom: 65px;
+  right: 25px;
+}
+
+/* =========================================================
+   📜 CLASSIC
+   ========================================================= */
+
+.theme-classic .deco-1::before {
+  content: "✉";
+  font-size: 1.5rem;
+}
+
+.theme-classic .deco-2::before {
+  content: "✦";
+  font-size: 1rem;
+}
+
+.theme-classic .deco-3::before {
+  content: "♡";
+  font-size: 1.1rem;
+}
+
+.theme-classic .deco-4::before {
+  content: "•";
+  font-size: 1.5rem;
+}
+
+.theme-classic .deco-1 {
+  top: 15px;
+  right: 20px;
+}
+
+.theme-classic .deco-2 {
+  top: 65px;
+  right: 75px;
+}
+
+.theme-classic .deco-3 {
+  bottom: 20px;
+  left: 20px;
+}
+
+.theme-classic .deco-4 {
+  bottom: 60px;
+  left: 75px;
+}
+
+/* =========================================================
+   ✨ SUBTLE DECORATION ANIMATION
+   ========================================================= */
+
+.theme-deco {
+  animation: themeFloat 4s ease-in-out infinite;
+}
+
+.deco-2 {
+  animation-delay: 0.8s;
+}
+
+.deco-3 {
+  animation-delay: 1.5s;
+}
+
+.deco-4 {
+  animation-delay: 2.2s;
+}
+
+@keyframes themeFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-4px) rotate(3deg);
+  }
+}
+
+/* =========================================================
+   🌙 DARK THEME TEXT VISIBILITY
+   ========================================================= */
+
+.theme-midnight .postcard-message,
+.theme-midnight .postcard-label,
+.theme-midnight .postcard-to,
+.theme-midnight .postcard-from,
+.theme-midnight .postcard-dateplace {
+  color: #f8f5ff;
+}
+
+.theme-midnight .postcard-message-box {
+  color: #f8f5ff;
+}
+
+.theme-midnight .postcard-address-lines .address-line {
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+/* =========================================================
+   📱 MOBILE — keep decorations inside card
+   ========================================================= */
+
+@media (max-width: 500px) {
+  .theme-deco {
+    transform: scale(0.8);
+  }
+
+  .theme-sakura .deco-2,
+  .theme-midnight .deco-2,
+  .theme-birthday .deco-2,
+  .theme-retro-japan .deco-3,
+  .theme-kissa .deco-3 {
+    display: none;
+  }
+}
+
+/* =========================================================
+   ♿ REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-deco {
+    animation: none !important;
+  }
+}
+
+/* =====================================================
+   ✉️ THEME-SPECIFIC STAMP DESIGNS
+   ===================================================== */
+
+.postcard-stamp-box {
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.postcard-stamp-cat,
+.postcard-stamp-label {
+  position: relative;
+  z-index: 2;
+}
+
+/* 🌸 SAKURA */
+.theme-sakura .postcard-stamp-box {
+  background: radial-gradient(
+      circle at 20% 20%,
+      rgba(255, 255, 255, 0.7) 0 2px,
+      transparent 3px
+    ),
+    #ffdce7;
+  border-color: #d9789a;
+  color: #7b3650;
+}
+
+.theme-sakura .postcard-stamp-box::after {
+  content: "🌸";
+  position: absolute;
+  right: -4px;
+  bottom: -8px;
+  font-size: 2.3rem;
+  opacity: 0.25;
+}
+
+/* 🌙 MIDNIGHT */
+.theme-midnight .postcard-stamp-box {
+  background: #20233d;
+  border-color: #8d91d8;
+  color: #ffffff;
+  box-shadow: inset 0 0 12px rgba(170, 175, 255, 0.15);
+}
+
+.theme-midnight .postcard-stamp-box::after {
+  content: "✦ ✧";
+  position: absolute;
+  right: 4px;
+  bottom: 2px;
+  font-size: 0.8rem;
+  color: #dfe1ff;
+  opacity: 0.7;
+}
+
+/* 🎂 BIRTHDAY */
+.theme-birthday .postcard-stamp-box {
+  background: #ffe2a8;
+  border-color: #d99438;
+  color: #74451c;
+}
+
+.theme-birthday .postcard-stamp-box::after {
+  content: "🎉";
+  position: absolute;
+  right: -3px;
+  bottom: -7px;
+  font-size: 2rem;
+  opacity: 0.35;
+}
+
+/* ✈️ AIRMAIL */
+.theme-airmail .postcard-stamp-box {
+  background: #f5ead5;
+  border-color: #b64d4d;
+  color: #7b2e2e;
+}
+
+.theme-airmail .postcard-stamp-box::after {
+  content: "✈";
+  position: absolute;
+  right: 3px;
+  bottom: -5px;
+  font-size: 2rem;
+  opacity: 0.18;
+}
+
+/* 🇯🇵 RETRO JAPAN */
+.theme-retro-japan .postcard-stamp-box {
+  background: #ead8bd;
+  border-color: #8d2929;
+  color: #642121;
+}
+
+.theme-retro-japan .postcard-stamp-box::after {
+  content: "〒";
+  position: absolute;
+  right: 4px;
+  bottom: -8px;
+  font-size: 2.5rem;
+  opacity: 0.16;
+}
+
+/* 🎞️ VINTAGE FILM */
+.theme-vintage-film .postcard-stamp-box {
+  background: #d8c8aa;
+  border-color: #66553e;
+  color: #403527;
+}
+
+.theme-vintage-film .postcard-stamp-box::after {
+  content: "🎞";
+  position: absolute;
+  right: 0;
+  bottom: -5px;
+  font-size: 2rem;
+  opacity: 0.25;
+}
+
+/* ☕ COZY CAFÉ */
+.theme-cozy-cafe .postcard-stamp-box {
+  background: #dcc1a2;
+  border-color: #805638;
+  color: #513521;
+}
+
+.theme-cozy-cafe .postcard-stamp-box::after {
+  content: "☕";
+  position: absolute;
+  right: 0;
+  bottom: -7px;
+  font-size: 2rem;
+  opacity: 0.2;
+}
+
+/* 🌧️ RAINY DAY */
+.theme-rainy-day .postcard-stamp-box {
+  background: #c9d5dc;
+  border-color: #5e7180;
+  color: #334854;
+}
+
+.theme-rainy-day .postcard-stamp-box::after {
+  content: "💧";
+  position: absolute;
+  right: 3px;
+  bottom: -5px;
+  font-size: 2rem;
+  opacity: 0.25;
+}
+
+/* 🌊 OCEAN */
+.theme-ocean .postcard-stamp-box {
+  background: #b9e4ec;
+  border-color: #378899;
+  color: #205866;
+}
+
+.theme-ocean .postcard-stamp-box::after {
+  content: "🌊";
+  position: absolute;
+  right: -3px;
+  bottom: -8px;
+  font-size: 2.2rem;
+  opacity: 0.25;
+}
+
+/* 🍓 STRAWBERRY */
+.theme-strawberry .postcard-stamp-box {
+  background: #ffd3dc;
+  border-color: #c94d68;
+  color: #7d2940;
+}
+
+.theme-strawberry .postcard-stamp-box::after {
+  content: "🍓";
+  position: absolute;
+  right: -2px;
+  bottom: -7px;
+  font-size: 2rem;
+  opacity: 0.25;
+}
+
+/* 🖤 NOIR */
+.theme-noir .postcard-stamp-box {
+  background: #222222;
+  border-color: #dedede;
+  color: #ffffff;
+}
+
+.theme-noir .postcard-stamp-box::after {
+  content: "♥";
+  position: absolute;
+  right: 5px;
+  bottom: -7px;
+  font-size: 2rem;
+  opacity: 0.2;
+}
+
+/* 📼 Y2K */
+.theme-y2k .postcard-stamp-box {
+  background: linear-gradient(135deg, #d7c8ff, #aeeeff);
+  border-color: #6756c7;
+  color: #392b80;
+}
+
+.theme-y2k .postcard-stamp-box::after {
+  content: "★";
+  position: absolute;
+  right: 3px;
+  bottom: -6px;
+  font-size: 2rem;
+  opacity: 0.25;
+}
+
+/* ✉️ CLASSIC */
+.theme-classic .postcard-stamp-box {
+  background: #f1e6d2;
+  border-color: #9a8060;
+  color: #5c4935;
+}
+
+.theme-classic .postcard-stamp-box::after {
+  content: "✉";
+  position: absolute;
+  right: 4px;
+  bottom: -6px;
+  font-size: 2rem;
+  opacity: 0.2;
+}
+
+/* =========================================
+   CREATE PAGE — SCROLLABLE CUSTOMIZE PANE
+   ========================================= */
+
+@media (min-width: 901px) {
+  .create-layout {
+    display: flex;
+    align-items: flex-start;
+    overflow: visible;
+  }
+
+  /* Customize / Editor */
+  .editor-pane {
+    height: calc(100vh - 120px);
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    /* Smooth internal scrolling */
+    overscroll-behavior: contain;
+
+    /* Optional scrollbar spacing */
+    padding-right: 8px;
+  }
+
+  /* Postcard stays in its own area */
+  .preview-pane {
+    flex-shrink: 0;
   }
 }

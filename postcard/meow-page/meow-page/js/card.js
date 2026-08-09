@@ -185,6 +185,16 @@ async function loadSharedPostcard() {
       return;
     }
 
+    const postcard = document.getElementById("postcard");
+
+    if (postcard && data.theme) {
+      postcard.className = postcard.className
+        .replace(/\btheme-[\w-]+\b/g, "")
+        .trim();
+
+      postcard.classList.add(`theme-${data.theme}`);
+    }
+
     const catEl = document.getElementById("postcardCat");
     const messageEl = document.getElementById("postcardMessage");
     const toEl = document.getElementById("postcardTo");

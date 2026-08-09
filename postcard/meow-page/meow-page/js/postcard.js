@@ -6,13 +6,15 @@ const postcardData = {
   sender: "",
   cat: "🐱",
 
+  // 🎨 Current postcard theme
+  theme: "airmail",
+
   // Local browser preview URL
   stampImage: "",
 
   // Actual File object for Supabase
   stampFile: null,
 };
-
 function initStampImageUpload() {
   const stampInput = document.getElementById("stampImageInput");
   const removeStampBtn = document.getElementById("removeStampImage");
@@ -84,7 +86,6 @@ function initStampImageUpload() {
   });
 }
 
-
 function updatePostcardPreview() {
   const catEl = document.getElementById("postcardCat");
   const toEl = document.getElementById("postcardTo");
@@ -97,6 +98,137 @@ function updatePostcardPreview() {
   toEl.textContent = postcardData.recipient;
   messageEl.textContent = postcardData.message || "Hello!";
   fromEl.textContent = postcardData.sender;
+}
+
+// =====================================================
+// ✉️ THEME-SPECIFIC STAMP
+// =====================================================
+
+function updateThemeStamp() {
+  const stampCat = document.getElementById("postcardStampCat");
+  const stampLabel = document.getElementById("postcardStampLabel");
+
+  if (!stampCat || !stampLabel) return;
+
+  const stamps = {
+    airmail: {
+      cat: "✈️",
+      label: "AIR MAIL",
+    },
+
+    sakura: {
+      cat: "🌸",
+      label: "桜 POST",
+    },
+
+    "retro-japan": {
+      cat: "〒",
+      label: "郵便",
+    },
+
+    midnight: {
+      cat: "🌙",
+      label: "NIGHT POST",
+    },
+
+    "vintage-film": {
+      cat: "🎞️",
+      label: "VINTAGE",
+    },
+
+    "cozy-cafe": {
+      cat: "☕",
+      label: "KISSA MAIL",
+    },
+
+    "rainy-day": {
+      cat: "🌧️",
+      label: "RAINY MAIL",
+    },
+
+    ocean: {
+      cat: "🌊",
+      label: "SEA MAIL",
+    },
+
+    strawberry: {
+      cat: "🍓",
+      label: "BERRY POST",
+    },
+
+    birthday: {
+      cat: "🎂",
+      label: "BIRTHDAY",
+    },
+
+    noir: {
+      cat: "🖤",
+      label: "NOIR POST",
+    },
+
+    y2k: {
+      cat: "📼",
+      label: "Y2K MAIL",
+    },
+  };
+
+  const stamp = stamps[postcardData.theme] || stamps.airmail;
+
+  stampCat.textContent = stamp.cat;
+  stampLabel.textContent = stamp.label;
+}
+
+function initThemePicker() {
+  const themeOptions = document.querySelectorAll(".theme-option");
+  const randomThemeBtn = document.getElementById("randomThemeBtn");
+  const postcard = document.getElementById("postcard");
+
+  if (!postcard) return;
+
+  function applyTheme(theme) {
+    postcard.className = postcard.className
+      .replace(/\btheme-[\w-]+\b/g, "")
+      .trim();
+
+    postcard.classList.add(`theme-${theme}`);
+
+    postcardData.theme = theme;
+
+    themeOptions.forEach((option) => {
+      option.classList.toggle("selected", option.dataset.theme === theme);
+    });
+
+    // ✉️ Update stamp
+    updateThemeStamp();
+  }
+
+  // Theme buttons
+  themeOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      applyTheme(option.dataset.theme);
+    });
+  });
+
+  // 🎲 Random theme
+  if (randomThemeBtn) {
+    randomThemeBtn.addEventListener("click", () => {
+      const themes = Array.from(themeOptions).map(
+        (option) => option.dataset.theme
+      );
+
+      const availableThemes = themes.filter(
+        (theme) => theme !== postcardData.theme
+      );
+
+      const randomTheme =
+        availableThemes[Math.floor(Math.random() * availableThemes.length)];
+
+      applyTheme(randomTheme);
+    });
+  }
+
+  // Default theme
+  applyTheme(postcardData.theme);
 }
 
 function initPostcardEditor() {
@@ -147,6 +279,7 @@ function initPostcardEditor() {
   initPostcardFlip();
   initCatReaction();
   initStampImageUpload();
+  initThemePicker();
 }
 
 function initPostcardFlip() {
@@ -263,6 +396,7 @@ async function savePostcardToSupabase() {
       message: postcardData.message || "Hello!",
       sender: postcardData.sender || "",
       cat: postcardData.cat || "🐱",
+      theme: postcardData.theme || "airmail",
       stamp_image: stampImageUrl,
     })
     .select()

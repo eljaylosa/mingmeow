@@ -1,59 +1,132 @@
-/* Phase 6A — Responsive / Mobile Polish */
+/* =========================================================
+   PHASE 6A — RESPONSIVE / MOBILE POLISH
+   ========================================================= */
 
-/* Prevent horizontal overflow across all screen sizes */
+/* Prevent horizontal overflow */
 html,
 body {
   overflow-x: hidden;
   width: 100%;
 }
 
-/* Landing page responsiveness */
+/* =========================================================
+   LANDING PAGE
+   ========================================================= */
+
 @media (max-width: 600px) {
   .home {
     padding: 16px;
   }
+
   .home-cat {
     font-size: 3.2rem;
   }
+
   .home-title {
     font-size: 2rem;
     letter-spacing: 0.08em;
   }
+
   .home-subtitle {
     font-size: 0.95rem;
   }
+
   .home .btn {
     padding: 12px 28px;
     font-size: 0.95rem;
   }
 }
 
-/* Create page header adjustments */
+/* =========================================================
+   CREATE PAGE — MOBILE / TABLET
+   ========================================================= */
+
 @media (max-width: 900px) {
   .create-header {
     padding: 12px 16px;
   }
 
   .create-layout {
+    display: flex;
     flex-direction: column;
     align-items: center;
+
     padding: 0 16px 36px;
     gap: 24px;
+
+    overflow: visible !important;
   }
 
-  .editor-pane {
-    width: 100%;
-    max-width: 460px;
-  }
+  /* -----------------------------------------
+       POSTCARD
+       ----------------------------------------- */
 
   .preview-pane {
+    order: 1;
+
     width: 100%;
-    padding-top: 0;
-    justify-content: center;
+    align-self: center;
+
+    /* IMPORTANT: NOT STICKY */
+    position: relative !important;
+    top: auto !important;
+
+    height: auto;
+    max-height: none;
+
+    z-index: 1;
+
+    padding: 6px 0 10px;
+
+    overflow: visible !important;
+
+    background: #fdf6f0;
   }
+
+  /* -----------------------------------------
+       CUSTOMIZE / EDITOR
+       ----------------------------------------- */
+
+  .editor-pane {
+    order: 2;
+
+    width: 100%;
+    max-width: 460px;
+
+    height: 60vh;
+    max-height: 60vh;
+
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    /* IMPORTANT FOR MOBILE TOUCH SCROLLING */
+    touch-action: pan-y;
+    -webkit-overflow-scrolling: touch;
+
+    /* Don't let the page fight the editor for the gesture */
+    overscroll-behavior-y: contain;
+
+    /* Make sure the editor is above other touch elements */
+    position: relative;
+    z-index: 10;
+
+    padding-right: 8px;
+    padding-bottom: 40px;
+
+    /* Prevent weird flex shrinking */
+    flex-shrink: 0;
+  }
+
+  .editor-pane,
+    .editor-pane * {
+        touch-action: pan-y;
+    }
 }
 
-/* Postcard responsiveness & scaling for smaller screens (mobile / narrow windows) */
+/* =========================================================
+   POSTCARD — SMALL SCREENS
+   ========================================================= */
+
 @media (max-width: 500px) {
   .postcard {
     width: 100%;
@@ -89,6 +162,10 @@ body {
     font-size: 1.2rem;
   }
 }
+
+/* =========================================================
+   POSTCARD — VERY SMALL PHONES
+   ========================================================= */
 
 @media (max-width: 400px) {
   .postcard {
@@ -139,6 +216,10 @@ body {
   }
 }
 
+/* =========================================================
+   CARD PAGE
+   ========================================================= */
+
 @media (max-width: 500px) {
   .card-page {
     padding: 24px 16px;
@@ -162,6 +243,10 @@ body {
     min-width: 140px;
   }
 }
+
+/* =========================================================
+   MUSIC PLAYER
+   ========================================================= */
 
 @media (max-width: 500px) {
   .music-player {
