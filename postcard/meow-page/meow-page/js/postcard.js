@@ -5,14 +5,19 @@ const postcardData = {
   message: "Hello!",
   sender: "",
   cat: "🐱",
+
+  // Local browser preview URL
   stampImage: "",
+
+  // Actual File object for Supabase
+  stampFile: null,
 };
 
 function initStampImageUpload() {
   const stampInput = document.getElementById("stampImageInput");
   const removeStampBtn = document.getElementById("removeStampImage");
 
-  const stampBox = document.getElementById("postcardStamp");
+  const stampBox = document.getElementById("postcardStampBox");
   const stampImage = document.getElementById("postcardStampImage");
 
   const previewBox = document.getElementById("stampUploadPreview");
@@ -40,42 +45,45 @@ function initStampImageUpload() {
       return;
     }
 
-    const reader = new FileReader();
+    // Keep the local preview.
+    if (postcardData.stampImage) {
+      URL.revokeObjectURL(postcardData.stampImage);
+    }
 
-    reader.onload = (event) => {
-      const imageData = event.target.result;
+    const imageURL = URL.createObjectURL(file);
 
-      // Store the actual image data so it can be included
-      // in the shareable postcard link.
-      postcardData.stampImage = imageData;
+    postcardData.stampImage = imageURL;
 
-      // Show image on postcard
-      stampImage.src = imageData;
-      stampBox.classList.add("has-image");
+    // Keep the actual File for Supabase upload.
+    postcardData.stampFile = file;
 
-      // Show image in editor preview
-      previewImage.src = imageData;
-      previewBox.classList.add("has-image");
-    };
+    // Postcard preview
+    stampImage.src = imageURL;
+    stampBox.classList.add("has-image");
 
-    reader.readAsDataURL(file);
+    // Editor preview
+    previewImage.src = imageURL;
+    previewBox.classList.add("has-image");
   });
 
   removeStampBtn.addEventListener("click", () => {
-    postcardData.stampImage = "";
+    if (postcardData.stampImage) {
+      URL.revokeObjectURL(postcardData.stampImage);
+    }
 
-    // Reset postcard stamp
+    postcardData.stampImage = null;
+    postcardData.stampFile = null;
+
     stampImage.src = "";
     stampBox.classList.remove("has-image");
 
-    // Reset editor preview
     previewImage.src = "";
     previewBox.classList.remove("has-image");
 
-    // Reset file input
     stampInput.value = "";
   });
 }
+
 
 function updatePostcardPreview() {
   const catEl = document.getElementById("postcardCat");
@@ -205,6 +213,67 @@ function initCatReaction() {
   postcardCat.addEventListener("animationend", () => {
     postcardCat.classList.remove("bounce");
   });
+}
+
+async function savePostcardToSupabase() {
+  const postcardId = crypto.randomUUID().replace(/-/g, "").slice(0, 8);
+
+  let stampImageUrl = null;
+
+  // ----------------------------------------
+  // Upload stamp image if one exists
+  // ----------------------------------------
+
+  if (postcardData.stampFile) {
+    const file = postcardData.stampFile;
+
+    const extension = file.name.split(".").pop()?.toLowerCase() || "jpg";
+
+    const filePath = `${postcardId}.${extension}`;
+
+    const { error: uploadError } = await supabaseClient.storage
+      .from("postcard-images")
+      .upload(filePath, file, {
+        contentType: file.type,
+        cacheControl: "3600",
+        upsert: false,
+      });
+
+    if (uploadError) {
+      console.error("Supabase image upload failed:", uploadError);
+      throw uploadError;
+    }
+
+    const { data: publicUrlData } = supabaseClient.storage
+      .from("postcard-images")
+      .getPublicUrl(filePath);
+
+    stampImageUrl = publicUrlData.publicUrl;
+  }
+
+  // ----------------------------------------
+  // Save postcard data
+  // ----------------------------------------
+
+  const { data, error } = await supabaseClient
+    .from("postcards")
+    .insert({
+      id: postcardId,
+      recipient: postcardData.recipient || "",
+      message: postcardData.message || "Hello!",
+      sender: postcardData.sender || "",
+      cat: postcardData.cat || "🐱",
+      stamp_image: stampImageUrl,
+    })
+    .select()
+    .single();
+
+  if (error) {
+    console.error("Supabase postcard save failed:", error);
+    throw error;
+  }
+
+  return data;
 }
 
 document.addEventListener("DOMContentLoaded", initPostcardEditor);

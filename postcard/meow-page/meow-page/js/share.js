@@ -204,50 +204,76 @@ function sharePostcardImage(button) {
     });
 }
 
-function generatePostcardLink(button) {
-  const data = {
-    recipient: postcardData.recipient || "",
-    message: postcardData.message || "Hello!",
-    sender: postcardData.sender || "",
-    cat: postcardData.cat || "🐱",
-    stampImage: postcardData.stampImage || null,
-  };
+// function generatePostcardLink(button) {
+//   const data = {
+//     recipient: postcardData.recipient || "",
+//     message: postcardData.message || "Hello!",
+//     sender: postcardData.sender || "",
+//     cat: postcardData.cat || "🐱",
+//     stampImage: postcardData.stampImage || null,
+//   };
 
+//   try {
+//     // JSON → UTF-8 → Base64
+//     const json = JSON.stringify(data);
+
+//     const bytes = new TextEncoder().encode(json);
+
+//     const binary = Array.from(bytes)
+//       .map((byte) => String.fromCharCode(byte))
+//       .join("");
+
+//     const encodedData = btoa(binary);
+
+//     // /create and /card are siblings
+//     const cardUrl = new URL("./card", window.location.href);
+
+//     cardUrl.hash = encodedData;
+
+//     const shareUrl = cardUrl.href;
+
+//     navigator.clipboard
+//       .writeText(shareUrl)
+//       .then(() => {
+//         showButtonFeedback(button, "LINK COPIED ✓", 2000);
+
+//         showShareHint("Your postcard link is ready! 🔗💌", 3000);
+//       })
+//       .catch((err) => {
+//         console.error("Meow Page: could not copy postcard link", err);
+
+//         showButtonFeedback(button, "CAN'T COPY");
+//       });
+//   } catch (err) {
+//     console.error("Meow Page: could not generate postcard link", err);
+
+//     showButtonFeedback(button, "CAN'T CREATE LINK");
+//   }
+// }
+
+async function generatePostcardLink(button) {
   try {
-    // JSON → UTF-8 → Base64
-    const json = JSON.stringify(data);
+    showButtonFeedback(button, "CREATING...", 30000);
 
-    const bytes = new TextEncoder().encode(json);
+    const postcard = await savePostcardToSupabase();
 
-    const binary = Array.from(bytes)
-      .map((byte) => String.fromCharCode(byte))
-      .join("");
+    const cardUrl = new URL("./card.html", window.location.href);
 
-    const encodedData = btoa(binary);
-
-    // /create and /card are siblings
-    const cardUrl = new URL("./card", window.location.href);
-
-    cardUrl.hash = encodedData;
+    cardUrl.searchParams.set("id", postcard.id);
 
     const shareUrl = cardUrl.href;
 
-    navigator.clipboard
-      .writeText(shareUrl)
-      .then(() => {
-        showButtonFeedback(button, "LINK COPIED ✓", 2000);
+    await navigator.clipboard.writeText(shareUrl);
 
-        showShareHint("Your postcard link is ready! 🔗💌", 3000);
-      })
-      .catch((err) => {
-        console.error("Meow Page: could not copy postcard link", err);
+    showButtonFeedback(button, "LINK COPIED ✓", 2000);
 
-        showButtonFeedback(button, "CAN'T COPY");
-      });
+    showShareHint("Your postcard link is ready! 🔗💌", 3000);
+
+    console.log("Postcard URL:", shareUrl);
   } catch (err) {
-    console.error("Meow Page: could not generate postcard link", err);
+    console.error("Meow Page: could not create postcard link", err);
 
-    showButtonFeedback(button, "CAN'T CREATE LINK");
+    showButtonFeedback(button, "CAN'T CREATE LINK", 2500);
   }
 }
 
