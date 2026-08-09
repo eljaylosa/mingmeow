@@ -2144,11 +2144,6 @@ a {
    ✉️ CLASSIC AIRMAIL
    ========================================================= */
 
-.theme-airmail .postcard {
-  /* intentionally empty — theme styling comes from
-     your existing theme-airmail rules */
-}
-
 .theme-airmail .deco-1::before {
   content: "✈";
   font-size: 1.5rem;
