@@ -255,7 +255,11 @@ async function generatePostcardLink(button) {
   try {
     showButtonFeedback(button, "CREATING...", 30000);
 
+    console.log("1. Starting postcard save...");
+
     const postcard = await savePostcardToSupabase();
+
+    console.log("2. Supabase postcard saved:", postcard);
 
     const cardUrl = new URL("./card.html", window.location.href);
 
@@ -263,15 +267,18 @@ async function generatePostcardLink(button) {
 
     const shareUrl = cardUrl.href;
 
+    console.log("3. Generated URL:", shareUrl);
+
     await navigator.clipboard.writeText(shareUrl);
 
+    console.log("4. Link copied!");
+
     showButtonFeedback(button, "LINK COPIED ✓", 2000);
-
     showShareHint("Your postcard link is ready! 🔗💌", 3000);
-
-    console.log("Postcard URL:", shareUrl);
   } catch (err) {
-    console.error("Meow Page: could not create postcard link", err);
+    console.error("❌ CREATE LINK FAILED:", err);
+    console.error("Error message:", err?.message);
+    console.error("Error details:", err);
 
     showButtonFeedback(button, "CAN'T CREATE LINK", 2500);
   }
