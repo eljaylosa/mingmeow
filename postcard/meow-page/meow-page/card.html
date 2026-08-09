@@ -16,6 +16,70 @@
     <link rel="stylesheet" href="css/animations.css" />
     <link rel="stylesheet" href="css/responsive.css" />
   </head>
+  <style>
+    /* =========================================================
+       CARD PAGE — MESSAGE SCROLL
+       ========================================================= */
+
+    .postcard-message-box {
+      /*
+         * Fill the available message area instead of
+         * shrinking to the size of the text.
+         */
+      flex: 1;
+      min-height: 0;
+      height: 100%;
+
+      /* Scroll only when the message is too long */
+      overflow-y: auto;
+      overflow-x: hidden;
+
+      /* Keep long text/URLs inside the postcard */
+      overflow-wrap: anywhere;
+      word-break: break-word;
+
+      /* Smooth scrolling on mobile */
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior: contain;
+
+      /* Room for scrollbar */
+      padding-right: 8px;
+
+      /* Thin scrollbar */
+      scrollbar-width: thin;
+    }
+
+    /* Chrome / Edge / Safari */
+    .postcard-message-box::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    .postcard-message-box::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background: rgba(120, 100, 90, 0.35);
+    }
+
+    /* =========================================================
+       MOBILE
+       ========================================================= */
+
+    @media (max-width: 500px) {
+      .postcard-message-box {
+        flex: 1;
+        min-height: 0;
+        height: 100%;
+        padding-right: 7px;
+
+        -webkit-overflow-scrolling: touch;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .postcard-message-box {
+        padding-right: 6px;
+      }
+    }
+  </style>
   <body>
     <main class="card-page">
       <section class="postcard-container">
@@ -53,7 +117,7 @@
                 </div>
 
                 <div class="postcard-greeting-front">
-                  A MESSAGE<br />
+                  A POSTCARD<br />
                   FOR YOU
                 </div>
               </div>

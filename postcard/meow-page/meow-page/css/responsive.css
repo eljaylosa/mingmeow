@@ -118,9 +118,9 @@ body {
   }
 
   .editor-pane,
-    .editor-pane * {
-        touch-action: pan-y;
-    }
+  .editor-pane * {
+    touch-action: pan-y;
+  }
 }
 
 /* =========================================================
@@ -151,6 +151,7 @@ body {
       transparent 24px,
       #e5d9cd 25px
     );
+    max-height: 125px;
   }
 
   .postcard-stamp-box {
@@ -202,6 +203,7 @@ body {
       transparent 21px,
       #e5d9cd 22px
     );
+    max-width: 105px;
   }
 
   .action-row {
@@ -268,5 +270,24 @@ body {
 
   .music-controls {
     gap: 9px;
+  }
+}
+
+/* =========================================================
+   MOBILE — PRIVACY POLICY LINK FIX
+   ========================================================= */
+
+@media (max-width: 600px) {
+  .site-footer {
+    position: relative;
+    z-index: 100;
+  }
+
+  .site-footer a {
+    position: relative;
+    z-index: 101;
+    display: inline-block;
+    pointer-events: auto;
+    padding: 8px 4px;
   }
 }
