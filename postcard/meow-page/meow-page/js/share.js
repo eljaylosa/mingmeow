@@ -14,6 +14,165 @@ function getVisiblePostcardFace() {
 // the same image. Clones the currently visible face (stripping its 3D
 // positioning), renders it off-screen at high resolution via html2canvas,
 // and resolves with the resulting canvas.
+
+// function renderPostcardCanvas() {
+//   const postcard = document.getElementById("postcard");
+
+//   if (!postcard || typeof html2canvas === "undefined") {
+//     return Promise.reject(new Error("Postcard is not available to render"));
+//   }
+
+//   const faceEl = getVisiblePostcardFace();
+
+//   if (!faceEl) {
+//     return Promise.reject(
+//       new Error("Postcard face is not available to render")
+//     );
+//   }
+
+//   // ----------------------------------------
+//   // Clone the actual visible face
+//   // ----------------------------------------
+//   const clone = faceEl.cloneNode(true);
+
+//   // Get the REAL rendered size
+//   const rect = faceEl.getBoundingClientRect();
+
+//   // Remove 3D positioning only
+//   clone.style.position = "relative";
+//   clone.style.inset = "auto";
+//   clone.style.transform = "none";
+
+//   // IMPORTANT:
+//   // Keep the face's actual dimensions
+//   clone.style.width = "600px";
+//   clone.style.height = "390px";
+//   clone.style.boxSizing = "border-box";
+
+//   // ----------------------------------------
+//   // Copy the actual postcard theme
+//   // ----------------------------------------
+//   const themeClass = Array.from(postcard.classList).find((className) =>
+//     className.startsWith("theme-")
+//   );
+
+//   // ----------------------------------------
+//   // Create a completely neutral render container
+//   // ----------------------------------------
+//   const renderContainer = document.createElement("div");
+
+//   renderContainer.style.position = "fixed";
+//   renderContainer.style.left = "-10000px";
+//   renderContainer.style.top = "0";
+//   renderContainer.style.width = "600px";
+//   renderContainer.style.height = "390px";
+//   renderContainer.style.padding = "0";
+//   renderContainer.style.margin = "0";
+//   renderContainer.style.background = "transparent";
+//   renderContainer.style.overflow = "visible";
+
+//   // Apply theme directly to the clone
+//   if (themeClass) {
+//     clone.classList.add(themeClass);
+//   }
+
+//   renderContainer.appendChild(clone);
+//   document.body.appendChild(renderContainer);
+
+//   // Force browser to calculate the cloned CSS
+//   void clone.offsetWidth;
+
+//   return html2canvas(clone, {
+//     width: 600,
+//     height: 390,
+//     scale: 3,
+//     backgroundColor: null,
+//     useCORS: true,
+//     allowTaint: false,
+//     logging: false,
+//   }).finally(() => {
+//     renderContainer.remove();
+//   });
+// }
+
+// function renderPostcardCanvas() {
+//   const postcard = document.getElementById("postcard");
+
+//   if (!postcard || typeof html2canvas === "undefined") {
+//     return Promise.reject(
+//       new Error("Postcard is not available to render")
+//     );
+//   }
+
+//   const faceEl = getVisiblePostcardFace();
+
+//   if (!faceEl) {
+//     return Promise.reject(
+//       new Error("Postcard face is not available to render")
+//     );
+//   }
+
+//   const inner = postcard.querySelector(".postcard-inner");
+
+//   // Save original styles
+//   const originalInnerTransform = inner
+//     ? inner.style.transform
+//     : "";
+
+//   const originalInnerTransition = inner
+//     ? inner.style.transition
+//     : "";
+
+//   const originalFaceTransform = faceEl.style.transform;
+//   const originalFaceBackface = faceEl.style.backfaceVisibility;
+
+//   // ----------------------------------------
+//   // TEMPORARILY DISABLE FLIP ANIMATION
+//   // ----------------------------------------
+//   if (inner) {
+//     inner.style.transition = "none";
+//     inner.style.transform = "none";
+//   }
+
+//   faceEl.style.transition = "none";
+//   faceEl.style.transform = "none";
+//   faceEl.style.backfaceVisibility = "visible";
+
+//   // Force browser to apply changes immediately
+//   void postcard.offsetWidth;
+
+//   // ----------------------------------------
+//   // Get exact editor dimensions
+//   // ----------------------------------------
+//   const rect = faceEl.getBoundingClientRect();
+
+//   // ----------------------------------------
+//   // Render the ACTUAL visible face
+//   // ----------------------------------------
+//   return html2canvas(faceEl, {
+//     width: rect.width,
+//     height: rect.height,
+//     scale: 3,
+//     backgroundColor: null,
+//     useCORS: true,
+//     allowTaint: false,
+//     logging: false,
+//   }).finally(() => {
+
+//     // ----------------------------------------
+//     // RESTORE EVERYTHING
+//     // ----------------------------------------
+//     if (inner) {
+//       inner.style.transition = originalInnerTransition;
+//       inner.style.transform = originalInnerTransform;
+//     }
+
+//     faceEl.style.transition = "";
+//     faceEl.style.transform = originalFaceTransform;
+//     faceEl.style.backfaceVisibility = originalFaceBackface;
+//   });
+// }
+
 function renderPostcardCanvas() {
   const postcard = document.getElementById("postcard");
 
@@ -29,66 +188,59 @@ function renderPostcardCanvas() {
     );
   }
 
+  const inner = postcard.querySelector(".postcard-inner");
+
+  // Save original styles
+  const originalInnerTransform = inner ? inner.style.transform : "";
+
+  const originalInnerTransition = inner ? inner.style.transition : "";
+
+  const originalFaceTransform = faceEl.style.transform;
+  const originalFaceBackface = faceEl.style.backfaceVisibility;
+
   // ----------------------------------------
-  // Clone the postcard face
+  // TEMPORARILY DISABLE FLIP ANIMATION
   // ----------------------------------------
-
-  const clone = faceEl.cloneNode(true);
-
-  // Remove 3D positioning from the cloned face
-  clone.style.position = "static";
-  clone.style.transform = "none";
-  clone.style.inset = "auto";
-
-  // ----------------------------------------
-  // Preserve the active theme
-  // ----------------------------------------
-
-  const themeClass = Array.from(postcard.classList).find((className) =>
-    className.startsWith("theme-")
-  );
-
-  // Create a wrapper that carries the theme.
-  // This is important because many theme styles
-  // depend on .postcard.theme-xxxx selectors.
-  const wrapper = document.createElement("div");
-
-  wrapper.className = "postcard";
-
-  if (themeClass) {
-    wrapper.classList.add(themeClass);
+  if (inner) {
+    inner.style.transition = "none";
+    inner.style.transform = "none";
   }
 
-  wrapper.style.position = "fixed";
-  wrapper.style.top = "-9999px";
-  wrapper.style.left = "-9999px";
-  wrapper.style.width = `${faceEl.offsetWidth}px`;
-  wrapper.style.height = `${faceEl.offsetHeight}px`;
-  wrapper.style.overflow = "visible";
+  faceEl.style.transition = "none";
+  faceEl.style.transform = "none";
+  faceEl.style.backfaceVisibility = "visible";
 
-  // Preserve the same face class
-  if (faceEl.classList.contains("postcard-front")) {
-    wrapper.classList.add("rendering-front");
-  }
-
-  if (faceEl.classList.contains("postcard-back")) {
-    wrapper.classList.add("rendering-back");
-  }
-
-  wrapper.appendChild(clone);
-  document.body.appendChild(wrapper);
+  // Force browser to apply changes immediately
+  void postcard.offsetWidth;
 
   // ----------------------------------------
-  // Render
+  // Get exact editor dimensions
   // ----------------------------------------
+  const rect = faceEl.getBoundingClientRect();
 
-  return html2canvas(wrapper, {
+  // ----------------------------------------
+  // Render the ACTUAL visible face
+  // ----------------------------------------
+  return html2canvas(faceEl, {
+    width: rect.width,
+    height: rect.height,
     scale: 3,
     backgroundColor: null,
     useCORS: true,
     allowTaint: false,
+    logging: false,
   }).finally(() => {
-    document.body.removeChild(wrapper);
+    // ----------------------------------------
+    // RESTORE EVERYTHING
+    // ----------------------------------------
+    if (inner) {
+      inner.style.transition = originalInnerTransition;
+      inner.style.transform = originalInnerTransform;
+    }
+
+    faceEl.style.transition = "";
+    faceEl.style.transform = originalFaceTransform;
+    faceEl.style.backfaceVisibility = originalFaceBackface;
   });
 }
 
@@ -327,11 +479,56 @@ async function generatePostcardLink(button) {
   }
 }
 
+function printPostcard() {
+  const postcard = document.getElementById("postcard");
+
+  if (!postcard) {
+    console.error("Meow Page: postcard not found");
+    return;
+  }
+
+  // Determine which side is currently visible
+  const isFlipped = postcard.classList.contains("flipped");
+  const faceSelector = isFlipped ? ".postcard-back" : ".postcard-front";
+  const face = postcard.querySelector(faceSelector);
+
+  if (!face) {
+    console.error("Meow Page: postcard face not found");
+    return;
+  }
+
+  // Mark the page with the currently selected face.
+  // Print CSS will use this to show only that face.
+  document.body.classList.add("printing-postcard");
+
+  if (isFlipped) {
+    document.body.classList.add("printing-back");
+  } else {
+    document.body.classList.add("printing-front");
+  }
+
+  // Give the browser a moment to apply the print styles
+  // before opening the print dialog.
+  requestAnimationFrame(() => {
+    window.print();
+
+    // Clean everything up after printing/cancelling
+    setTimeout(() => {
+      document.body.classList.remove(
+        "printing-postcard",
+        "printing-front",
+        "printing-back"
+      );
+    }, 500);
+  });
+}
+
 function initShare() {
   const sendBtn = document.getElementById("sendBtn");
   const copyBtn = document.getElementById("copyBtn");
   const shareBtn = document.getElementById("shareBtn");
   const getlinkBtn = document.getElementById("getlinkBtn");
+  const printBtn = document.getElementById("printBtn");
 
   if (sendBtn) {
     sendBtn.addEventListener("click", downloadPostcard);
@@ -349,6 +546,9 @@ function initShare() {
     getlinkBtn.addEventListener("click", () => {
       generatePostcardLink(getlinkBtn);
     });
+  }
+  if (printBtn) {
+    printBtn.addEventListener("click", printPostcard);
   }
 }
 
