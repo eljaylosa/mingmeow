@@ -1,0 +1,79 @@
+* =========================================================
+   PRINT — POSTCARD ONLY
+   ========================================================= */
+
+@media print {
+  /* Hide everything by default */
+  body * {
+    visibility: hidden;
+  }
+
+  /* Show the postcard and its contents */
+  body.printing-postcard #postcard,
+  body.printing-postcard #postcard * {
+    visibility: visible;
+  }
+
+  /* Put the postcard in the center of the printed page */
+  body.printing-postcard #postcard {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) !important;
+
+    width: 460px;
+    height: 300px;
+
+    margin: 0;
+    box-shadow: none;
+  }
+
+  @page {
+    size: auto;
+    margin: 0;
+  }
+
+  /* Prevent the 3D scene from affecting print layout */
+  body.printing-postcard .postcard-inner {
+    transform: none !important;
+  }
+
+  /* Hide the opposite face */
+  body.printing-front .postcard-back {
+    display: none !important;
+  }
+
+  body.printing-back .postcard-front {
+    display: none !important;
+  }
+
+  /* Make sure the selected face is positioned normally */
+  body.printing-postcard .postcard-front,
+  body.printing-postcard .postcard-back {
+    position: relative !important;
+    transform: none !important;
+    visibility: visible !important;
+  }
+
+  /* Remove website UI from the print output */
+  .create-header,
+  .editor-pane,
+  .action-row,
+  .share-hint,
+  nav,
+  button {
+    display: none !important;
+  }
+
+  /* Preserve postcard colors/backgrounds when supported */
+  body.printing-postcard,
+  body.printing-postcard #postcard {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Remove unnecessary page margins */
+  @page {
+    margin: 0;
+  }
+}
